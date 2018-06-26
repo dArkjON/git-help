@@ -1,27 +1,27 @@
 # git-help
 
-Define `gitlog` alias
+## Define `gitlog` alias
 ```
 alias gitlog='git log --graph --oneline --decorate --all'
 ```
 
-Clone GitHub repository
+## Clone GitHub repository
 ```
 git clone https://github.com/dalijolijo/bisq-assets.git
 cd bisq-assets
 ```
 
-Change to branch `list-diamond-asset`
+## Change to branch `list-diamond-asset`
 ```
 git checkout list-diamond-asset
 ```
 
-Add remote master of my remote fork (needed?)
+## Add remote master of my remote fork (needed?)
 ```
 git remote add upstream https://github.com/bisq-network/bisq-assets.git
 ```
 
-Make sure everything looks right
+## Make sure everything looks right
 ```
 gitlog
 
@@ -29,12 +29,12 @@ gitlog
 | | | * d2eb7f9 List Diamond (DMD)
 ```
 
-Squash two commits
+## Squash two commits
 ```
 git rebase -i HEAD^^ 
 ```
 
-In the editor you change pick to fixup on the commits you want to merge with upper commit.
+In the editor you change `pick` to `fixup` on the commits you want to merge with upper commit.
 ```
 FROM:
 pick d2eb7f9 List Diamond (DMD)
@@ -47,7 +47,7 @@ fixup 3513b32 Apply Bisq code style
 ...
 ```
 
-Push to remote branch
+## Push to remote branch
 ```
 git push --force
 
