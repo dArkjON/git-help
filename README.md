@@ -52,6 +52,29 @@ fixup 3513b32 Apply Bisq code style
 git commit --amend
 ```
 
+## Remove commits (Cherry pick)
+Example git log
+```
+Number	Hash	Commit Message	Author
+1	2c6a45b	(HEAD) Adding public method to access protected method	Tom
+2	ae45fab	Updates to database interface	Contractor 1
+3	77b9b82	Improving database interface	Contractor 2
+4	3c9093c	Merged develop branch into master	Tom
+5	b3d92c5	Adding new Event CMS Module	Paul
+6	7feddbb	Adding CMS class and files	Tom
+7	a809379	Adding project to Git	Tom
+```
+Say we want to remove commits 2 & 4 from the repo.
+
+* `git checkout b3d92c5` Checkout the last usable commit.
+* `git checkout -b repair` Create a new branch to work on.
+* `git cherry-pick 77b9b82` Run through commit 3.
+* `git cherry-pick 2c6a45b` Run through commit 1.
+* `git checkout master` Checkout master.
+* `git reset --hard b3d92c5` Reset master to last usable commit.
+* `git merge repair` Merge our new branch onto master.
+* `git push --hard origin master` Push master to the remote repo.
+
 ## Push to remote branch
 ```
 git push --force
