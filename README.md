@@ -47,6 +47,11 @@ fixup 3513b32 Apply Bisq code style
 ...
 ```
 
+## Rename last commit text
+```
+git commit --amend
+```
+
 ## Push to remote branch
 ```
 git push --force
