@@ -16,6 +16,11 @@ cd bisq-assets
 git checkout list-diamond-asset
 ```
 
+## Show the current working branch
+```
+git branch
+```
+
 ## Add remote master of my remote fork (needed?)
 ```
 git remote add upstream https://github.com/bisq-network/bisq-assets.git
@@ -52,7 +57,15 @@ fixup 3513b32 Apply Bisq code style
 git commit --amend
 ```
 
-## Remove commits (Cherry pick)
+## Reset last X commits (Be careful!)
+```
+git checkout master
+git branch
+git reset --hard 6b8bd76
+git push --force
+```
+
+## Remove commits - Cherry pick (Be careful!)
 Example git log
 ```
 Number	Hash	Commit Message	Author
@@ -75,7 +88,7 @@ Say we want to remove commits 2 & 4 from the repo.
 * `git merge repair` Merge our new branch onto master.
 * `git push --hard origin master` Push master to the remote repo.
 
-## Push to remote branch
+## Push to remote branch (Be careful!)
 ```
 git push --force
 
