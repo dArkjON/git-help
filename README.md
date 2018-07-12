@@ -26,6 +26,11 @@ git branch
 git remote add upstream https://github.com/bisq-network/bisq-assets.git
 ```
 
+## Sync with remote repository
+```
+git pull --rebase 
+```
+
 ## Make sure everything looks right
 ```
 gitlog
