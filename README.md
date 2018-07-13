@@ -64,17 +64,19 @@ git commit --amend
 
 ## Rename any commit text
 ```
-git rebase -i HEAD^^
+git rebase -i HEAD^^^
 ```
 
 In the editor you change `pick` to `reword` on the commits you want to rename.
 ```
 FROM:
+pick d5eb638 Listing Bitcloud
 pick d2eb7f9 Listing Diamond
 pick 3513b32 Apply Bisq code style
 ...
 
 TO:
+reword d5eb638 List BitCloud (DTDX)
 reword d2eb7f9 List Diamond (DMD)
 pick 3513b32 Apply Bisq code style
 ...
