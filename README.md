@@ -65,6 +65,7 @@ git commit --amend
 ## Rename any commit text
 ```
 git rebase -i HEAD^^
+```
 
 In the editor you change `pick` to `reword` on the commits you want to rename.
 ```
