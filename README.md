@@ -11,6 +11,14 @@ git clone https://github.com/dalijolijo/bisq-assets.git
 cd bisq-assets
 ```
 
+## Chreate new branch (local => remote)
+```sh
+git branch testnet
+git checkout testnet
+git status
+git push --force --set-upstream origin testnet
+```
+
 ## Change to branch `list-diamond-asset`
 ```sh
 git checkout list-diamond-asset
