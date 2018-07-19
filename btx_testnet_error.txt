@@ -1,0 +1,41 @@
+[2018-07-25T07:52:49.790Z] info: Using config: /home/bitcore/bitcore-testnet/bin/mynode/bitcore-node.json
+[2018-07-25T07:52:49.792Z] info: Using network: testnet
+[2018-07-25T07:52:49.793Z] info: Starting bitcoind
+[2018-07-25T07:52:49.795Z] info: Using bitcore config file: /home/bitcore/bitcore-testnet/bin/mynode/data/bitcore.conf
+[2018-07-25T07:52:49.799Z] info: Starting bitcore process
+[2018-07-25T07:57:45.246Z] error: Failed to start services
+[2018-07-25T07:57:45.250Z] error: RPCError: Bitcoin JSON-RPC: Request Error: connect ECONNREFUSED 127.0.0.1:26124
+    at Bitcoin._wrapRPCError (/home/bitcore/bitcore-testnet/lib/services/bitcoind.js:449:13)
+    at /home/bitcore/bitcore-testnet/lib/services/bitcoind.js:782:28
+    at ClientRequest.<anonymous> (/home/bitcore/bitcore-testnet/node_modules/bitcoind-rpc/lib/index.js:116:7)
+    at emitOne (events.js:116:13)
+    at ClientRequest.emit (events.js:211:7)
+    at Socket.socketErrorListener (_http_client.js:387:9)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+[2018-07-25T07:57:45.251Z] info: Beginning shutdown
+[2018-07-25T07:57:45.253Z] info: Stopping insight-ui-btx (not started)
+[2018-07-25T07:57:45.256Z] info: Stopping insight-api-btx (not started)
+[2018-07-25T07:57:45.256Z] info: Stopping web (not started)
+[2018-07-25T07:57:45.257Z] info: Stopping bitcoind
+[2018-07-25T07:57:46.958Z] info: Halted
+[2018-07-25T07:57:49.006Z] info: Using config: /home/bitcore/bitcore-testnet/bin/mynode/bitcore-node.json
+[2018-07-25T07:57:49.008Z] info: Using network: testnet
+[2018-07-25T07:57:49.009Z] info: Starting bitcoind
+[2018-07-25T07:57:49.010Z] info: Using bitcore config file: /home/bitcore/bitcore-testnet/bin/mynode/data/bitcore.conf
+[2018-07-25T07:57:49.013Z] info: Starting bitcore process
+[2018-07-25T08:02:44.461Z] error: Failed to start services
+[2018-07-25T08:02:44.465Z] error: RPCError: Bitcoin JSON-RPC: Request Error: connect ECONNREFUSED 127.0.0.1:26124
+    at Bitcoin._wrapRPCError (/home/bitcore/bitcore-testnet/lib/services/bitcoind.js:449:13)
+    at /home/bitcore/bitcore-testnet/lib/services/bitcoind.js:782:28
+    at ClientRequest.<anonymous> (/home/bitcore/bitcore-testnet/node_modules/bitcoind-rpc/lib/index.js:116:7)
+    at emitOne (events.js:116:13)
+    at ClientRequest.emit (events.js:211:7)
+    at Socket.socketErrorListener (_http_client.js:387:9)
+    at emitOne (events.js:116:13)
+    at Socket.emit (events.js:211:7)
+    at emitErrorNT (internal/streams/destroy.js:64:8)
+    at _combinedTickCallback (internal/process/next_tick.js:138:11)
+

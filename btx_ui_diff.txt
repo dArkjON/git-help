@@ -1,0 +1,231 @@
+diff -r insight-ui-btx/po/de_DE.po insight-ui-btx-ready/po/de_DE.po
+97c97
+< "Es ist nicht möglich mit BitCored zu verbinden um live Aktualisierungen vom "
+---
+> "Es ist nicht möglich mit Zcashd zu verbinden um live Aktualisierungen vom "
+202,203c202,203
+< msgid "Last Block Hash (BitCored)"
+< msgstr "Letzter Hash (BitCored)"
+---
+> msgid "Last Block Hash (Zcashd)"
+> msgstr "Letzter Hash (Zcashd)"
+
+#################################
+
+diff -r insight-ui-btx/po/es.po insight-ui-btx-ready/po/es.po
+198,199c198,199
+< msgid "Last Block Hash (BitCored)"
+< msgstr "Último Bloque Hash (BitCored)"
+---
+> msgid "Last Block Hash (Zcashd)"
+> msgstr "Último Bloque Hash (Zcashd)"
+
+######################################
+
+diff -r insight-ui-btx/po/ja.po insight-ui-btx-ready/po/ja.po
+216,217c216,217
+< msgid "Last Block Hash (BitCored)"
+< msgstr "直前のブロックのハッシュ値 (BitCored)"
+---
+> msgid "Last Block Hash (Zcashd)"
+> msgstr "直前のブロックのハッシュ値 (Zcashd)"
+
+###############################
+
+Only in insight-ui-btx-ready/public/img: Bitcore-logo-135x135.png
+Only in insight-ui-btx/public/img: zelcashlogo.png
+Only in insight-ui-btx-ready/public/views: img
+
+###################################
+
+diff -r insight-ui-btx/public/views/includes/header.html insight-ui-btx-ready/public/views/includes/header.html
+10c10
+<       <a class="navbar-brand" href="."><img src="../../img/bitcorelogo.png" class="navbar-brand-logo" /></a>
+---
+>       <a class="navbar-brand" href="."><img src="img/Bitcore-logo-135x135.png" class="navbar-brand-logo" /></a>
+
+###################################
+
+diff -r insight-ui-btx/public/views/index.html insight-ui-btx-ready/public/views/index.html
+63,67c63,65
+<         <h2 translate>About</h2>
+<         <p translate><strong>insight</strong>  is an <a href="https://insight.is/"
+<           target="_blank">open-source BTX blockchain explorer</a> with complete REST and websocket APIs that can be used for writing web wallets and other apps  that need more advanced blockchain queries than provided by bitcored RPC.  Check out the <a href="https://github.com/bitcore/insight-ui-btx" target="_blank">source code</a>.</p>
+<         <p translate><strong>insight</strong> is still in development, so be sure to report any bugs and provide feedback for improvement at our <a href="https://github.com/bitcore/insight-ui-btx/issues" target="_blank">github issue tracker</a>.</p>
+<         <p data-ng-if='currency.testnet'><strong>This explorer is currently showing testnet BTX!</strong></p>
+---
+>         <center><img src="img/Bitcore-logo-135x135.png"/></cent</center>
+>         <br><br>
+>         <p translate>Bitcore BTX is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. Bitcore BTX is an <ahref="https://github.com/LIMXTEC/BitCore.git" target="_blank">open-source</a>, global payment network that is fully decentralized. Mathematics secures the network and empowers individuals to control their own finances.</p>
+71a70,74
+>         </div>
+>         <p translate><strong>insight</strong>  is an <a href="https://insight.is/" target="_blank">open-source ZEK blockchain explorer</a> with complete REST and websocket APIs that can be used for writing web wallets and other apps  that need more advanced blockchain queries than provided by bitcored RPC.  Check out the <a href="https://github.com/str4d/insight-ui-zcash" target="_blank">source code</a>.</p>
+>         <p translate><strong>insight</strong> is still in development, so be sure to report any bugs and provide feedback for improvement at our <a href="https://github.com/str4d/insight-ui-zcash/issues" target="_blank">github issue tracker</a>.</p>
+>         <p data-ng-if='currency.testnet'><strong>This explorer is currently showing testnet BTX!</strong></p>
+>         <div id="powered" class="row">
+
+######################################
+
+diff -r insight-ui-btx/public/views/transaction/tx.html insight-ui-btx-ready/public/views/transaction/tx.html
+23,157d22
+<   <div class="col-md-12">
+<     <div class="row" data-ng-if="!tx.vjoinsplit || tx.vjoinsplit.length == 0">
+<       <div class="col-md-12 transaction-vin-vout">
+<         <div class="ellipsis">
+<           <span translate>No JoinSplits</span>
+<         </div>
+<       </div>
+<     </div>
+<     <div class="row" data-ng-if="tx.vjoinsplit && tx.vjoinsplit.length != 0">
+< 
+<       <!-- <<< Simple view -->
+<       <div data-ng-if="!itemsExpanded" data-ng-init="currentJSNoExpanded=0; sizeJSNoExpanded=5">
+<         <div class="panel panel-default" data-ng-repeat="vjs in tx.vjoinsplit| startFrom:currentJSNoExpanded*sizeJSNoExpanded | limitTo:sizeJSNoExpanded">
+<           <div class="panel-body transaction-vin-vout">
+<             <div class="col-md-3 col-xs-12">
+<               <div class="pull-right btc-value">
+<                 {{$root.currency.getConvertion(vjs.vpub_old)}}
+<               </div>
+<               <div class="ellipsis">
+<                 <span>Public input</span>
+<               </div>
+<             </div>
+<             <div class="col-md-1 col-xs-12">
+<               <div class="hidden-xs hidden-sm text-center">
+<                 <span class="glyphicon glyphicon-chevron-right text-muted"></span>
+<               </div>
+<               <div class="hidden-md hidden-lg text-center">
+<                 <span class="glyphicon glyphicon-chevron-down text-muted"></span>
+<               </div>
+<             </div>
+<             <div class="col-md-4 col-xs-12">
+<               <div class="ellipsis text-center">
+<                 <span>JoinSplit [{{vjs.n}}]</span>
+<               </div>
+<             </div>
+<             <div class="col-md-1 col-xs-12">
+<               <div class="hidden-xs hidden-sm text-center">
+<                 <span class="glyphicon glyphicon-chevron-right text-muted"></span>
+<               </div>
+<               <div class="hidden-md hidden-lg text-center">
+<                 <span class="glyphicon glyphicon-chevron-down text-muted"></span>
+<               </div>
+<             </div>
+<             <div class="col-md-3 col-xs-12">
+<               <div class="pull-right btc-value">
+<                 {{$root.currency.getConvertion(vjs.vpub_new)}}
+<               </div>
+<               <div class="ellipsis">
+<                 <span>Public output</span>
+<               </div>
+<             </div>
+<           </div>
+<         </div>
+<         <div class="showmore_collapse text-left" data-ng-show="tx.vjoinsplit.length > 5" data-ng-class="{ 'hidden': itemsExpanded}">
+<           <button type="button" class="btn btn-info btn-sm" ng-hide="sizeJSNoExpanded != tx.vjoinsplit.length" ng-click="currentJSNoExpanded=0; sizeJSNoExpanded=5"><i class="glyphicon glyphicon-chevron-up"></i>
+<             <span translate>Show less</span></button>
+<           <button type="button" class="btn btn-info btn-sm" ng-hide="currentJSNoExpanded >= tx.vjoinsplit.length/sizeJSNoExpanded - 1" ng-click="currentJSNoExpanded=0; sizeJSNoExpanded=tx.vjoinsplit.length"><i class="glyphicon glyphicon-chevron-down"></i>
+<             <span translate>Show more</span></button>
+<         </div>
+<       </div>
+< 
+<       <!-- <<< Full view -->
+<       <div data-ng-if="itemsExpanded" data-ng-init="currentJSExpanded=0; sizeJSExpanded=(from_vjs) ? tx.vjoinsplit.length : 5; fromVjsCollapsed=(from_vjs)">
+<         <div data-ng-repeat="vjs in tx.vjoinsplit| startFrom:currentJSExpanded*sizeJSExpanded | limitTo:sizeJSExpanded" data-ng-if="fromVjsCollapsed ? v_index == vjs.n : 1">
+<           <div class="panel panel-default transaction-vin-vout">
+<             <div class="panel-body">
+<               <div class="col-md-3 col-xs-12">
+<                 <div class="pull-right btc-value">
+<                   {{$root.currency.getConvertion(vjs.vpub_old)}}
+<                 </div>
+<                 <div class="ellipsis">
+<                   <span translate>Public input</span>
+<                 </div>
+<               </div>
+<               <div class="col-md-1 col-xs-12">
+<                 <div class="hidden-xs hidden-sm text-center">
+<                   <span class="glyphicon glyphicon-chevron-right text-muted"></span>
+<                 </div>
+<                 <div class="hidden-md hidden-lg text-center">
+<                   <span class="glyphicon glyphicon-chevron-down text-muted"></span>
+<                 </div>
+<               </div>
+<               <div class="col-md-4 col-xs-12">
+<                 <div class="ellipsis text-center">
+<                   <span>JoinSplit [{{vjs.n}}]</span>
+<                 </div>
+<               </div>
+<               <div class="col-md-1 col-xs-12">
+<                 <div class="hidden-xs hidden-sm text-center">
+<                   <span class="glyphicon glyphicon-chevron-right text-muted"></span>
+<                 </div>
+<                 <div class="hidden-md hidden-lg text-center">
+<                   <span class="glyphicon glyphicon-chevron-down text-muted"></span>
+<                 </div>
+<               </div>
+<               <div class="col-md-3 col-xs-12">
+<                 <div class="pull-right btc-value">
+<                   {{$root.currency.getConvertion(vjs.vpub_new)}}
+<                 </div>
+<                 <div class="ellipsis">
+<                   <span translate>Public output</span>
+<                 </div>
+<               </div>
+<             </div> <!-- END OF PANEL BODY -->
+<           </div> <!-- END OF PANEL-DEFAULT -->
+<         </div>
+<         <div class="text-left">
+<           <button type="button" class="btn btn-default btn-sm" data-ng-show="(from_vjs) && tx.vjoinsplit.length > 1" data-ng-disabled="fromVjsCollapsed" data-ng-click="currentJSExpanded=0; sizeJSExpanded=tx.vjoinsplit.length;fromVjsCollapsed=1">
+<             <span translate>Show input</span> #{{ v_index }}</button>
+<           <button type="button" class="btn btn-default btn-sm" data-ng-show="(from_vjs) && tx.vjoinsplit.length > 1" data-ng-disabled="!fromVinCollapsed" data-ng-click="currentJSExpanded=0; sizeJSExpanded=tx.vjoinsplit.length;fromVjsCollapsed=0">
+<             <span translate>Show all</span></button>
+<         </div>
+<         <div class="showmore_collapse text-left" data-ng-show="tx.vjoinsplit.length > 5 && !fromVjsCollapsed" data-ng-class="{ 'hidden': !itemsExpanded}">
+<           <button type="button" class="btn btn-info btn-sm" ng-hide="sizeJSExpanded != tx.vjoinsplit.length" ng-click="currentJSExpanded=0; sizeJSExpanded=5"><i class="glyphicon glyphicon-chevron-up"></i>
+<             <span translate>Show less</span></button>
+<           <button type="button" class="btn btn-info btn-sm" ng-hide="currentJSExpanded >= tx.vjoinsplit.length/sizeJSExpanded - 1" ng-click="currentJSExpanded=0; sizeJSExpanded=tx.vjoinsplit.length"><i class="glyphicon glyphicon-chevron-down"></i>
+<             <span translate>Show more</span></button>
+<         </div>
+<       </div>
+<     </div>
+<   </div>
+< </div>
+< <div class="row">
+<   <div class="col-md-6">
+<     <div class="hidden-xs hidden-sm text-center">
+<       <span class="lead glyphicon glyphicon-chevron-up text-muted"></span>
+<     </div>
+<   </div>
+<   <div class="col-md-6">
+<     <div class="hidden-xs hidden-sm text-center">
+<       <span class="lead glyphicon glyphicon-chevron-down text-muted"></span>
+<     </div>
+<   </div>
+< </div>
+< <div class="row line-mid">
+159,166c24
+<     <div class="row" data-ng-if="tx.vin.length == 0">
+<       <div class="col-md-12 transaction-vin-vout">
+<         <div class="ellipsis">
+<           <span translate>No Inputs</span>
+<         </div>
+<       </div>
+<     </div>
+<     <div class="row" data-ng-if="tx.vin.length != 0 && tx.isCoinBase">
+---
+>     <div class="row" data-ng-if="tx.isCoinBase">
+173c31
+<     <div class="row" data-ng-if="tx.vin.length != 0 && !tx.isCoinBase">
+---
+>     <div class="row" data-ng-if="!tx.isCoinBase">
+268,275c126
+<     <div class="row" data-ng-if="tx.vout.length == 0">
+<       <div class="col-md-12 transaction-vin-vout">
+<         <div class="ellipsis">
+<           <span translate>No Outputs</span>
+<         </div>
+<       </div>
+<     </div>
+<     <div class="row" data-ng-if="tx.vout.length != 0">
+---
+>     <div class="row">

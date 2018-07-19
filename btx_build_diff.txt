@@ -1,0 +1,11 @@
+diff -r bitcore-build-btx/package.json bitcore-build-btx-ready/package.json
+4c4
+<   "description": "A helper for common tasks to build bitcore btx modules'",
+---
+>   "description": "A helper for common tasks to build bitcore-btx modules'",
+37,38c37,38
+<     {
+<       "name": "The Trunk",
+---
+>         {
+>       "name": "LIMXTEC",

@@ -1,0 +1,35 @@
+diff -r bitcore-node-btx/lib/services/bitcoind.js bitcore-node-btx-ready/lib/services/bitcoind.js
+1950,1963d1949
+<   function addJoinSplitsToTx(tx, result) {
+<     tx.joinSplits = [];
+<     var netJoinSplitZatoshis = 0;
+<     for (var jsIndex = 0; jsIndex < result.vjoinsplit.length; jsIndex++) {
+<       var jsdesc = result.vjoinsplit[jsIndex];
+<       netJoinSplitZatoshis += jsdesc.vpub_newZat - jsdesc.vpub_oldZat;
+<       tx.joinSplits.push({
+<         oldZatoshis: jsdesc.vpub_oldZat,
+<         newZatoshis: jsdesc.vpub_newZat,
+<       });
+<     }
+<     return netJoinSplitZatoshis;
+<   }
+<
+1992,1996d1977
+<         var netJoinSplitZatoshis = 0;
+<         if (tx.version >= 2) {
+<           netJoinSplitZatoshis = addJoinSplitsToTx(tx, result);
+<         }
+<
+1998c1979
+<           tx.feeSatoshis = tx.inputSatoshis - tx.outputSatoshis + netJoinSplitZatoshis;
+---
+>           tx.feeSatoshis = tx.inputSatoshis - tx.outputSatoshis;
+
+####################################################################
+
+diff -r bitcore-node-btx/test/scaffold/add.integration.js bitcore-node-btx-ready/test/scaffold/add.integration.js
+97c97
+<           'bitcore-lib-btx': '^v0.13.7',
+---
+>           'bitcore-lib-btx': 'LIMXTEC/bitcore-lib-btx',
+

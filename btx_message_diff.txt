@@ -1,0 +1,21 @@
+diff -r bitcore-message-btx/lib/message.js bitcore-message-btx-ready/lib/message.js
+31c31
+< Message.MAGIC_BYTES = new Buffer('Bitcoin Signed Message:\n');
+---
+> Message.MAGIC_BYTES = new Buffer('BitCore Signed Message:\n');
+
+######################
+
+diff -r bitcore-message-btx/package.json bitcore-message-btx-ready/package.json
+13c13
+<     "bitcore",
+---
+>     "btx",
+
+###########################
+
+diff -r bitcore-message-btx/README.md bitcore-message-btx-ready/README.md
+6c6
+< bitcore-message-btx adds support for verifying and signing bitcore messages in [Node.js](http://nodejs.org/) and web browsers.
+---
+> bitcore-message-btx adds support for verifying and signing btx messages in [Node.js](http://nodejs.org/) and web browsers.

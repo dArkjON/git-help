@@ -1,0 +1,92 @@
+BTX
+###
+
+# Cloning and Compiling BitCore Wallet
+RUN mkdir -p /home/bitcore/src/ && \
+    cd /home/bitcore && \
+    git clone https://github.com/LIMXTEC/BitCore.git && \
+    cd BitCore && \
+    ./autogen.sh && \
+    ./configure --disable-dependency-tracking --enable-tests=no --without-gui --disable-hardening && \
+    make && \
+    cd /home/bitcore/BitCore/src && \
+    strip bitcored && \
+    chmod 775 bitcored && \
+    cp bitcored /home/bitcore/src/ && \
+    cd /home/bitcore && \
+    rm -rf BitCore
+
+
+BTDX
+####
+
+# Cloning and Compiling Bitcloud Wallet
+#
+RUN echo '*** Cloning and Compiling Bitcloud Wallet ***' && \
+    cd && \
+    echo "Execute a git clone of LIMXTEC/Bitcloud. Please wait..." && \
+    git clone https://github.com/LIMXTEC/Bitcloud.git && \
+    cd Bitcloud && \
+    ./autogen.sh && \
+    ./configure --disable-dependency-tracking --enable-tests=no --without-gui && \
+    make && \
+    cd && \
+    cd Bitcloud/src && \
+    strip bitcloudd && \
+    cp bitcloudd /usr/local/bin && \
+    strip bitcloud-cli && \
+    cp bitcloud-cli /usr/local/bin && \
+    strip bitcloud-tx && \
+    cp bitcloud-tx /usr/local/bin && \
+    chmod 775 /usr/local/bin/bitcloud* && \   
+    cd && \
+    rm -rf Bitcloud
+
+
+BSD
+###
+
+# Cloning and Compiling BitSend Wallet
+#
+RUN echo '*** Cloning and Compiling BitSend Wallet ***' && \
+    cd && \
+    echo "Execute a git clone of LIMXTEC/BitSend. Please wait..." && \
+    git clone --branch v0.14 --depth 1 https://github.com/LIMXTEC/BitSend && \
+    cd BitSend && \
+    ./autogen.sh && \
+    ./configure --disable-dependency-tracking --enable-tests=no --without-gui && \
+    make && \
+    cd && \
+    cd BitSend/src && \
+    strip bitsendd && \
+    cp bitsendd /usr/local/bin && \
+    strip bitsend-cli && \
+    cp bitsend-cli /usr/local/bin && \
+    chmod 775 /usr/local/bin/bitsend* && \   
+    cd && \
+    rm -rf BitSend 
+
+
+MEC
+###
+
+# Cloning and Compiling MegaCoin Wallet
+RUN echo '*** Cloning and Compiling MegaCoin Wallet ***' && \
+    cd && \
+    echo "Execute a git clone of LIMXTEC/Megacoin. Please wait..." && \
+    git clone https://github.com/LIMXTEC/Megacoin.git && \
+    cd Megacoin && \
+    ./autogen.sh && \
+    ./configure --disable-dependency-tracking --enable-tests=no --without-gui --disable-hardening && \
+    make && \
+    cd && \
+    cd Megacoin/src && \
+    strip megacoind && \
+    cp megacoind /usr/local/bin && \
+    strip megacoin-cli && \
+    cp megacoin-cli /usr/local/bin && \
+    chmod 775 /usr/local/bin/megacoin* && \
+    cd && \
+    rm -rf Megacoin
+
+
