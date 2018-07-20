@@ -22,6 +22,9 @@ git push -u origin master
 
 #### Option 2: Push an existing repository from the command line
 ```sh
+git init
+git add .
+git commit -m "inital commit"
 git remote add origin https://github.com/dalijolijo/bitcore-node-joli.git
 git push -u origin master
 ```
