@@ -8,7 +8,7 @@ set -x
 # Set targets #
 ###############
 NODE="1"
-API="0"
+API="1"
 UI="0"
 LIB="0"
 BUILD="0"
@@ -150,7 +150,7 @@ if [[ $NODE -eq 1 ]] ; then
    
    # Copy repo
    PWD=$(pwd)
-   DIR_NODE=${PWD}/bitcore-node${POSTFIX}
+   DIR_NODE=${PWD}/bitcore-node${POSTFIX_1}
    cp -r bitcore-node-zelcash ${DIR_NODE}   
 
    # Delete log files
@@ -207,11 +207,11 @@ if [[ $API -eq 1 ]] ; then
 
    # Copy repo
    PWD=$(pwd)
-   DIR_NODE=${PWD}/bitcore-node${POSTFIX}
-   cp -r bitcore-node-zelcash ${DIR_NODE}
+   DIR_API=${PWD}/insight-api${POSTFIX_1}
+   cp -r insight-api-zelcash ${DIR_API}
 
    # Delete log files
-   cd ${DIR_NODE}
+   cd ${DIR_API}
    rm npm-debug.log
 
    # Replace Coin Abbreviation
@@ -264,11 +264,11 @@ if [[ $UI -eq 1 ]] ; then
   
    # Copy repo
    PWD=$(pwd)
-   DIR_NODE=${PWD}/bitcore-node${POSTFIX}
-   cp -r bitcore-node-zelcash ${DIR_NODE}
+   DIR_UI=${PWD}/insight-ui${POSTFIX_1}
+   cp -r insight-ui-zelcash ${DIR_UI}
 
    # Delete log files
-   cd ${DIR_NODE}
+   cd ${DIR_UI}
    rm npm-debug.log
 
    # Replace Coin Abbreviation
@@ -326,11 +326,11 @@ if [[ $LIB -eq 1 ]] ; then
 
    # Copy repo
    PWD=$(pwd)
-   DIR_NODE=${PWD}/bitcore-node${POSTFIX}
-   cp -r bitcore-node-zelcash ${DIR_NODE}
+   DIR_LIB=${PWD}/bitcore-lib${POSTFIX_1}
+   cp -r bitcore-lib-zelcash ${DIR_LIB}
 
    # Delete log files
-   cd ${DIR_NODE}
+   cd ${DIR_LIB}
    rm npm-debug.log
 
    # Replace Coin Abbreviation
@@ -383,11 +383,11 @@ if [[ $BUILD -eq 1 ]] ; then
 
    # Copy repo
    PWD=$(pwd)
-   DIR_NODE=${PWD}/bitcore-node${POSTFIX}
-   cp -r bitcore-node-zelcash ${DIR_NODE}
+   DIR_BUILD=${PWD}/bitcore-build${POSTFIX_1}
+   cp -r bitcore-build-zelcash ${DIR_BUILD}
 
    # Delete log files
-   cd ${DIR_NODE}
+   cd ${DIR_BUILD}
    rm npm-debug.log
 
    # Replace Coin Abbreviation
@@ -440,11 +440,11 @@ if [[ $MESSAGE -eq 1 ]] ; then
 
    # Copy repo
    PWD=$(pwd)
-   DIR_NODE=${PWD}/bitcore-node${POSTFIX}
-   cp -r bitcore-node-zelcash ${DIR_NODE}
+   DIR_MESSAGE=${PWD}/bitcore-message${POSTFIX_1}
+   cp -r bitcore-message-zelcash ${DIR_MESSAGE}
 
    # Delete log files
-   cd ${DIR_NODE}
+   cd ${DIR_MESSAGE}
    rm npm-debug.log
 
    # Replace Coin Abbreviation
