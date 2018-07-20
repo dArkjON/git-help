@@ -5,13 +5,37 @@
 alias gitlog='git log --graph --oneline --decorate --all'
 ```
 
+## Create new remote GitHub project from bash
+```sh
+curl -u dalijolijo https://api.github.com/user/repos -d '{ "name": "bitcore-node-joli" }'
+```
+
+#### Option 1: Create a new repository on the command line
+```sh
+echo "# bitcore-node-joli" >> README.md
+git init
+git add README.md
+git commit -m "first commit"
+git remote add origin https://github.com/dalijolijo/bitcore-node-joli.git
+git push -u origin master
+```
+
+#### Option 2: Push an existing repository from the command line
+```sh
+git init
+git add .
+git commit -m "inital commit"
+git remote add origin https://github.com/dalijolijo/bitcore-node-joli.git
+git push -u origin master
+```
+
 ## Clone GitHub repository
 ```sh
 git clone https://github.com/dalijolijo/bisq-assets.git
 cd bisq-assets
 ```
 
-## Chreate new branch (local => remote)
+## Create new branch (local => remote)
 ```sh
 git branch testnet
 git checkout testnet
@@ -68,26 +92,6 @@ fixup 3513b32 Apply Bisq code style
 ## Rename last commit text
 ```sh
 git commit --amend
-```
-
-## Rename any commit text
-```sh
-git rebase -i HEAD^^^
-```
-
-In the editor you change `pick` to `reword` on the commits you want to rename.
-```sh
-FROM:
-pick d5eb638 Listing Bitcloud
-pick d2eb7f9 Listing Diamond
-pick 3513b32 Apply Bisq code style
-...
-
-TO:
-reword d5eb638 List BitCloud (DTDX)
-reword d2eb7f9 List Diamond (DMD)
-pick 3513b32 Apply Bisq code style
-...
 ```
 
 ## Reset last X commits (Be careful!)
