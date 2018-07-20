@@ -10,7 +10,7 @@ alias gitlog='git log --graph --oneline --decorate --all'
 curl -u dalijolijo https://api.github.com/user/repos -d '{ "name": "bitcore-node-joli" }'
 ```
 
-### Option 1: Create a new repository on the command line
+#### Option 1: Create a new repository on the command line
 ```sh
 echo "# bitcore-node-joli" >> README.md
 git init
@@ -20,7 +20,7 @@ git remote add origin https://github.com/dalijolijo/bitcore-node-joli.git
 git push -u origin master
 ```
 
-### Option 2: Push an existing repository from the command line
+#### Option 2: Push an existing repository from the command line
 ```sh
 git remote add origin https://github.com/dalijolijo/bitcore-node-joli.git
 git push -u origin master
