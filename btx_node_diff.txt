@@ -25,3 +25,11 @@ diff -r bitcore-node-btx/lib/services/bitcoind.js bitcore-node-btx-ready/lib/ser
 ---
 >           tx.feeSatoshis = tx.inputSatoshis - tx.outputSatoshis;
 
+####################################################################
+
+diff -r bitcore-node-btx/test/scaffold/add.integration.js bitcore-node-btx-ready/test/scaffold/add.integration.js
+97c97
+<           'bitcore-lib-btx': '^v0.13.7',
+---
+>           'bitcore-lib-btx': 'LIMXTEC/bitcore-lib-btx',
+

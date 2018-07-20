@@ -21,17 +21,16 @@ MESSAGE="0"
 # BitCloud: btdx       #
 # BitSend: bsd         #
 # MegaCoin: mec        #
-# TemplateCoin: joli   # 
 #                      #
 ########################
-SELECT_COIN="joli"
+SELECT_COIN="btx"
 SELECT_GIT="dalijolijo"
 
 ####################
 # Coin Details     #
 ####################
 
-# Tepmplate: JoliCoin (JOLI)
+# TepmplateCoin (TEMP)
 if [[ $SELECT_COIN == "joli" ]] ; then
    COIN_NAME_1="JoliCoin"
    COIN_NAME_2="Jolicoin"

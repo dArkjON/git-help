@@ -1,0 +1,43 @@
+
+#################################################################
+
+diff -r insight-api-btx/lib/status.js insight-api-btx-ready/lib/status.js
+150a151,167
+> StatusController.prototype.circulation = function(req, res) {
+>   var self = this;
+>   var subsidy = 150
+>   var halvings = Math.floor((self.node.services.bitcoind.height - 5000) / 525600);
+>   // Force block reward to zero when right shift is undefined.
+>   if (halvings >= 64) {
+>     return 0;
+>   }
+>   subsidy = subsidy / Math.pow(2, halvings)
+>   //plus slow start and dev fund
+>   var coins = ((self.node.services.bitcoind.height - 5000) * subsidy) + 312500 + 13020000
+>
+>   res.jsonp({
+>     circulationsupply: coins
+>   });
+> };
+>
+
+################################################################
+
+diff -r insight-api-btx/lib/transactions.js insight-api-btx-ready/lib/transactions.js
+79,82d78
+<   if (transformed.version >= 2) {
+<     transformed.vjoinsplit = transaction.joinSplits.map(this.transformJoinSplit.bind(this, options));
+<   }
+<
+160,168d155
+<   return transformed;
+< };
+<
+< TxController.prototype.transformJoinSplit = function(options, jsdesc, index) {
+<   var transformed = {
+<     vpub_old: (jsdesc.oldZatoshis / 1e8).toFixed(8),
+<     vpub_new: (jsdesc.newZatoshis / 1e8).toFixed(8),
+<     n: index,
+<   };
+
+
