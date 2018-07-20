@@ -32,7 +32,7 @@ git clone https://github.com/dalijolijo/bisq-assets.git
 cd bisq-assets
 ```
 
-## Chreate new branch (local => remote)
+## Create new branch (local => remote)
 ```sh
 git branch testnet
 git checkout testnet
