@@ -1,4 +1,4 @@
-#/bin/bash
+#bin/bash
 #
 # LIMXTEC - dalijolijo (2018)
 #
@@ -8,7 +8,7 @@ set -x
 # Set targets #
 ###############
 NODE="1"
-API="1"
+API="0"
 UI="0"
 LIB="0"
 BUILD="0"
@@ -24,7 +24,7 @@ MESSAGE="0"
 #                      #
 ########################
 SELECT_COIN="btx"
-SELECT_GIT="dalijolijo"
+SELECT_GIT="LIMXTEC"
 
 ####################
 # Coin Details     #
@@ -140,32 +140,25 @@ if [[ $SELECT_COIN == "mex" ]] ; then
    LOGO_NAME="mec-logo.png"
 fi
 
-
 # Reference project variables
-REF_COIN_NAME_1="ZelCash"
-REF_COIN_NAME_2="Zelcash"
-REF_COIN_NAME_3="zelcash"
-REF_COIN_1="ZEL"
-REF_COIN_2="HUSH"
-REF_GIT="TheTrunk"
-REF_SOURCE="github.com/zelcash/zelcash" # without https:// or http://
-REF_POSTFIX_1="-zelcash"
-REF_POSTFIX_2="-hush"
-REF_POSTFIX_3="-zen"
-REF_DAEMON_1="zelcashd"
-REF_DAEMON_2="Zelcashd"
-REF_DAEMON_3="hushd"
-REF_CONFIG_1="zelcash.conf"
-REF_CONFIG_2="hush.conf"
-REF_CONFIG_ENTRY="zelcash" 
-REF_DIR_PART_1="\.zelcash" # escaping dot
-REF_DIR_PART_2="\.hush" # escaping dot
-REF_DEFAULT_PORT=""
-REF_RPC_PORT="16124"
-REF_TOR_PORT=""
-REF_WEB="zel.cash" # without https:// or http://
-REF_TICKER="https://stocks.exchange/api2/ticker"
-REF_LOGO_NAME=""
+REF_COIN_NAME_1="JoliCoin"
+REF_COIN_NAME_2="Jolicoin"
+REF_COIN_NAME_3="jolicoin"
+REF_COIN_1="JOLI"
+REF_GIT="dalijolijo"
+REF_SOURCE="github.com/dalijolijo/JoliCoin" # without https:// or http://
+REF_POSTFIX_1="-joli"
+REF_DAEMON_1="jolicoind"
+REF_DAEMON_2="Jolicoind"
+REF_CONFIG_1="jolicoin.conf"
+REF_CONFIG_ENTRY="jolicoin" 
+REF_DIR_PART_1="\.jolicoin" # escaping dot
+REF_DEFAULT_PORT="8555"
+REF_RPC_PORT="8556"
+REF_TOR_PORT="9051"
+REF_WEB="jolicoin.cc" # without https:// or http://
+REF_TICKER="https://api.coinmarketcap.com/v1/ticker/jolicoin/"
+REF_LOGO_NAME="joli-logo.png"
 
 # Create Main Directory
 mkdir -p ${COIN_NAME_1}
@@ -176,12 +169,12 @@ COINDIR=$(pwd)
 if [[ $NODE -eq 1 ]] ; then
    # Clone bitcore-node reference repo
    cd ${COINDIR}
-   git clone https://github.com/TheTrunk/bitcore-node-zelcash.git
+   git clone https://github.com/dalijolijo/bitcore-node-joli.git
    
    # Copy repo
    PWD=$(pwd)
    DIR_NODE=${PWD}/bitcore-node${POSTFIX}
-   cp -r bitcore-node-zelcash ${DIR_NODE}   
+   cp -r bitcore-node-joli ${DIR_NODE}   
 
    # Delete log files
    cd ${DIR_NODE}
@@ -189,7 +182,6 @@ if [[ $NODE -eq 1 ]] ; then
 
    # Replace Coin Abbreviation
    grep -rl "${REF_COIN_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_1}/${COIN}/g"
-   grep -rl "${REF_COIN_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_2}/${COIN}/g"
 
    # Replace Git Repository
    grep -rl "${REF_GIT}" ./ | grep -v '.git' | xargs sed -i "s/${REF_GIT}/${SELECT_GIT}/g"
@@ -206,24 +198,19 @@ if [[ $NODE -eq 1 ]] ; then
    # Replace Coin Daemon Name
    grep -rl "${REF_DAEMON_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_1}/${DAEMON_1}/g"
    grep -rl "${REF_DAEMON_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_2}/${DAEMON_2}/g"
-   grep -rl "${REF_DAEMON_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_3}/${DAEMON_1}/g"
 
    # Replace Coin Config name
    grep -rl "${REF_CONFIG_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_1}/${CONFIG}/g"
-   grep -rl "${REF_CONFIG_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_2}/${CONFIG}/g"
 
    # Replace GIT Postfix Name
    grep -rl "${REF_POSTFIX_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_1}/${POSTFIX}/g"
-   grep -rl "${REF_POSTFIX_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_2}/${POSTFIX}/g"
-   grep -rl "${REF_POSTFIX_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_3}/${POSTFIX}/g"
 
    # Replace Coin Config Entry
    grep -rl "${REF_CONFIG_ENTRY}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY}/${CONFIG_ENTRY}/g"
 
    # Replace part of Coin Path
    grep -rl "${REF_DIR_PART_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_1}/${DIR_PART}/g"
-   grep -rl "${REF_DIR_PART_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_2}/${DIR_PART}/g"
-
+   
    # Replace RPC Port
    sed -i "s/${REF_RPC_PORT}/${RPC_PORT}/g" "${DIR_NODE}/lib/services/bitcoind.js"
 
@@ -239,12 +226,12 @@ fi
 if [[ $API -eq 1 ]] ; then
    # Clone insight-api reference repo
    cd ${COINDIR}
-   git clone https://github.com/TheTrunk/insight-api-zelcash.git
+   git clone https://github.com/dalijolijo/insight-api-joli.git
 
    # Copy repo
    PWD=$(pwd)
    DIR_API=${PWD}/insight-api${POSTFIX}
-   cp -r insight-api-zelcash ${DIR_API}
+   cp -r insight-api-joli ${DIR_API}
 
    # Delete log files
    cd ${DIR_API}
@@ -302,12 +289,12 @@ fi
 if [[ $UI -eq 1 ]] ; then
    # Clone insight-ui reference repo
    cd ${COINDIR}
-   git clone https://github.com/TheTrunk/insight-ui-zelcash.git
+   git clone https://github.com/dalijolijo/insight-ui-joli.git
   
    # Copy repo
    PWD=$(pwd)
    DIR_UI=${PWD}/insight-ui${POSTFIX}
-   cp -r insight-ui-zelcash ${DIR_UI}
+   cp -r insight-ui-joli ${DIR_UI}
 
    # Delete log files
    cd ${DIR_UI}
@@ -370,12 +357,12 @@ fi
 if [[ $LIB -eq 1 ]] ; then
    # Clone bitcore-lib reference repo
    cd ${COINDIR}
-   git clone https://github.com/TheTrunk/bitcore-lib-zelcash.git
+   git clone https://github.com/dalijolijo/bitcore-lib-joli.git
 
    # Copy repo
    PWD=$(pwd)
    DIR_LIB=${PWD}/bitcore-lib${POSTFIX}
-   cp -r bitcore-lib-zelcash ${DIR_LIB}
+   cp -r bitcore-lib-joli ${DIR_LIB}
 
    # Delete log files
    cd ${DIR_LIB}
@@ -433,12 +420,12 @@ fi
 if [[ $BUILD -eq 1 ]] ; then
    # Clone bitcore-build reference repo
    cd ${COINDIR}
-   git clone https://github.com/TheTrunk/bitcore-build-zelcash.git
+   git clone https://github.com/dalijolijo/bitcore-build-joli.git
 
    # Copy repo
    PWD=$(pwd)
    DIR_BUILD=${PWD}/bitcore-build${POSTFIX}
-   cp -r bitcore-build-zelcash ${DIR_BUILD}
+   cp -r bitcore-build-joli ${DIR_BUILD}
 
    # Delete log files
    cd ${DIR_BUILD}
@@ -496,12 +483,12 @@ fi
 if [[ $MESSAGE -eq 1 ]] ; then
    # Clone bitcore-message reference repo
    cd ${COINDIR}
-   git clone https://github.com/TheTrunk/bitcore-message-zelcash.git
+   git clone https://github.com/dalijolijo/bitcore-message-joli.git
 
    # Copy repo
    PWD=$(pwd)
    DIR_MESSAGE=${PWD}/bitcore-message${POSTFIX}
-   cp -r bitcore-message-zelcash ${DIR_MESSAGE}
+   cp -r bitcore-message-joli ${DIR_MESSAGE}
 
    # Delete log files
    cd ${DIR_MESSAGE}
@@ -561,5 +548,6 @@ fi
 # Push codebase to new Git repository
 #git init
 #git add .
-#git commit --message=
-
+#git commit -m "inital commit"
+#git remote add origin https://github.com/dalijolijo/bitcore-node-joli.git
+#git push -u origin master

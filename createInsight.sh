@@ -8,7 +8,7 @@ set -x
 # Set targets #
 ###############
 NODE="1"
-API="1"
+API="0"
 UI="0"
 LIB="0"
 BUILD="0"
@@ -24,7 +24,7 @@ MESSAGE="0"
 # TemplateCoin: joli   # 
 #                      #
 ########################
-SELECT_COIN="joli"
+SELECT_COIN="btx"
 SELECT_GIT="dalijolijo"
 
 ####################
