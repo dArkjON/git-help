@@ -1,0 +1,36 @@
+diff -r bitcore-node-btx/lib/scaffold/create.js bitcore-node-btx-ready/lib/scaffold/create.js
+17c17
+<   description: 'A full BitCore node build with Bitcore',
+---
+>   description: 'A full btx node build with Bitcore',
+diff -r bitcore-node-btx/lib/services/bitcoind.js bitcore-node-btx-ready/lib/services/bitcoind.js
+343c343
+<   log.info('Using bitcore.config file:', configPath);
+---
+>   log.info('Using bitcore config file:', configPath);
+1950,1963d1949
+<   function addJoinSplitsToTx(tx, result) {
+<     tx.joinSplits = [];
+<     var netJoinSplitZatoshis = 0;
+<     for (var jsIndex = 0; jsIndex < result.vjoinsplit.length; jsIndex++) {
+<       var jsdesc = result.vjoinsplit[jsIndex];
+<       netJoinSplitZatoshis += jsdesc.vpub_newZat - jsdesc.vpub_oldZat;
+<       tx.joinSplits.push({
+<         oldZatoshis: jsdesc.vpub_oldZat,
+<         newZatoshis: jsdesc.vpub_newZat,
+<       });
+<     }
+<     return netJoinSplitZatoshis;
+<   }
+<
+1992,1996d1977
+<         var netJoinSplitZatoshis = 0;
+<         if (tx.version >= 2) {
+<           netJoinSplitZatoshis = addJoinSplitsToTx(tx, result);
+<         }
+<
+1998c1979
+<           tx.feeSatoshis = tx.inputSatoshis - tx.outputSatoshis + netJoinSplitZatoshis;
+---
+>           tx.feeSatoshis = tx.inputSatoshis - tx.outputSatoshis;
+

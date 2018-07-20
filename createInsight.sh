@@ -2,7 +2,7 @@
 #
 # LIMXTEC - dalijolijo (2018)
 #
-#set -x
+set -x
 
 ###############
 # Set targets #
@@ -24,6 +24,7 @@ MESSAGE="0"
 #                  #
 ####################
 SELECT_COIN="btx"
+SELECT_GIT="LIMXTEC"
 
 ####################
 # Coin Details     #
@@ -31,17 +32,21 @@ SELECT_COIN="btx"
 
 # BitCoin (BTX)
 if [[ $SELECT_COIN == "btx" ]] ; then
-   COIN_NAME="BitCore"
+   COIN_NAME_1="BitCore"
+   COIN_NAME_2="Bitcore"
+   COIN_NAME_3="bitcore"
    COIN="BTX"
-   SOURCE="https://github.com/LIMXTEC/BitCore"
+   SOURCE="github.com/LIMXTEC/BitCore" # without https:// or http://
    POSTFIX="-btx"
    DAEMON_1="bitcored"
    DAEMON_2="Bitcored"
    CONFIG="bitcore.conf"
+   CONFIG_ENTRY="bitcore"
+   DIR_PART="\.bitcore" # escaping dot
    DEFAULT_PORT="8555"
    RPC_PORT="8556"
    TOR_PORT="9051"
-   WEB="https://bitcore.cc"
+   WEB="bitcore.cc" # without https:// or http://
    LOGO_LINK="https://insight.bitcore.cc/img/Bitcore-logo-135x135.png"
    LOGO_NAME="btx-log.png"
 fi
@@ -50,13 +55,13 @@ fi
 if [[ $SELECT_COIN == "btdx" ]] ; then
    COIN_NAME="BitCloud"
    COIN="BTDX"
-   SOURCE="https://github.com/LIMXTEC/Bitcloud"
+   SOURCE="github.com/LIMXTEC/Bitcloud" # without https:// or http://
    POSTFIX="-btdx"
    DAEMON="bitcloudd"
    DEFAULT_PORT="8329"
    RPC_PORT="8330"
    TOR_PORT="9050"
-   WEB="https://bit-cloud.info"
+   WEB="bit-cloud.info" # without https:// or http://
    LOGO_LINK="https://chainz.cryptoid.info/logo/btdx.png"
    LOGO_NAME="btdx-logo.png"
 fi
@@ -65,13 +70,13 @@ fi
 if [[ $SELECT_COIN == "bsd" ]] ; then
    COIN_NAME="BitSend"
    COIN="BSD"
-   SOURCE="https://github.com/LIMXTEC/BitSend"
+   SOURCE="github.com/LIMXTEC/BitSend" # without https:// or http://
    POSTFIX="-bsd"
    DAEMON="bitsendd"
    DEFAULT_PORT="8886"
    RPC_PORT="8800"
    TOR_PORT="9051"
-   WEB="https://bitsend.info/"
+   WEB="bitsend.info" # without https:// or http://
    LOGO_LINK="https://chainz.cryptoid.info/logo/bsd.png"
    LOGO_NAME="bsd-logo.png"
 fi
@@ -80,23 +85,25 @@ fi
 if [[ $SELECT_COIN == "btdx" ]] ; then
    COIN_NAME="MegCoin"
    COIN="MEC"
-   SOURCE="https://github.com/LIMXTEC/Megacoin"
+   SOURCE="github.com/LIMXTEC/Megacoin" # without https:// or http://
    POSTFIX="-mec"
    DAEMON="mecd"
    DEFAULT_PORT="8329"
    RPC_PORT="8556"
    TOR_PORT="9051"
-   WEB="https://www.megacoin.eu/"
+   WEB="www.megacoin.eu" # without https:// or http://
    LOGO_LINK="https://chainz.cryptoid.info/logo/mec.png"
    LOGO_NAME="mec-logo.png"
 fi
 
 
 # Reference project variables
-REF_GIT="TheTrunk"
-REF_COIN_NAME="ZelCash"
+REF_COIN_NAME_1="ZelCash"
+REF_COIN_NAME_2="Zelcash"
+REF_COIN_NAME_3="zelcash"
 REF_COIN="ZEL"
-REF_SOURCE="https://github.com/zelcash/zelcash"
+REF_GIT="TheTrunk"
+REF_SOURCE="github.com/zelcash/zelcash" # without https:// or http://
 REF_POSTFIX_1="-zelcash"
 REF_POSTFIX_2="-hush"
 REF_DAEMON_1="zelcashd"
@@ -104,15 +111,18 @@ REF_DAEMON_2="Zelcashd"
 REF_DAEMON_3="hushd"
 REF_CONFIG_1="zelcash.conf"
 REF_CONFIG_2="hush.conf"
+REF_CONFIG_ENTRY="zelcash" 
+REF_DIR_PART_1="\.zelcash" # escaping dot
+REF_DIR_PART_2="\.hush" # escaping dot
 REF_DEFAULT_PORT=""
 REF_RPC_PORT="16124"
 REF_TOR_PORT=""
-REF_WEB="http://zel.cash"
+REF_WEB="zel.cash" # without https:// or http://
 REF_LOGO_NAME=""
 
 # Create Main Directory
-mkdir -p ${COIN_NAME}
-cd ${COIN_NAME}
+mkdir -p ${COIN_NAME_1}
+cd ${COIN_NAME_1}
 
 
 # bitcore-node
@@ -122,32 +132,28 @@ if [[ $NODE -eq 1 ]] ; then
    
    # Copy repo
    PWD=$(pwd)
-   DIR_NODE=${PWD}/bitcore-node-${PROJECT_POSTFIX}
+   DIR_NODE=${PWD}/bitcore-node${POSTFIX}
    cp -r bitcore-node-zelcash ${DIR_NODE}   
 
    # Delete log files
    cd ${DIR_NODE}
    rm npm-debug.log
 
-   # Replace Coin name
-   grep -rl "${REF_COIN_NAME}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME}/${COIN_NAME}/g"
-
-   # Replace Coin abbreviation
+   # Replace Coin Abbreviation
    grep -rl "${REF_COIN}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN}/${COIN}/g"
 
-   # Replace GIT Postfix name
+   # Replace Git Repository
+   grep -rl "${REF_GIT}" ./ | grep -v '.git' | xargs sed -i "s/${REF_GIT}/${SELECT_GIT}/g"
+
+   # Replace GIT Postfix Name
    grep -rl "${REF_POSTFIX_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_1}/${POSTFIX}/g"
    grep -rl "${REF_POSTFIX_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_2}/${POSTFIX}/g"
 
-   # Replace  name
-   grep -rl "${REF_CONFIG_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_1}/${CONFIG}/g"
-   grep -rl "${REF_CONFIG_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_2}/${CONFIG}/g"
-
    # Replace Homepage link
-   grep -rl "${REF_WEB}" ./ | grep -v '.git' | xargs sed -i "s/${REF_WEB}/${WEB}/g"
+   grep -rl "${REF_WEB}" ./ | grep -v '.git' | xargs sed -i "s#${REF_WEB}#${WEB}#g"
 
    # Replace Coin Source link
-   grep -rl "${REF_SOURCE}" ./ | grep -v '.git' | xargs sed -i "s/${REF_SOURCE}/${SOURCE}/g"   
+   grep -rl "${REF_SOURCE}" ./ | grep -v '.git' | xargs sed -i "s#${REF_SOURCE}#${SOURCE}#g"   
 
    # Replace Coin Daemon name
    grep -rl "${REF_DAEMON_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_1}/${DAEMON_1}/g"
@@ -155,11 +161,24 @@ if [[ $NODE -eq 1 ]] ; then
    grep -rl "${REF_DAEMON_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_3}/${DAEMON_1}/g"
 
    # Replace Coin Config name
-   grep -rl "${REF_CONFIG_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_1}/${CONFIG}/g"
-   grep -rl "${REF_CONFIG_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_2}/${CONFIG}/g"
+   grep -rl "${REF_CONFIG_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_1}/${CONFIG}/g"
+   grep -rl "${REF_CONFIG_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_2}/${CONFIG}/g"
+
+   # Replace Coin Config Entry
+   grep -rl "${REF_CONFIG_ENTRY}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY}/${CONFIG_ENTRY}/g"
+
+   # Replace part of Coin Path
+   grep -rl "${REF_DIR_PART_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_1}/${DIR_PART}/g"
+   grep -rl "${REF_DIR_PART_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_2}/${DIR_PART}/g"
 
    # Replace RPC port
    sed -i "s/${REF_RPC_PORT}/${RPC_PORT}/g" "${DIR_NODE}/lib/services/bitcoind.js"
+
+   # Replace Coin Name
+   grep -rl "${REF_COIN_NAME_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_1}/${COIN_NAME_1}/g"
+   grep -rl "${REF_COIN_NAME_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_2}/${COIN_NAME_2}/g"
+   grep -rl "${REF_COIN_NAME_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_3}/${COIN_NAME_3}/g"
+
 
 fi 
 
