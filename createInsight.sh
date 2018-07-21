@@ -38,7 +38,7 @@ if [[ $SELECT_COIN == "joli" ]] ; then
    COIN_NAME_3="jolicoin"
    COIN="JOLI"
    SOURCE="github.com/dalijolijo/JoliCoin" # without https:// or http://
-   POSTFIX_1="-joli"
+   POSTFIX="-joli"
    DAEMON_1="jolicoind"
    DAEMON_2="Jolicoind"
    CONFIG="jolicoin.conf"
@@ -60,7 +60,7 @@ if [[ $SELECT_COIN == "btx" ]] ; then
    COIN_NAME_3="bitcore"
    COIN="BTX"
    SOURCE="github.com/LIMXTEC/BitCore" # without https:// or http://
-   POSTFIX_1="-btx"
+   POSTFIX="-btx"
    DAEMON_1="bitcored"
    DAEMON_2="Bitcored"
    CONFIG="bitcore.conf"
@@ -82,7 +82,7 @@ if [[ $SELECT_COIN == "btdx" ]] ; then
    COIN_NAME_3="bitcloud"
    COIN="BTDX"
    SOURCE="github.com/LIMXTEC/Bitcloud" # without https:// or http://
-   POSTFIX_1="-btdx"
+   POSTFIX="-btdx"
    DAEMON_1="bitcloudd"
    DAEMON_2="Bitcloudd"
    CONFIG="bitcloud.conf"
@@ -104,7 +104,7 @@ if [[ $SELECT_COIN == "bsd" ]] ; then
    COIN_NAME_3="bitsend"
    COIN="BSD"
    SOURCE="github.com/LIMXTEC/BitSend" # without https:// or http://
-   POSTFIX_1="-bsd"
+   POSTFIX="-bsd"
    DAEMON_1="bitsendd"
    DAEMON_2="Bitsendd"
    CONFIG="bitsend.conf"
@@ -126,7 +126,7 @@ if [[ $SELECT_COIN == "mec" ]] ; then
    COIN_NAME_3="megcoin"
    COIN="MEC"
    SOURCE="github.com/LIMXTEC/Megacoin" # without https:// or http://
-   POSTFIX_1="-mec"
+   POSTFIX="-mec"
    DAEMON_1="megacoind"
    DAEMON_2="Megacoind"
    CONFIG="megacoin.conf"
@@ -199,9 +199,9 @@ function replacement () {
    grep -rl "${REF_CONFIG_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_2}/${CONFIG}/g"
 
    # Replace GIT Postfix Name
-   grep -rl "${REF_POSTFIX_1}" ./ | grep -v '.git' | xargs sed -i "s|${REF_POSTFIX_1}|${POSTFIX_1}|g"
-   grep -rl "${REF_POSTFIX_2}" ./ | grep -v '.git' | xargs sed -i "s|${REF_POSTFIX_2}|${POSTFIX_1}|g"
-   grep -rl "${REF_POSTFIX_3}" ./ | grep -v '.git' | xargs sed -i "s|${REF_POSTFIX_3}|${POSTFIX_1}|g"
+   grep -rl "${REF_POSTFIX_1}" ./ | grep -v '.git' | xargs sed -i "s|${REF_POSTFIX_1}|${POSTFIX}|g"
+   grep -rl "${REF_POSTFIX_2}" ./ | grep -v '.git' | xargs sed -i "s|${REF_POSTFIX_2}|${POSTFIX}|g"
+   grep -rl "${REF_POSTFIX_3}" ./ | grep -v '.git' | xargs sed -i "s|${REF_POSTFIX_3}|${POSTFIX}|g"
 
    # Replace Coin Config Entry
    grep -rl "${REF_CONFIG_ENTRY_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY_1}/${CONFIG_ENTRY}/g"
@@ -243,7 +243,7 @@ if [[ $NODE -eq 1 ]] ; then
    git clone https://github.com/${REF_GIT}/bitcore-node${REF_POSTFIX_1}.git
    
    # Copy repo
-   NODE_DIR=${COIN_DIR}/bitcore-node${POSTFIX_1}
+   NODE_DIR=${COIN_DIR}/bitcore-node${POSTFIX}
    cp -r bitcore-node${REF_POSTFIX_1} ${NODE_DIR}   
    cd ${NODE_DIR}
 
@@ -258,7 +258,7 @@ if [[ $API -eq 1 ]] ; then
    git clone https://github.com/${REF_GIT}/insight-api${REF_POSTFIX_1}.git
 
    # Copy repo
-   API_DIR=${COIN_DIR}/insight-api${POSTFIX_1}
+   API_DIR=${COIN_DIR}/insight-api${POSTFIX}
    cp -r insight-api${REF_POSTFIX_1} ${API_DIR}
    cd ${API_DIR}
 
@@ -273,7 +273,7 @@ if [[ $UI -eq 1 ]] ; then
    git clone https://github.com/TheTrunk/insight-ui${REF_POSTFIX_1}.git
 
    # Copy repo
-   UI_DIR=${COIN_DIR}/insight-ui${POSTFIX_1}
+   UI_DIR=${COIN_DIR}/insight-ui${POSTFIX}
    cp -r insight-ui${REF_POSTFIX_1} ${UI_DIR}
    cd ${UI_DIR}
 
@@ -288,7 +288,7 @@ if [[ $LIB -eq 1 ]] ; then
    git clone https://github.com/TheTrunk/bitcore-lib${REF_POSTFIX_1}.git
 
    # Copy repo
-   LIB_DIR=${COIN_DIR}/bitcore-lib${POSTFIX_1}
+   LIB_DIR=${COIN_DIR}/bitcore-lib${POSTFIX}
    cp -r bitcore-lib${REF_POSTFIX_1} ${LIB_DIR}
    cd ${LIB_DIR}
 
@@ -303,7 +303,7 @@ if [[ $BUILD -eq 1 ]] ; then
    git clone https://github.com/TheTrunk/bitcore-build${REF_POSTFIX_1}.git
 
    # Copy repo
-   BUILD_DIR=${COIN_DIR}/bitcore-build${POSTFIX_1}
+   BUILD_DIR=${COIN_DIR}/bitcore-build${POSTFIX}
    cp -r bitcore-build${REF_POSTFIX_1} ${BUILD_DIR}
    cd ${BUILD_DIR}
 
@@ -318,7 +318,7 @@ if [[ $MESSAGE -eq 1 ]] ; then
    git clone https://github.com/TheTrunk/bitcore-message${REF_POSTFIX_1}.git
 
    # Copy repo
-   MESSAGE_DIR=${COIN_DIR}/bitcore-message${POSTFIX_1}
+   MESSAGE_DIR=${COIN_DIR}/bitcore-message${POSTFIX}
    cp -r bitcore-message${REF_POSTFIX_1} ${MESSAGE_DIR}
    cd ${MESSAGE_DIR}
 
