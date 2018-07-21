@@ -7,8 +7,8 @@ set -x
 ###############
 # Set targets #
 ###############
-NODE="1"
-API="0"
+NODE="0"
+API="1"
 UI="0"
 LIB="0"
 BUILD="0"
@@ -25,7 +25,7 @@ MESSAGE="0"
 #                      #
 ########################
 SELECT_COIN="btx"
-SELECT_GIT="dalijolijo"
+SELECT_GIT="LIMXTEC"
 
 ####################
 # Coin Details     #
@@ -38,7 +38,7 @@ if [[ $SELECT_COIN == "joli" ]] ; then
    COIN_NAME_3="jolicoin"
    COIN="JOLI"
    SOURCE="github.com/dalijolijo/JoliCoin" # without https:// or http://
-   POSTFIX="-joli"
+   POSTFIX_1="-joli"
    DAEMON_1="jolicoind"
    DAEMON_2="Jolicoind"
    CONFIG="jolicoin.conf"
@@ -53,14 +53,14 @@ if [[ $SELECT_COIN == "joli" ]] ; then
    LOGO_NAME="joli-logo.png"
 fi
 
-# BitCoin (BTX)
+# BitCore (BTX)
 if [[ $SELECT_COIN == "btx" ]] ; then
    COIN_NAME_1="BitCore"
    COIN_NAME_2="Bitcore"
    COIN_NAME_3="bitcore"
    COIN="BTX"
    SOURCE="github.com/LIMXTEC/BitCore" # without https:// or http://
-   POSTFIX="-btx"
+   POSTFIX_1="-btx"
    DAEMON_1="bitcored"
    DAEMON_2="Bitcored"
    CONFIG="bitcore.conf"
@@ -82,7 +82,7 @@ if [[ $SELECT_COIN == "btdx" ]] ; then
    COIN_NAME_3="bitcloud"
    COIN="BTDX"
    SOURCE="github.com/LIMXTEC/Bitcloud" # without https:// or http://
-   POSTFIX="-btdx"
+   POSTFIX_1="-btdx"
    DAEMON_1="bitcloudd"
    DAEMON_2="Bitcloudd"
    CONFIG="bitcloud.conf"
@@ -104,7 +104,7 @@ if [[ $SELECT_COIN == "bsd" ]] ; then
    COIN_NAME_3="bitsend"
    COIN="BSD"
    SOURCE="github.com/LIMXTEC/BitSend" # without https:// or http://
-   POSTFIX="-bsd"
+   POSTFIX_1="-bsd"
    DAEMON_1="bitsendd"
    DAEMON_2="Bitsendd"
    CONFIG="bitsend.conf"
@@ -126,7 +126,7 @@ if [[ $SELECT_COIN == "mex" ]] ; then
    COIN_NAME_3="megcoin"
    COIN="MEC"
    SOURCE="github.com/LIMXTEC/Megacoin" # without https:// or http://
-   POSTFIX="-mec"
+   POSTFIX_1="-mec"
    DAEMON_1="megacoind"
    DAEMON_2="Megacoind"
    CONFIG="megacoin.conf"
@@ -141,12 +141,11 @@ if [[ $SELECT_COIN == "mex" ]] ; then
    LOGO_NAME="mec-logo.png"
 fi
 
-
 # Reference project variables
 REF_COIN_NAME_1="ZelCash"
 REF_COIN_NAME_2="Zelcash"
 REF_COIN_NAME_3="zelcash"
-REF_COIN_1="ZEL"
+REF_COIN_1="BTX"
 REF_COIN_2="HUSH"
 REF_GIT="TheTrunk"
 REF_SOURCE="github.com/zelcash/zelcash" # without https:// or http://
@@ -158,7 +157,9 @@ REF_DAEMON_2="Zelcashd"
 REF_DAEMON_3="hushd"
 REF_CONFIG_1="zelcash.conf"
 REF_CONFIG_2="hush.conf"
-REF_CONFIG_ENTRY="zelcash" 
+REF_CONFIG_ENTRY_1="zelcash"
+REF_CONFIG_ENTRY_2="hush"
+REF_CONFIG_ENTRY_3="zen"
 REF_DIR_PART_1="\.zelcash" # escaping dot
 REF_DIR_PART_2="\.hush" # escaping dot
 REF_DEFAULT_PORT=""
@@ -168,24 +169,8 @@ REF_WEB="zel.cash" # without https:// or http://
 REF_TICKER="https://stocks.exchange/api2/ticker"
 REF_LOGO_NAME=""
 
-# Create Main Directory
-mkdir -p ${COIN_NAME_1}
-cd ${COIN_NAME_1}
-COINDIR=$(pwd)
-
-# bitcore-node
-if [[ $NODE -eq 1 ]] ; then
-   # Clone bitcore-node reference repo
-   cd ${COINDIR}
-   git clone https://github.com/TheTrunk/bitcore-node-zelcash.git
-   
-   # Copy repo
-   PWD=$(pwd)
-   DIR_NODE=${PWD}/bitcore-node${POSTFIX}
-   cp -r bitcore-node-zelcash ${DIR_NODE}   
-
+function replacement () {
    # Delete log files
-   cd ${DIR_NODE}
    rm npm-debug.log
 
    # Replace Coin Abbreviation
@@ -196,13 +181,13 @@ if [[ $NODE -eq 1 ]] ; then
    grep -rl "${REF_GIT}" ./ | grep -v '.git' | xargs sed -i "s/${REF_GIT}/${SELECT_GIT}/g"
 
    # Replace Homepage Link
-   grep -rl "${REF_WEB}" ./ | grep -v '.git' | xargs sed -i "s#${REF_WEB}#${WEB}#g"
+   grep -rl "${REF_WEB}" ./ | grep -v '.git' | xargs sed -i "s|${REF_WEB}|${WEB}|g"
 
    # Replace Price Ticker API Link
-   grep -rl "${REF_TICKER}" ./ | grep -v '.git' | xargs sed -i "s#${REF_TICKER}#${TICKER}#g"
+   grep -rl "${REF_TICKER}" ./ | grep -v '.git' | xargs sed -i "s|${REF_TICKER}|${TICKER}|g"
 
    # Replace Coin Source Link
-   grep -rl "${REF_SOURCE}" ./ | grep -v '.git' | xargs sed -i "s#${REF_SOURCE}#${SOURCE}#g"   
+   grep -rl "${REF_SOURCE}" ./ | grep -v '.git' | xargs sed -i "s|${REF_SOURCE}|${SOURCE}|g"
 
    # Replace Coin Daemon Name
    grep -rl "${REF_DAEMON_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_1}/${DAEMON_1}/g"
@@ -214,345 +199,131 @@ if [[ $NODE -eq 1 ]] ; then
    grep -rl "${REF_CONFIG_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_2}/${CONFIG}/g"
 
    # Replace GIT Postfix Name
-   grep -rl "${REF_POSTFIX_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_1}/${POSTFIX}/g"
-   grep -rl "${REF_POSTFIX_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_2}/${POSTFIX}/g"
-   grep -rl "${REF_POSTFIX_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_3}/${POSTFIX}/g"
+   grep -rl "${REF_POSTFIX_1}" ./ | grep -v '.git' | xargs sed -i "s|${REF_POSTFIX_1}|${POSTFIX_1}|g"
+   grep -rl "${REF_POSTFIX_2}" ./ | grep -v '.git' | xargs sed -i "s|${REF_POSTFIX_2}|${POSTFIX_1}|g"
+   grep -rl "${REF_POSTFIX_3}" ./ | grep -v '.git' | xargs sed -i "s|${REF_POSTFIX_3}|${POSTFIX_1}|g"
 
    # Replace Coin Config Entry
-   grep -rl "${REF_CONFIG_ENTRY}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY}/${CONFIG_ENTRY}/g"
+   grep -rl "${REF_CONFIG_ENTRY_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY_1}/${CONFIG_ENTRY}/g"
+   grep -rl "${REF_CONFIG_ENTRY_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY_2}/${CONFIG_ENTRY}/g"
+   grep -rl "${REF_CONFIG_ENTRY_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY_3}/${CONFIG_ENTRY}/g"
 
    # Replace part of Coin Path
    grep -rl "${REF_DIR_PART_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_1}/${DIR_PART}/g"
    grep -rl "${REF_DIR_PART_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_2}/${DIR_PART}/g"
 
-   # Replace RPC Port
-   sed -i "s/${REF_RPC_PORT}/${RPC_PORT}/g" "${DIR_NODE}/lib/services/bitcoind.js"
+   # Replace RPC Port (only bitcore-node)
+   if [[ $1 == "NODE" ]] ; then
+      sed -i "s/${REF_RPC_PORT}/${RPC_PORT}/g" "${NODE_DIR}/lib/services/bitcoind.js"
+   fi
 
    # Replace Coin Name
    grep -rl "${REF_COIN_NAME_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_1}/${COIN_NAME_1}/g"
    grep -rl "${REF_COIN_NAME_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_2}/${COIN_NAME_2}/g"
    grep -rl "${REF_COIN_NAME_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_3}/${COIN_NAME_3}/g"
 
-fi 
+   if [[ $1 == "UI" ]] ; then
+      # Download logo and add it to the repo
+      # mkdir -p ${UI_DIR}/TODO/img
+      # cd ${UI_DIR}/TODO/img
+       wget ${LOGO} .
+   fi
+}
 
+
+# Create Main Directory
+mkdir -p ${COIN_NAME_1}
+cd ${COIN_NAME_1}
+COIN_DIR=$(pwd)
+
+# bitcore-node
+if [[ $NODE -eq 1 ]] ; then
+   # Clone bitcore-node reference repo
+   cd ${COIN_DIR}
+   git clone https://github.com/${REF_GIT}/bitcore-node${REF_POSTFIX_1}.git
+   
+   # Copy repo
+   NODE_DIR=${COIN_DIR}/bitcore-node${POSTFIX_1}
+   cp -r bitcore-node${REF_POSTFIX_1} ${NODE_DIR}   
+   cd ${NODE_DIR}
+
+   # Use function replace
+   replace "NODE"
+fi
 
 # insight-api
 if [[ $API -eq 1 ]] ; then
    # Clone insight-api reference repo
-   cd ${COINDIR}
-   git clone https://github.com/TheTrunk/insight-api-zelcash.git
+   cd ${COIN_DIR}
+   git clone https://github.com/${REF_GIT}/insight-api${REF_POSTFIX_1}.git
 
    # Copy repo
-   PWD=$(pwd)
-   DIR_API=${PWD}/insight-api${POSTFIX}
-   cp -r insight-api-zelcash ${DIR_API}
+   API_DIR=${COIN_DIR}/insight-api${POSTFIX_1}
+   cp -r insight-api${REF_POSTFIX_1} ${API_DIR}
+   cd ${API_DIR}
 
-   # Delete log files
-   cd ${DIR_API}
-   rm npm-debug.log
-
-   # Replace Coin Abbreviation
-   grep -rl "${REF_COIN_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_1}/${COIN}/g"
-   grep -rl "${REF_COIN_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_2}/${COIN}/g"
-
-   # Replace Git Repository
-   grep -rl "${REF_GIT}" ./ | grep -v '.git' | xargs sed -i "s/${REF_GIT}/${SELECT_GIT}/g"
-
-   # Replace Homepage link
-   grep -rl "${REF_WEB}" ./ | grep -v '.git' | xargs sed -i "s#${REF_WEB}#${WEB}#g"
-
-   # Replace Price Ticker API Link
-   grep -rl "${REF_TICKER}" ./ | grep -v '.git' | xargs sed -i "s#${REF_TICKER}#${TICKER}#g"
-
-   # Replace Coin Source link
-   grep -rl "${REF_SOURCE}" ./ | grep -v '.git' | xargs sed -i "s#${REF_SOURCE}#${SOURCE}#g"
-
-   # Replace Coin Daemon name
-   grep -rl "${REF_DAEMON_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_1}/${DAEMON_1}/g"
-   grep -rl "${REF_DAEMON_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_2}/${DAEMON_2}/g"
-   grep -rl "${REF_DAEMON_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_3}/${DAEMON_1}/g"
-
-   # Replace Coin Config name
-   grep -rl "${REF_CONFIG_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_1}/${CONFIG}/g"
-   grep -rl "${REF_CONFIG_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_2}/${CONFIG}/g"
-
-   # Replace GIT Postfix Name
-   grep -rl "${REF_POSTFIX_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_1}/${POSTFIX}/g"
-   grep -rl "${REF_POSTFIX_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_2}/${POSTFIX}/g"
-   grep -rl "${REF_POSTFIX_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_3}/${POSTFIX}/g"
-
-   # Replace Coin Config Entry
-   grep -rl "${REF_CONFIG_ENTRY}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY}/${CONFIG_ENTRY}/g"
-
-   # Replace part of Coin Path
-   grep -rl "${REF_DIR_PART_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_1}/${DIR_PART}/g"
-   grep -rl "${REF_DIR_PART_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_2}/${DIR_PART}/g"
-
-   # Replace RPC port
-   sed -i "s/${REF_RPC_PORT}/${RPC_PORT}/g" "${DIR_NODE}/lib/services/bitcoind.js"
-
-   # Replace Coin Name
-   grep -rl "${REF_COIN_NAME_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_1}/${COIN_NAME_1}/g"
-   grep -rl "${REF_COIN_NAME_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_2}/${COIN_NAME_2}/g"
-   grep -rl "${REF_COIN_NAME_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_3}/${COIN_NAME_3}/g"
-   
+   # Use function replace
+   replacement "API"
 fi
-
 
 # insight-ui
 if [[ $UI -eq 1 ]] ; then
    # Clone insight-ui reference repo
-   cd ${COINDIR}
-   git clone https://github.com/TheTrunk/insight-ui-zelcash.git
-  
+   cd ${COIN_DIR}
+   git clone https://github.com/TheTrunk/insight-ui${REF_POSTFIX_1}.git
+
    # Copy repo
-   PWD=$(pwd)
-   DIR_UI=${PWD}/insight-ui${POSTFIX}
-   cp -r insight-ui-zelcash ${DIR_UI}
+   UI_DIR=${COIN_DIR}/insight-ui${POSTFIX_1}
+   cp -r insight-ui${REF_POSTFIX_1} ${UI_DIR}
+   cd ${UI_DIR}
 
-   # Delete log files
-   cd ${DIR_UI}
-   rm npm-debug.log
-
-   # Replace Coin Abbreviation
-   grep -rl "${REF_COIN_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_1}/${COIN}/g"
-   grep -rl "${REF_COIN_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_2}/${COIN}/g"
-
-   # Replace Git Repository
-   grep -rl "${REF_GIT}" ./ | grep -v '.git' | xargs sed -i "s/${REF_GIT}/${SELECT_GIT}/g"
-
-   # Replace GIT Postfix Name
-   grep -rl "${REF_POSTFIX_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_1}/${POSTFIX}/g"
-   grep -rl "${REF_POSTFIX_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_2}/${POSTFIX}/g"
-   grep -rl "${REF_POSTFIX_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_3}/${POSTFIX}/g"
-
-   # Replace Homepage link
-   grep -rl "${REF_WEB}" ./ | grep -v '.git' | xargs sed -i "s#${REF_WEB}#${WEB}#g"
-
-   # Replace Price Ticker API Link
-   grep -rl "${REF_TICKER}" ./ | grep -v '.git' | xargs sed -i "s#${REF_TICKER}#${TICKER}#g"
-
-   # Replace Coin Source link
-   grep -rl "${REF_SOURCE}" ./ | grep -v '.git' | xargs sed -i "s#${REF_SOURCE}#${SOURCE}#g"
-
-   # Replace Coin Daemon name
-   grep -rl "${REF_DAEMON_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_1}/${DAEMON_1}/g"
-   grep -rl "${REF_DAEMON_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_2}/${DAEMON_2}/g"
-   grep -rl "${REF_DAEMON_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_3}/${DAEMON_1}/g"
-
-   # Replace Coin Config name
-   grep -rl "${REF_CONFIG_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_1}/${CONFIG}/g"
-   grep -rl "${REF_CONFIG_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_2}/${CONFIG}/g"
-
-   # Replace Coin Config Entry
-   grep -rl "${REF_CONFIG_ENTRY}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY}/${CONFIG_ENTRY}/g"
-
-   # Replace part of Coin Path
-   grep -rl "${REF_DIR_PART_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_1}/${DIR_PART}/g"
-   grep -rl "${REF_DIR_PART_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_2}/${DIR_PART}/g"
-
-   # Replace RPC port
-   sed -i "s/${REF_RPC_PORT}/${RPC_PORT}/g" "${DIR_NODE}/lib/services/bitcoind.js"
-
-   # Replace Coin Name
-   grep -rl "${REF_COIN_NAME_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_1}/${COIN_NAME_1}/g"
-   grep -rl "${REF_COIN_NAME_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_2}/${COIN_NAME_2}/g"
-   grep -rl "${REF_COIN_NAME_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_3}/${COIN_NAME_3}/g"
-
-   # Download logo and add it to the repo
-   # mkdir -p ${DIR_UI}/TODO/img
-   # cd ${DIR_UI}/TODO/img
-   # wget ${LOGO} .
-
+   # Use function replace
+   replace "UI"
 fi
-
 
 # bitcore-lib
 if [[ $LIB -eq 1 ]] ; then
    # Clone bitcore-lib reference repo
-   cd ${COINDIR}
-   git clone https://github.com/TheTrunk/bitcore-lib-zelcash.git
+   cd ${COIN_DIR}
+   git clone https://github.com/TheTrunk/bitcore-lib${REF_POSTFIX_1}.git
 
    # Copy repo
-   PWD=$(pwd)
-   DIR_LIB=${PWD}/bitcore-lib${POSTFIX}
-   cp -r bitcore-lib-zelcash ${DIR_LIB}
+   LIB_DIR=${COIN_DIR}/bitcore-lib${POSTFIX_1}
+   cp -r bitcore-lib${REF_POSTFIX_1} ${LIB_DIR}
+   cd ${LIB_DIR}
 
-   # Delete log files
-   cd ${DIR_LIB}
-   rm npm-debug.log
-
-   # Replace Coin Abbreviation
-   grep -rl "${REF_COIN_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_1}/${COIN}/g"
-   grep -rl "${REF_COIN_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_2}/${COIN}/g"
-
-   # Replace Git Repository
-   grep -rl "${REF_GIT}" ./ | grep -v '.git' | xargs sed -i "s/${REF_GIT}/${SELECT_GIT}/g"
-
-   # Replace GIT Postfix Name
-   grep -rl "${REF_POSTFIX_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_1}/${POSTFIX}/g"
-   grep -rl "${REF_POSTFIX_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_2}/${POSTFIX}/g"
-   grep -rl "${REF_POSTFIX_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_3}/${POSTFIX}/g"
-
-   # Replace Homepage link
-   grep -rl "${REF_WEB}" ./ | grep -v '.git' | xargs sed -i "s#${REF_WEB}#${WEB}#g"
-
-   # Replace Price Ticker API Link
-   grep -rl "${REF_TICKER}" ./ | grep -v '.git' | xargs sed -i "s#${REF_TICKER}#${TICKER}#g"
-
-   # Replace Coin Source link
-   grep -rl "${REF_SOURCE}" ./ | grep -v '.git' | xargs sed -i "s#${REF_SOURCE}#${SOURCE}#g"
-
-   # Replace Coin Daemon name
-   grep -rl "${REF_DAEMON_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_1}/${DAEMON_1}/g"
-   grep -rl "${REF_DAEMON_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_2}/${DAEMON_2}/g"
-   grep -rl "${REF_DAEMON_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_3}/${DAEMON_1}/g"
-
-   # Replace Coin Config name
-   grep -rl "${REF_CONFIG_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_1}/${CONFIG}/g"
-   grep -rl "${REF_CONFIG_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_2}/${CONFIG}/g"
-
-   # Replace Coin Config Entry
-   grep -rl "${REF_CONFIG_ENTRY}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY}/${CONFIG_ENTRY}/g"
-
-   # Replace part of Coin Path
-   grep -rl "${REF_DIR_PART_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_1}/${DIR_PART}/g"
-   grep -rl "${REF_DIR_PART_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_2}/${DIR_PART}/g"
-
-   # Replace RPC port
-   sed -i "s/${REF_RPC_PORT}/${RPC_PORT}/g" "${DIR_NODE}/lib/services/bitcoind.js"
-
-   # Replace Coin Name
-   grep -rl "${REF_COIN_NAME_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_1}/${COIN_NAME_1}/g"
-   grep -rl "${REF_COIN_NAME_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_2}/${COIN_NAME_2}/g"
-   grep -rl "${REF_COIN_NAME_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_3}/${COIN_NAME_3}/g"
-
+   # Use function replace
+   replace "LIB"
 fi
-
 
 # bitcore-build
 if [[ $BUILD -eq 1 ]] ; then
    # Clone bitcore-build reference repo
-   cd ${COINDIR}
-   git clone https://github.com/TheTrunk/bitcore-build-zelcash.git
+   cd ${COIN_DIR}
+   git clone https://github.com/TheTrunk/bitcore-build${REF_POSTFIX_1}.git
 
    # Copy repo
-   PWD=$(pwd)
-   DIR_BUILD=${PWD}/bitcore-build${POSTFIX}
-   cp -r bitcore-build-zelcash ${DIR_BUILD}
+   BUILD_DIR=${COIN_DIR}/bitcore-build${POSTFIX_1}
+   cp -r bitcore-build${REF_POSTFIX_1} ${BUILD_DIR}
+   cd ${BUILD_DIR}
 
-   # Delete log files
-   cd ${DIR_BUILD}
-   rm npm-debug.log
-
-   # Replace Coin Abbreviation
-   grep -rl "${REF_COIN_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_1}/${COIN}/g"
-   grep -rl "${REF_COIN_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_2}/${COIN}/g"
-
-   # Replace Git Repository
-   grep -rl "${REF_GIT}" ./ | grep -v '.git' | xargs sed -i "s/${REF_GIT}/${SELECT_GIT}/g"
-
-   # Replace GIT Postfix Name
-   grep -rl "${REF_POSTFIX_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_1}/${POSTFIX}/g"
-   grep -rl "${REF_POSTFIX_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_2}/${POSTFIX}/g"
-   grep -rl "${REF_POSTFIX_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_3}/${POSTFIX}/g"
-
-   # Replace Homepage link
-   grep -rl "${REF_WEB}" ./ | grep -v '.git' | xargs sed -i "s#${REF_WEB}#${WEB}#g"
-
-   # Replace Price Ticker API Link
-   grep -rl "${REF_TICKER}" ./ | grep -v '.git' | xargs sed -i "s#${REF_TICKER}#${TICKER}#g"
-
-   # Replace Coin Source link
-   grep -rl "${REF_SOURCE}" ./ | grep -v '.git' | xargs sed -i "s#${REF_SOURCE}#${SOURCE}#g"
-
-   # Replace Coin Daemon name
-   grep -rl "${REF_DAEMON_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_1}/${DAEMON_1}/g"
-   grep -rl "${REF_DAEMON_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_2}/${DAEMON_2}/g"
-   grep -rl "${REF_DAEMON_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_3}/${DAEMON_1}/g"
-
-   # Replace Coin Config name
-   grep -rl "${REF_CONFIG_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_1}/${CONFIG}/g"
-   grep -rl "${REF_CONFIG_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_2}/${CONFIG}/g"
-
-   # Replace Coin Config Entry
-   grep -rl "${REF_CONFIG_ENTRY}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY}/${CONFIG_ENTRY}/g"
-
-   # Replace part of Coin Path
-   grep -rl "${REF_DIR_PART_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_1}/${DIR_PART}/g"
-   grep -rl "${REF_DIR_PART_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_2}/${DIR_PART}/g"
-
-   # Replace RPC port
-   sed -i "s/${REF_RPC_PORT}/${RPC_PORT}/g" "${DIR_NODE}/lib/services/bitcoind.js"
-
-   # Replace Coin Name
-   grep -rl "${REF_COIN_NAME_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_1}/${COIN_NAME_1}/g"
-   grep -rl "${REF_COIN_NAME_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_2}/${COIN_NAME_2}/g"
-   grep -rl "${REF_COIN_NAME_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_3}/${COIN_NAME_3}/g"
-
+   # Use function replace
+   replace "BUILD"
 fi
-
 
 # bitcore-message
 if [[ $MESSAGE -eq 1 ]] ; then
    # Clone bitcore-message reference repo
-   cd ${COINDIR}
-   git clone https://github.com/TheTrunk/bitcore-message-zelcash.git
+   cd ${COIN_DIR}
+   git clone https://github.com/TheTrunk/bitcore-message${REF_POSTFIX_1}.git
 
    # Copy repo
-   PWD=$(pwd)
-   DIR_MESSAGE=${PWD}/bitcore-message${POSTFIX}
-   cp -r bitcore-message-zelcash ${DIR_MESSAGE}
+   MESSAGE_DIR=${COIN_DIR}/bitcore-message${POSTFIX_1}
+   cp -r bitcore-message${REF_POSTFIX_1} ${MESSAGE_DIR}
+   cd ${MESSAGE_DIR}
 
-   # Delete log files
-   cd ${DIR_MESSAGE}
-   rm npm-debug.log
-
-   # Replace Coin Abbreviation
-   grep -rl "${REF_COIN_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_1}/${COIN}/g"
-   grep -rl "${REF_COIN_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_2}/${COIN}/g"
-
-   # Replace Git Repository
-   grep -rl "${REF_GIT}" ./ | grep -v '.git' | xargs sed -i "s/${REF_GIT}/${SELECT_GIT}/g"
-
-   # Replace GIT Postfix Name
-   grep -rl "${REF_POSTFIX_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_1}/${POSTFIX}/g"
-   grep -rl "${REF_POSTFIX_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_2}/${POSTFIX}/g"
-   grep -rl "${REF_POSTFIX_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_POSTFIX_3}/${POSTFIX}/g"
-
-   # Replace Homepage link
-   grep -rl "${REF_WEB}" ./ | grep -v '.git' | xargs sed -i "s#${REF_WEB}#${WEB}#g"
-
-   # Replace Price Ticker API Link
-   grep -rl "${REF_TICKER}" ./ | grep -v '.git' | xargs sed -i "s#${REF_TICKER}#${TICKER}#g"
-
-   # Replace Coin Source link
-   grep -rl "${REF_SOURCE}" ./ | grep -v '.git' | xargs sed -i "s#${REF_SOURCE}#${SOURCE}#g"
-
-   # Replace Coin Daemon name
-   grep -rl "${REF_DAEMON_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_1}/${DAEMON_1}/g"
-   grep -rl "${REF_DAEMON_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_2}/${DAEMON_2}/g"
-   grep -rl "${REF_DAEMON_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_3}/${DAEMON_1}/g"
-
-   # Replace Coin Config name
-   grep -rl "${REF_CONFIG_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_1}/${CONFIG}/g"
-   grep -rl "${REF_CONFIG_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_2}/${CONFIG}/g"
-
-   # Replace Coin Config Entry
-   grep -rl "${REF_CONFIG_ENTRY}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY}/${CONFIG_ENTRY}/g"
-
-   # Replace part of Coin Path
-   grep -rl "${REF_DIR_PART_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_1}/${DIR_PART}/g"
-   grep -rl "${REF_DIR_PART_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_2}/${DIR_PART}/g"
-
-   # Replace RPC port
-   sed -i "s/${REF_RPC_PORT}/${RPC_PORT}/g" "${DIR_NODE}/lib/services/bitcoind.js"
-
-   # Replace Coin Name
-   grep -rl "${REF_COIN_NAME_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_1}/${COIN_NAME_1}/g"
-   grep -rl "${REF_COIN_NAME_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_2}/${COIN_NAME_2}/g"
-   grep -rl "${REF_COIN_NAME_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_3}/${COIN_NAME_3}/g"
-
+   # Use function replace
+   replace "MESSAGE"
 fi
 
 
