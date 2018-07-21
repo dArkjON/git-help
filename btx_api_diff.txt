@@ -57,12 +57,3 @@ diff -r BitCore/insight-api-btx/lib/transactions.js BitCore/insight-api-btx-read
 <     n: index,
 <   };
 
-################################################
-
-diff -r BitCore/insight-api-btx/README.md BitCore/insight-api-btx-ready/README.md
-10,11c10,11
-< git clone https://github.com/LIMXTEC/bitcore-node-btx.git
-< cd bitcore-node-btx
----
-> git clone https://github.com/LIMXTEC/bitcore-node-btx.git
-> cd bitcore-node-btx

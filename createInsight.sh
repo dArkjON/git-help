@@ -1,4 +1,4 @@
-#/bin/bash
+#!/bin/bash
 #
 # LIMXTEC - dalijolijo (2018)
 #
@@ -24,7 +24,7 @@ MESSAGE="0"
 # TemplateCoin: joli   # 
 #                      #
 ########################
-SELECT_COIN="btx"
+SELECT_COIN="joli"
 SELECT_GIT="LIMXTEC"
 
 ####################
@@ -120,7 +120,7 @@ if [[ $SELECT_COIN == "bsd" ]] ; then
 fi
 
 # MegaCoin (MEC)
-if [[ $SELECT_COIN == "mex" ]] ; then
+if [[ $SELECT_COIN == "mec" ]] ; then
    COIN_NAME_1="MegCoin"
    COIN_NAME_2="Megcoin"
    COIN_NAME_3="megcoin"
@@ -248,7 +248,7 @@ if [[ $NODE -eq 1 ]] ; then
    cd ${NODE_DIR}
 
    # Use function replace
-   replace "NODE"
+   replacement "NODE"
 fi
 
 # insight-api
@@ -278,7 +278,7 @@ if [[ $UI -eq 1 ]] ; then
    cd ${UI_DIR}
 
    # Use function replace
-   replace "UI"
+   replacement "UI"
 fi
 
 # bitcore-lib
@@ -293,7 +293,7 @@ if [[ $LIB -eq 1 ]] ; then
    cd ${LIB_DIR}
 
    # Use function replace
-   replace "LIB"
+   replacement "LIB"
 fi
 
 # bitcore-build
@@ -308,7 +308,7 @@ if [[ $BUILD -eq 1 ]] ; then
    cd ${BUILD_DIR}
 
    # Use function replace
-   replace "BUILD"
+   replacement "BUILD"
 fi
 
 # bitcore-message
@@ -323,7 +323,7 @@ if [[ $MESSAGE -eq 1 ]] ; then
    cd ${MESSAGE_DIR}
 
    # Use function replace
-   replace "MESSAGE"
+   replacement "MESSAGE"
 fi
 
 
@@ -331,7 +331,11 @@ fi
 # curl -u dalijolijo https://api.github.com/user/repos -d '{ "name": "bitcore-node-joli" }'
 
 # Push codebase to new Git repository
-#git init
-#git add .
-#git commit --message=
+printf "Do you want to create a new remote GitHub repository?\n"
+printf "rm -rf .git\n"
+printf "git init\n"
+printf "git add .\n"
+printf 'git commit -m "inital commit"\n'
+printf "git remote add origin https://github.com/dalijolijo/bitcore-node-joli.git\n"
+printf "git push -u origin master\n"
 
