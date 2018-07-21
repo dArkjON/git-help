@@ -8,8 +8,8 @@ set -x
 # Set targets #
 ###############
 NODE="0"
-API="1"
-UI="0"
+API="0"
+UI="1"
 LIB="0"
 BUILD="0"
 MESSAGE="0"
@@ -25,7 +25,7 @@ MESSAGE="0"
 #                      #
 ########################
 SELECT_COIN="joli"
-SELECT_GIT="LIMXTEC"
+SELECT_GIT="dalijolijo"
 
 ####################
 # Coin Details     #
@@ -39,6 +39,12 @@ if [[ $SELECT_COIN == "joli" ]] ; then
    COIN="JOLI"
    SOURCE="github.com/dalijolijo/JoliCoin" # without https:// or http://
    POSTFIX="-joli"
+   REP_1="node-joli"
+   REP_2="api-joli"
+   REP_3="ui-joli"
+   REP_4="lib-joli"
+   REP_5="build-joli"
+   REP_6="message-joli"
    DAEMON_1="jolicoind"
    DAEMON_2="Jolicoind"
    CONFIG="jolicoin.conf"
@@ -61,6 +67,12 @@ if [[ $SELECT_COIN == "btx" ]] ; then
    COIN="BTX"
    SOURCE="github.com/LIMXTEC/BitCore" # without https:// or http://
    POSTFIX="-btx"
+   REP_1="node-btx"
+   REP_2="api-btx"
+   REP_3="ui-btx"
+   REP_4="lib-btx"
+   REP_5="build-btx"
+   REP_6="message-btx"
    DAEMON_1="bitcored"
    DAEMON_2="Bitcored"
    CONFIG="bitcore.conf"
@@ -83,6 +95,12 @@ if [[ $SELECT_COIN == "btdx" ]] ; then
    COIN="BTDX"
    SOURCE="github.com/LIMXTEC/Bitcloud" # without https:// or http://
    POSTFIX="-btdx"
+   REP_1="node-btdx"
+   REP_2="api-btdx"
+   REP_3="ui-btdx"
+   REP_4="lib-btdx"
+   REP_5="build-btdx"
+   REP_6="message-btdx"
    DAEMON_1="bitcloudd"
    DAEMON_2="Bitcloudd"
    CONFIG="bitcloud.conf"
@@ -105,6 +123,12 @@ if [[ $SELECT_COIN == "bsd" ]] ; then
    COIN="BSD"
    SOURCE="github.com/LIMXTEC/BitSend" # without https:// or http://
    POSTFIX="-bsd"
+   REP_1="node-bsd"
+   REP_2="api-bsd"
+   REP_3="ui-bsd"
+   REP_4="lib-bsd"
+   REP_5="build-bsd"
+   REP_6="message-bsd"
    DAEMON_1="bitsendd"
    DAEMON_2="Bitsendd"
    CONFIG="bitsend.conf"
@@ -127,6 +151,12 @@ if [[ $SELECT_COIN == "mec" ]] ; then
    COIN="MEC"
    SOURCE="github.com/LIMXTEC/Megacoin" # without https:// or http://
    POSTFIX="-mec"
+   REP_1="node-mec"
+   REP_2="api-mec"
+   REP_3="ui-mec"
+   REP_4="lib-mec"
+   REP_5="build-mec"
+   REP_6="message-mec"
    DAEMON_1="megacoind"
    DAEMON_2="Megacoind"
    CONFIG="megacoin.conf"
@@ -145,21 +175,38 @@ fi
 REF_COIN_NAME_1="ZelCash"
 REF_COIN_NAME_2="Zelcash"
 REF_COIN_NAME_3="zelcash"
+REF_COIN_NAME_4="Zcash"
 REF_COIN_1="BTX"
 REF_COIN_2="HUSH"
-REF_GIT="TheTrunk"
+REF_COIN_3="ZEL"
+REF_GIT_1="TheTrunk"
+REF_GIT_2="str4d"
 REF_SOURCE="github.com/zelcash/zelcash" # without https:// or http://
 REF_POSTFIX_1="-zelcash"
 REF_POSTFIX_2="-hush"
 REF_POSTFIX_3="-zen"
+REF_REP_1="node-zelcash"
+REF_REP_2="api-zelcash"
+REF_REP_3="ui-zelcash"
+REF_REP_4="lib-zelcash"
+REF_REP_5="build-zelcash"
+REF_REP_6="message-zelcash"
+REF_REP_7="node-zcash"
+REF_REP_8="api-zcash"
+REF_REP_9="ui-zcash"
+REF_REP_10="lib-zcash"
+REF_REP_11="build-zcash"
+REF_REP_12="message-zcash"
 REF_DAEMON_1="zelcashd"
 REF_DAEMON_2="Zelcashd"
 REF_DAEMON_3="hushd"
+REF_DAEMON_4="zcashd"
 REF_CONFIG_1="zelcash.conf"
 REF_CONFIG_2="hush.conf"
 REF_CONFIG_ENTRY_1="zelcash"
 REF_CONFIG_ENTRY_2="hush"
 REF_CONFIG_ENTRY_3="zen"
+REF_CONFIG_ENTRY_4="zcash"
 REF_DIR_PART_1="\.zelcash" # escaping dot
 REF_DIR_PART_2="\.hush" # escaping dot
 REF_DEFAULT_PORT=""
@@ -176,9 +223,11 @@ function replacement () {
    # Replace Coin Abbreviation
    grep -rl "${REF_COIN_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_1}/${COIN}/g"
    grep -rl "${REF_COIN_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_2}/${COIN}/g"
+   grep -rl "${REF_COIN_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_3}/${COIN}/g"
 
    # Replace Git Repository
-   grep -rl "${REF_GIT}" ./ | grep -v '.git' | xargs sed -i "s/${REF_GIT}/${SELECT_GIT}/g"
+   grep -rl "${REF_GIT_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_GIT_1}/${SELECT_GIT}/g"
+   grep -rl "${REF_GIT_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_GIT_2}/${SELECT_GIT}/g"
 
    # Replace Homepage Link
    grep -rl "${REF_WEB}" ./ | grep -v '.git' | xargs sed -i "s|${REF_WEB}|${WEB}|g"
@@ -193,6 +242,7 @@ function replacement () {
    grep -rl "${REF_DAEMON_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_1}/${DAEMON_1}/g"
    grep -rl "${REF_DAEMON_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_2}/${DAEMON_2}/g"
    grep -rl "${REF_DAEMON_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_3}/${DAEMON_1}/g"
+   grep -rl "${REF_DAEMON_4}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_4}/${DAEMON_1}/g"
 
    # Replace Coin Config name
    grep -rl "${REF_CONFIG_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_1}/${CONFIG}/g"
@@ -203,10 +253,24 @@ function replacement () {
    grep -rl "${REF_POSTFIX_2}" ./ | grep -v '.git' | xargs sed -i "s|${REF_POSTFIX_2}|${POSTFIX}|g"
    grep -rl "${REF_POSTFIX_3}" ./ | grep -v '.git' | xargs sed -i "s|${REF_POSTFIX_3}|${POSTFIX}|g"
 
+   # Replace Insight Repository Names
+   grep -rl "${REF_REP_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_REP_1}/${REP_1}/g"
+   grep -rl "${REF_REP_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_REP_2}/${REP_2}/g"
+   grep -rl "${REF_REP_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_REP_3}/${REP_3}/g"
+   grep -rl "${REF_REP_4}" ./ | grep -v '.git' | xargs sed -i "s/${REF_REP_4}/${REP_4}/g"
+   grep -rl "${REF_REP_5}" ./ | grep -v '.git' | xargs sed -i "s/${REF_REP_5}/${REP_5}/g"
+   grep -rl "${REF_REP_6}" ./ | grep -v '.git' | xargs sed -i "s/${REF_REP_6}/${REP_6}/g"
+   grep -rl "${REF_REP_7}" ./ | grep -v '.git' | xargs sed -i "s/${REF_REP_7}/${REP_1}/g"
+   grep -rl "${REF_REP_8}" ./ | grep -v '.git' | xargs sed -i "s/${REF_REP_8}/${REP_2}/g"
+   grep -rl "${REF_REP_9}" ./ | grep -v '.git' | xargs sed -i "s/${REF_REP_9}/${REP_3}/g"
+   grep -rl "${REF_REP_10}" ./ | grep -v '.git' | xargs sed -i "s/${REF_REP_10}/${REP_4}/g"
+   grep -rl "${REF_REP_11}" ./ | grep -v '.git' | xargs sed -i "s/${REF_REP_11}/${REP_5}/g"
+   grep -rl "${REF_REP_12}" ./ | grep -v '.git' | xargs sed -i "s/${REF_REP_12}/${REP_6}/g"
    # Replace Coin Config Entry
    grep -rl "${REF_CONFIG_ENTRY_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY_1}/${CONFIG_ENTRY}/g"
    grep -rl "${REF_CONFIG_ENTRY_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY_2}/${CONFIG_ENTRY}/g"
    grep -rl "${REF_CONFIG_ENTRY_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY_3}/${CONFIG_ENTRY}/g"
+   grep -rl "${REF_CONFIG_ENTRY_4}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY_4}/${CONFIG_ENTRY}/g"
 
    # Replace part of Coin Path
    grep -rl "${REF_DIR_PART_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART_1}/${DIR_PART}/g"
@@ -221,12 +285,11 @@ function replacement () {
    grep -rl "${REF_COIN_NAME_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_1}/${COIN_NAME_1}/g"
    grep -rl "${REF_COIN_NAME_2}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_2}/${COIN_NAME_2}/g"
    grep -rl "${REF_COIN_NAME_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_3}/${COIN_NAME_3}/g"
+   grep -rl "${REF_COIN_NAME_4}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_4}/${COIN_NAME_1}/g"
 
    if [[ $1 == "UI" ]] ; then
-      # Download logo and add it to the repo
-      # mkdir -p ${UI_DIR}/TODO/img
-      # cd ${UI_DIR}/TODO/img
-       wget ${LOGO} .
+      # Rename directory
+      mv ${UI_DIR}/bitcore-node${REF_POSTFIX_1} ${UI_DIR}/bitcore-node${POSTFIX}
    fi
 }
 
@@ -240,7 +303,7 @@ COIN_DIR=$(pwd)
 if [[ $NODE -eq 1 ]] ; then
    # Clone bitcore-node reference repo
    cd ${COIN_DIR}
-   git clone https://github.com/${REF_GIT}/bitcore-node${REF_POSTFIX_1}.git
+   git clone https://github.com/${REF_GIT_1}/bitcore-node${REF_POSTFIX_1}.git
    
    # Copy repo
    NODE_DIR=${COIN_DIR}/bitcore-node${POSTFIX}
@@ -255,7 +318,7 @@ fi
 if [[ $API -eq 1 ]] ; then
    # Clone insight-api reference repo
    cd ${COIN_DIR}
-   git clone https://github.com/${REF_GIT}/insight-api${REF_POSTFIX_1}.git
+   git clone https://github.com/${REF_GIT_1}/insight-api${REF_POSTFIX_1}.git
 
    # Copy repo
    API_DIR=${COIN_DIR}/insight-api${POSTFIX}
@@ -270,7 +333,7 @@ fi
 if [[ $UI -eq 1 ]] ; then
    # Clone insight-ui reference repo
    cd ${COIN_DIR}
-   git clone https://github.com/TheTrunk/insight-ui${REF_POSTFIX_1}.git
+   git clone https://github.com/${REF_GIT_1}/insight-ui${REF_POSTFIX_1}.git
 
    # Copy repo
    UI_DIR=${COIN_DIR}/insight-ui${POSTFIX}
@@ -285,7 +348,7 @@ fi
 if [[ $LIB -eq 1 ]] ; then
    # Clone bitcore-lib reference repo
    cd ${COIN_DIR}
-   git clone https://github.com/TheTrunk/bitcore-lib${REF_POSTFIX_1}.git
+   git clone https://github.com/${REF_GIT_1}/bitcore-lib${REF_POSTFIX_1}.git
 
    # Copy repo
    LIB_DIR=${COIN_DIR}/bitcore-lib${POSTFIX}
@@ -300,7 +363,7 @@ fi
 if [[ $BUILD -eq 1 ]] ; then
    # Clone bitcore-build reference repo
    cd ${COIN_DIR}
-   git clone https://github.com/TheTrunk/bitcore-build${REF_POSTFIX_1}.git
+   git clone https://github.com/${REF_GIT_1}/bitcore-build${REF_POSTFIX_1}.git
 
    # Copy repo
    BUILD_DIR=${COIN_DIR}/bitcore-build${POSTFIX}
@@ -315,7 +378,7 @@ fi
 if [[ $MESSAGE -eq 1 ]] ; then
    # Clone bitcore-message reference repo
    cd ${COIN_DIR}
-   git clone https://github.com/TheTrunk/bitcore-message${REF_POSTFIX_1}.git
+   git clone https://github.com/${REF_GIT_1}/bitcore-message${REF_POSTFIX_1}.git
 
    # Copy repo
    MESSAGE_DIR=${COIN_DIR}/bitcore-message${POSTFIX}
@@ -332,6 +395,7 @@ fi
 
 # Push codebase to new Git repository
 printf "Do you want to create a new remote GitHub repository?\n"
+printf "curl -u dalijolijo https://api.github.com/user/repos -d '{ \"name\": \"insight-api-joli\" }'\n"
 printf "rm -rf .git\n"
 printf "git init\n"
 printf "git add .\n"

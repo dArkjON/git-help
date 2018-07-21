@@ -8,8 +8,8 @@ set -x
 # Set targets #
 ###############
 NODE="0"
-API="1"
-UI="0"
+API="0"
+UI="1"
 LIB="0"
 BUILD="0"
 MESSAGE="0"
@@ -222,10 +222,8 @@ function replacement () {
    grep -rl "${REF_COIN_NAME_3}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_NAME_3}/${COIN_NAME_3}/g"
 
    if [[ $1 == "UI" ]] ; then
-      # Download logo and add it to the repo
-      # mkdir -p ${UI_DIR}/TODO/img
-      # cd ${UI_DIR}/TODO/img
-       wget ${LOGO} .
+      # Rename directory
+      mv ${UI_DIR}/bitcore-node${REF_POSTFIX_1} ${UI_DIR}/bitcore-node${POSTFIX}
    fi
 }
 
@@ -269,7 +267,7 @@ fi
 if [[ $UI -eq 1 ]] ; then
    # Clone insight-ui reference repo
    cd ${COIN_DIR}
-   git clone https://github.com/TheTrunk/insight-ui${REF_POSTFIX}.git
+   git clone https://github.com/${REF_GIT}/insight-ui${REF_POSTFIX}.git
 
    # Copy repo
    UI_DIR=${COIN_DIR}/insight-ui${POSTFIX}
@@ -284,7 +282,7 @@ fi
 if [[ $LIB -eq 1 ]] ; then
    # Clone bitcore-lib reference repo
    cd ${COIN_DIR}
-   git clone https://github.com/TheTrunk/bitcore-lib${REF_POSTFIX}.git
+   git clone https://github.com/${REF_GIT}/bitcore-lib${REF_POSTFIX}.git
 
    # Copy repo
    LIB_DIR=${COIN_DIR}/bitcore-lib${POSTFIX}
@@ -299,7 +297,7 @@ fi
 if [[ $BUILD -eq 1 ]] ; then
    # Clone bitcore-build reference repo
    cd ${COIN_DIR}
-   git clone https://github.com/TheTrunk/bitcore-build${REF_POSTFIX}.git
+   git clone https://github.com/${REF_GIT}/bitcore-build${REF_POSTFIX}.git
 
    # Copy repo
    BUILD_DIR=${COIN_DIR}/bitcore-build${POSTFIX}
@@ -314,7 +312,7 @@ fi
 if [[ $MESSAGE -eq 1 ]] ; then
    # Clone bitcore-message reference repo
    cd ${COIN_DIR}
-   git clone https://github.com/TheTrunk/bitcore-message${REF_POSTFIX}.git
+   git clone https://github.com/${REF_GIT}/bitcore-message${REF_POSTFIX}.git
 
    # Copy repo
    MESSAGE_DIR=${COIN_DIR}/bitcore-message${POSTFIX}
@@ -331,6 +329,7 @@ fi
 
 # Push codebase to new Git repository
 printf "Do you want to create a new remote GitHub repository?\n"
+printf "curl -u dalijolijo https://api.github.com/user/repos -d '{ \"name\": \"insight-api-joli\" }'\n"
 printf "rm -rf .git\n"
 printf "git init\n"
 printf "git add .\n"
