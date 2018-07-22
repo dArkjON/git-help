@@ -63,16 +63,6 @@ diff -r insight-ui-btx/public/views/index.html insight-ui-btx-ready/public/views
 >         <p translate><strong>insight</strong> is still in development, so be sure to report any bugs and provide feedback for improvement at our <a href="https://github.com/str4d/insight-ui-zcash/issues" target="_blank">github issue tracker</a>.</p>
 >         <p data-ng-if='currency.testnet'><strong>This explorer is currently showing testnet BTX!</strong></p>
 >         <div id="powered" class="row">
-76,79c79,82
-<         </div>
-<       </div> <!-- END OF COL-3 -->
-<     </div>
-<   </div>
----
->         </div> <!-- END OF powered row -->
->       </div> <!-- END OF col-gray -->
->     </div> <!-- END OF home -->
->   </div> <!-- END OF container -->
 
 ######################################
 
@@ -239,13 +229,3 @@ diff -r insight-ui-btx/public/views/transaction/tx.html insight-ui-btx-ready/pub
 <     <div class="row" data-ng-if="tx.vout.length != 0">
 ---
 >     <div class="row">
-
-#############################################
-
-diff -r insight-ui-btx/README.md insight-ui-btx-ready/README.md
-14,15c14,15
-< git clone https://github.com/LIMXTEC/bitcore-node-btx.git
-< cd bitcore-node-btx
----
-> git clone https://github.com/LIMXTEC/bitcore-node-btx.git
-> cd bitcore-node-btx

@@ -56,6 +56,7 @@ if [[ $SELECT_COIN == "btx" ]] ; then
    TICKER="https://api.coinmarketcap.com/v1/ticker/bitcore/"
    LOGO_LINK="https://insight.bitcore.cc/img/Bitcore-logo-135x135.png"
    LOGO_NAME="btx-logo.png"
+   COIN_TEXT="" # HTML: Bitcore BTX is an <ahref="https://github.com/LIMXTEC/BitCore.git" target="_blank">open-source</a> payment coin.
 fi
 
 # BitCloud (BTDX)
@@ -84,6 +85,7 @@ if [[ $SELECT_COIN == "btdx" ]] ; then
    TICKER="https://api.coinmarketcap.com/v1/ticker/bitcloud/"
    LOGO_LINK="https://chainz.cryptoid.info/logo/btdx.png"
    LOGO_NAME="btdx-logo.png"
+   COIN_TEXT="" # HTML: Bitcore BTX is an <ahref="https://github.com/LIMXTEC/BitCore.git" target="_blank">open-source</a> payment coin.
 fi
 
 # BitSend (BSD)
@@ -112,6 +114,7 @@ if [[ $SELECT_COIN == "bsd" ]] ; then
    TICKER="https://api.coinmarketcap.com/v1/ticker/bitsend/"
    LOGO_LINK="https://chainz.cryptoid.info/logo/bsd.png"
    LOGO_NAME="bsd-logo.png"
+   COIN_TEXT="" # HTML: Bitcore BTX is an <ahref="https://github.com/LIMXTEC/BitCore.git" target="_blank">open-source</a> payment coin.
 fi
 
 # MegaCoin (MEC)
@@ -140,6 +143,7 @@ if [[ $SELECT_COIN == "mec" ]] ; then
    TICKER="https://api.coinmarketcap.com/v1/ticker/megacoin/"
    LOGO_LINK="https://chainz.cryptoid.info/logo/mec.png"
    LOGO_NAME="mec-logo.png"
+   COIN_TEXT="" # HTML: Bitcore BTX is an <ahref="https://github.com/LIMXTEC/BitCore.git" target="_blank">open-source</a> payment coin.
 fi
 
 # Reference project variables
@@ -167,6 +171,7 @@ REF_TOR_PORT="9051"
 REF_WEB="jolicoin.cc" # without https:// or http://
 REF_TICKER="https://api.coinmarketcap.com/v1/ticker/jolicoin/"
 REF_LOGO_NAME="joli-logo.png"
+JOLICOIN_TEXT="JOLICOIN_TEXT"
 
 function replacement () {
    # Delete log files
@@ -224,6 +229,9 @@ function replacement () {
    if [[ $1 == "UI" ]] ; then
       # Rename directory
       mv ${UI_DIR}/bitcore-node${REF_POSTFIX_1} ${UI_DIR}/bitcore-node${POSTFIX}
+
+      # Replace Coin Description
+      sed "s|${JOLICOIN_TEXT}|${COIN_TEXT}|g" "${UI_DIR}/public/views/index.html"
    fi
 }
 
