@@ -12,7 +12,8 @@ API="0"
 UI="0"
 LIB="0"
 BUILD="0"
-MESSAGE="1"
+MESSAGE="0"
+WALLET_SERVICE="1"
 
 ########################
 # Select Coin          #
@@ -387,6 +388,22 @@ if [[ $MESSAGE -eq 1 ]] ; then
 
    # Use function replace
    replacement "MESSAGE"
+fi
+
+# https://github.com/TheTrunk/bitcore-wallet-service-zelcash.git
+# bitcore-wallet-service
+if [[ $WALLET_SERVICE -eq 1 ]] ; then
+   # Clone bitcore-wallet-service reference repo
+   cd ${COIN_DIR}
+   git clone https://github.com/${REF_GIT_1}/bitcore-wallet-service${REF_POSTFIX_1}.git
+
+   # Copy repo
+   WALLET_SERVICE_DIR=${COIN_DIR}/bitcore-wallet-service${POSTFIX}
+   cp -r bitcore-wallet-service${REF_POSTFIX_1} ${WALLET_SERVICE_DIR}
+   cd ${WALLET_SERVICE_DIR}
+
+   # Use function replace
+   replacement "WALLET_SERVICE"
 fi
 
 

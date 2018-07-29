@@ -13,6 +13,7 @@ UI="0"
 LIB="0"
 BUILD="0"
 MESSAGE="0"
+WALLET_SERVICE="0"
 DOCKER_BUILD="1"
 
 
@@ -87,6 +88,7 @@ if [[ $SELECT_COIN == "btx" ]] ; then
    MAIN_DEFAULT_PORT="8555"
    MAIN_RPC_PORT="8556"
    MAIN_TOR_PORT="9051"
+   MAIN_INSIGHT=""
    TEST_PUBKEYHASH="0x6f"
    TEST_PRIVKEY="0xef"
    TEST_SCRIPTHASH="0xc4"
@@ -99,6 +101,7 @@ if [[ $SELECT_COIN == "btx" ]] ; then
    TEST_DEFAULT_PORT="8666"
    TEST_RPC_PORT="50332"
    TEST_TOR_PORT="9051"
+   TEST_INSIGHT=""
    WEB="https://bitcore.cc"
    TICKER="https://api.coinmarketcap.com/v1/ticker/bitcore/"
    LOGO_LINK="https://insight.bitcore.cc/img/Bitcore-logo-135x135.png"
@@ -198,6 +201,7 @@ if [[ $SELECT_COIN == "bsd" ]] ; then
    MAIN_DEFAULT_PORT="8886"
    MAIN_RPC_PORT="8800"
    MAIN_TOR_PORT="9051"
+   MAIN_INSIGHT=""
    TEST_PUBKEYHASH="0x6f"
    TEST_PRIVKEY="0xef"
    TEST_SCRIPTHASH="0xc4"
@@ -210,6 +214,7 @@ if [[ $SELECT_COIN == "bsd" ]] ; then
    TEST_DEFAULT_PORT="18333"
    TEST_RPC_PORT="18800"
    TEST_TOR_PORT="9051"
+   TEST_INSIGHT=""
    WEB="https://bitsend.info"
    TICKER="https://api.coinmarketcap.com/v1/ticker/bitsend/"
    LOGO_LINK="https://chainz.cryptoid.info/logo/bsd.png"
@@ -253,6 +258,7 @@ if [[ $SELECT_COIN == "mec" ]] ; then
    MAIN_DEFAULT_PORT="7951"
    MAIN_RPC_PORT="7952"
    MAIN_TOR_PORT="9051"
+   MAIN_INSIGHT=""
    TEST_PUBKEYHASH="0x6f"
    TEST_PRIVKEY="0xef"
    TEST_SCRIPTHASH="0xc4"
@@ -265,6 +271,7 @@ if [[ $SELECT_COIN == "mec" ]] ; then
    TEST_DEFAULT_PORT="19444"
    TEST_RPC_PORT="50732"
    TEST_TOR_PORT="9051"
+   TEST_INSIGHT=""
    WEB="https://www.megacoin.eu" 
    TICKER="https://api.coinmarketcap.com/v1/ticker/megacoin/"
    LOGO_LINK="https://chainz.cryptoid.info/logo/mec.png"
@@ -309,6 +316,7 @@ REF_MAIN_DNSSEED="J_O_L_I_DNSSEED"
 REF_MAIN_DEFAULT_PORT="J_O_L_I_DEFAULTPORT"
 REF_MAIN_RPC_PORT="J_O_L_I_RPCPORT"
 REF_MAIN_TOR_PORT="J_O_L_I_TORPORT"
+REF_MAIN_INSIGHT="J_O_L_I_MAIN_INSIGHT"
 REF_TEST_PUBKEYHASH="J_O_L_I_TEST_PUBKEYHASH"
 REF_TEST_PRIVKEY="J_O_L_I_TEST_PRIVKEY"
 REF_TEST_SCRIPTHASH="J_O_L_I_TEST_SCRIPTHASH"
@@ -321,6 +329,7 @@ REF_TEST_DNSSEED="J_O_L_I_TEST_DNSSEED"
 REF_TEST_DEFAULT_PORT="J_O_L_I_TEST_DEFAULTPORT"
 REF_TEST_RPC_PORT="J_O_L_I_TEST_RPCPORT"
 REF_TEST_TOR_PORT="J_O_L_I_TEST_TORPORT"
+REF_TEST_INSIGHT="J_O_L_I_TEST_INSIGHT"
 REF_WEB="https://jolicoin.cc"
 REF_TICKER="https://api.coinmarketcap.com/v1/ticker/jolicoin/"
 REF_LOGO_NAME="joli-logo.png"
@@ -654,6 +663,36 @@ if [[ $MESSAGE -eq 1 ]] ; then
    fi
 fi
 
+# bitcore-wallet-service
+if [[ $WALLET_SERVICE -eq 1 ]] ; then
+   # Clone bitcore-wallet-service reference repo
+   cd ${COIN_DIR}
+   git clone https://github.com/${REF_GIT}/bitcore-wallet-service${REF_POSTFIX}.git
+
+   # Copy repo
+   WALLET_SERVICE_DIR=${COIN_DIR}/bitcore-wallet-service${POSTFIX}
+   cp -r bitcore-wallet-service${REF_POSTFIX} ${WALLET_SERVICE_DIR}
+   cd ${WALLET_SERVICE_DIR}
+
+   # Use function replace
+   replacement "WALLET_SERVICE"
+
+   # Create remote GitHub Repository
+   printf "Do you want to create a new remote GitHub repository bitcore-wallet-service${POSTFIX}?\n"
+   printf "Enter [Y]es or [N]o and Hit [ENTER]: "
+   read WALLET_SERVICE_NEW_GIT
+   if [[ $WALLET_SERVICE_NEW_GIT =~ "Y" ]] || [[ $WALLET_SERVICE_NEW_GIT =~ "y" ]]; then
+      # Create new remote Git repository and push code
+      curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-wallet-service${POSTFIX}\" }"
+      cd ${WALLET_SERVICE_DIR}
+      rm -rf .git
+      git init
+      git add .
+      git commit -m "inital commit"
+      git remote add origin https://github.com/${REF_GIT}/bitcore-wallet-service${POSTFIX}.git
+      git push -u origin master
+   fi
+fi
 
 # Build Docker Git Repository
 if [[ $DOCKER_BUILD -eq 1 ]] ; then
