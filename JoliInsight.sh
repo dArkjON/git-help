@@ -26,13 +26,13 @@ DOCKER_BUILD="1"
 # MegaCoin: mec        #
 #                      #
 ########################
-SELECT_COIN="btx"
+SELECT_COIN="mec"
 SELECT_GIT="dalijolijo"
 
 #########################
 # Team / Author Details # 
 ########################
-TEAM_NAME="The BitCore BTX Core Developers"
+TEAM_NAME="The MegaCoin MEC Core Developers"
 AUTHOR_NAME="dalijolijo"
 AUTHOR_EMAIL="david.bergen@gmx.net"
 CREATE_YEAR="2018"
@@ -106,11 +106,10 @@ if [[ $SELECT_COIN == "btx" ]] ; then
    TICKER="https://api.coinmarketcap.com/v1/ticker/bitcore/"
    LOGO_LINK="https://insight.bitcore.cc/img/Bitcore-logo-135x135.png"
    LOGO_NAME="btx-logo.png"
-   COIN_TEXT='BitCore is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. BitCore is an <ahref="https://github.com/LIMXTEC/BitCore.git" target="_blank">open-source</a>, global payment network that is fully decentralized. Mathematics secures the network and empowers individuals to control their own finances.' # HTML Text inside <p> ... </p>
+   COIN_TEXT='BitCore is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. BitCore is an <a href="https://github.com/LIMXTEC/BitCore.git" target="_blank">open-source</a>, global payment network that is fully decentralized. Mathematics secures the network and empowers individuals to control their own finances.' # HTML Text inside <p> ... </p>
    COIN_COLOR='\033[1;35m' # escaping symbol '\\'
    COIN_COMPILE="./autogen.sh \&\& ./configure --disable-dependency-tracking --enable-tests=no --without-gui --disable-hardening \&\& make" # escping symbol '/&'
 fi
-
 
 # BitCloud (BTDX)
 if [[ $SELECT_COIN == "btdx" ]] ; then
@@ -162,7 +161,7 @@ if [[ $SELECT_COIN == "btdx" ]] ; then
    TICKER="https://api.coinmarketcap.com/v1/ticker/bitcloud/"
    LOGO_LINK="https://chainz.cryptoid.info/logo/btdx.png"
    LOGO_NAME="btdx-logo.png"
-   COIN_TEXT='BitCloud is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. BitCloud is an <ahref="https://github.com/LIMXTEC/Bitcloud.git" target="_blank">open-source</a>, global payment network that is fully decentralized. Mathematics secures the network and empowers individuals to control their own finances.' # HTML Text inside <p> ... </p>
+   COIN_TEXT='BitCloud is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. BitCloud is an <a href="https://github.com/LIMXTEC/Bitcloud.git" target="_blank">open-source</a>, global payment network that is fully decentralized. Mathematics secures the network and empowers individuals to control their own finances.' # HTML Text inside <p> ... </p>
    COIN_COLOR='"\\033[0;36m' # escaping symbol '\\'
    COIN_COMPILE="./autogen.sh \&\& ./configure --disable-dependency-tracking --enable-tests=no --without-gui \&\& make"  # escping symbol '/&'
 fi
@@ -219,7 +218,7 @@ if [[ $SELECT_COIN == "bsd" ]] ; then
    TICKER="https://api.coinmarketcap.com/v1/ticker/bitsend/"
    LOGO_LINK="https://chainz.cryptoid.info/logo/bsd.png"
    LOGO_NAME="bsd-logo.png"
-   COIN_TEXT='BitSend is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. BitSend is an <ahref="https://github.com/LIMXTEC/BitSend.git" target="_blank">open-source</a>, global payment network that is fully decentralized. Mathematics secures the network and empowers individuals to control their own finances.' # HTML Text inside <p> ... </p>
+   COIN_TEXT='BitSend is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. BitSend is an <a href="https://github.com/LIMXTEC/BitSend.git" target="_blank">open-source</a>, global payment network that is fully decentralized. Mathematics secures the network and empowers individuals to control their own finances.' # HTML Text inside <p> ... </p>
    COIN_COLOR='\\033[0;34m' # escaping symbol '\\'
    COIN_COMPILE="./autogen.sh \&\& ./configure --disable-dependency-tracking --enable-tests=no --without-gui \&\& make" # escping symbol '/&'
 fi
@@ -276,7 +275,7 @@ if [[ $SELECT_COIN == "mec" ]] ; then
    TICKER="https://api.coinmarketcap.com/v1/ticker/megacoin/"
    LOGO_LINK="https://chainz.cryptoid.info/logo/mec.png"
    LOGO_NAME="mec-logo.png"
-   COIN_TEXT='MegaCoin is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. MegaCoin is an <ahref="https://github.com/LIMXTEC/Megacoin.git" target="_blank">open-source</a>, global payment network that is fully decentralized. Mathematics secures the network and empowers individuals to control their own finances.' # HTML Text inside <p> ... </p>
+   COIN_TEXT='MegaCoin is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. MegaCoin is an <a href="https://github.com/LIMXTEC/Megacoin.git" target="_blank">open-source</a>, global payment network that is fully decentralized. Mathematics secures the network and empowers individuals to control their own finances.' # HTML Text inside <p> ... </p>
    COIN_COLOR='\\033[1;31m'# escaping symbol '\\'
    COIN_COMPILE="./autogen.sh \&\& ./configure --disable-dependency-tracking --enable-tests=no --without-gui --disable-hardening \&\& make" # escping symbol '/&'
 fi
