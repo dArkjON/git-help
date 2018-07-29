@@ -9,11 +9,11 @@ set -x
 ###############
 NODE="0"
 API="0"
-UI="1"
+UI="0"
 LIB="0"
 BUILD="0"
 MESSAGE="0"
-DOCKER_BUILD="0"
+DOCKER_BUILD="1"
 
 
 ########################
@@ -25,13 +25,13 @@ DOCKER_BUILD="0"
 # MegaCoin: mec        #
 #                      #
 ########################
-SELECT_COIN="mec"
+SELECT_COIN="btx"
 SELECT_GIT="dalijolijo"
 
 #########################
 # Team / Author Details # 
 ########################
-TEAM_NAME="The MegaCoin MEC Core Developers"
+TEAM_NAME="The BitCore BTX Core Developers"
 AUTHOR_NAME="dalijolijo"
 AUTHOR_EMAIL="david.bergen@gmx.net"
 CREATE_YEAR="2018"
@@ -62,6 +62,7 @@ if [[ $SELECT_COIN == "btx" ]] ; then
    COIN_1="BTX"
    COIN_2="btx"
    COIN_SOURCE="github.com/LIMXTEC/BitCore.git" # without https:// or http:// and with .git
+   COIN_SOURCE_BRANCH="0.15"
    POSTFIX="-btx"
    REP_1="node-btx"
    REP_2="api-btx"
@@ -98,13 +99,13 @@ if [[ $SELECT_COIN == "btx" ]] ; then
    TEST_DEFAULT_PORT="8666"
    TEST_RPC_PORT="50332"
    TEST_TOR_PORT="9051"
-   WEB="bitcore.cc" # without https:// or http://
+   WEB="https://bitcore.cc"
    TICKER="https://api.coinmarketcap.com/v1/ticker/bitcore/"
    LOGO_LINK="https://insight.bitcore.cc/img/Bitcore-logo-135x135.png"
    LOGO_NAME="btx-logo.png"
    COIN_TEXT='BitCore is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. BitCore is an <ahref="https://github.com/LIMXTEC/BitCore.git" target="_blank">open-source</a>, global payment network that is fully decentralized. Mathematics secures the network and empowers individuals to control their own finances.' # HTML Text inside <p> ... </p>
-   COIN_COLOR='\033[1;35m'
-   COIN_COMPILE="./autogen.sh && ./configure --disable-dependency-tracking --enable-tests=no --without-gui --disable-hardening && make"
+   COIN_COLOR='\033[1;35m' # escaping symbol '\\'
+   COIN_COMPILE="./autogen.sh \&\& ./configure --disable-dependency-tracking --enable-tests=no --without-gui --disable-hardening \&\& make" # escping symbol '/&'
 fi
 
 
@@ -117,6 +118,7 @@ if [[ $SELECT_COIN == "btdx" ]] ; then
    COIN_1="BTDX"
    COIN_2="btdx"
    COIN_SOURCE="github.com/LIMXTEC/Bitcloud.git" # without https:// or http:// and with .git
+   COIN_SOURCE_BRANCH="master"
    POSTFIX="-btdx"
    REP_1="node-btdx"
    REP_2="api-btdx"
@@ -153,13 +155,13 @@ if [[ $SELECT_COIN == "btdx" ]] ; then
    TEST_DEFAULT_PORT="51474"
    TEST_RPC_PORT="8329"
    TEST_TOR_PORT="9050"
-   WEB="bit-cloud.info" # without https:// or http://
+   WEB="https://bit-cloud.info"
    TICKER="https://api.coinmarketcap.com/v1/ticker/bitcloud/"
    LOGO_LINK="https://chainz.cryptoid.info/logo/btdx.png"
    LOGO_NAME="btdx-logo.png"
    COIN_TEXT='BitCloud is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. BitCloud is an <ahref="https://github.com/LIMXTEC/Bitcloud.git" target="_blank">open-source</a>, global payment network that is fully decentralized. Mathematics secures the network and empowers individuals to control their own finances.' # HTML Text inside <p> ... </p>
-   COIN_COLOR='"\033[0;36m'
-   COIN_COMPILE="./autogen.sh && ./configure --disable-dependency-tracking --enable-tests=no --without-gui && make &&"
+   COIN_COLOR='"\\033[0;36m' # escaping symbol '\\'
+   COIN_COMPILE="./autogen.sh \&\& ./configure --disable-dependency-tracking --enable-tests=no --without-gui \&\& make"  # escping symbol '/&'
 fi
 
 # BitSend (BSD)
@@ -171,6 +173,7 @@ if [[ $SELECT_COIN == "bsd" ]] ; then
    COIN_1="BSD"
    COIN_2="bsd"
    COIN_SOURCE="github.com/LIMXTEC/BitSend.git" # without https:// or http:// and with .git
+   COIN_SOURCE_BRANCH="Insight-Patch-0_14"
    POSTFIX="-bsd"
    REP_1="node-bsd"
    REP_2="api-bsd"
@@ -207,13 +210,13 @@ if [[ $SELECT_COIN == "bsd" ]] ; then
    TEST_DEFAULT_PORT="18333"
    TEST_RPC_PORT="18800"
    TEST_TOR_PORT="9051"
-   WEB="bitsend.info" # without https:// or http://
+   WEB="https://bitsend.info"
    TICKER="https://api.coinmarketcap.com/v1/ticker/bitsend/"
    LOGO_LINK="https://chainz.cryptoid.info/logo/bsd.png"
    LOGO_NAME="bsd-logo.png"
    COIN_TEXT='BitSend is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. BitSend is an <ahref="https://github.com/LIMXTEC/BitSend.git" target="_blank">open-source</a>, global payment network that is fully decentralized. Mathematics secures the network and empowers individuals to control their own finances.' # HTML Text inside <p> ... </p>
-   COIN_COLOR='\033[0;34m'
-   COIN_COMPILE="./autogen.sh && ./configure --disable-dependency-tracking --enable-tests=no --without-gui && make" 
+   COIN_COLOR='\\033[0;34m' # escaping symbol '\\'
+   COIN_COMPILE="./autogen.sh \&\& ./configure --disable-dependency-tracking --enable-tests=no --without-gui \&\& make" # escping symbol '/&'
 fi
 
 # MegaCoin (MEC)
@@ -225,6 +228,7 @@ if [[ $SELECT_COIN == "mec" ]] ; then
    COIN_1="MEC"
    COIN_2="mec"
    COIN_SOURCE="github.com/LIMXTEC/Megacoin.git" # without https:// or http:// and with .git
+   COIN_SOURCE_BRANCH="addindex"
    POSTFIX="-mec"
    REP_1="node-mec"
    REP_2="api-mec"
@@ -261,13 +265,13 @@ if [[ $SELECT_COIN == "mec" ]] ; then
    TEST_DEFAULT_PORT="19444"
    TEST_RPC_PORT="50732"
    TEST_TOR_PORT="9051"
-   WEB="www.megacoin.eu" # without https:// or http://
+   WEB="https://www.megacoin.eu" 
    TICKER="https://api.coinmarketcap.com/v1/ticker/megacoin/"
    LOGO_LINK="https://chainz.cryptoid.info/logo/mec.png"
    LOGO_NAME="mec-logo.png"
    COIN_TEXT='MegaCoin is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. MegaCoin is an <ahref="https://github.com/LIMXTEC/Megacoin.git" target="_blank">open-source</a>, global payment network that is fully decentralized. Mathematics secures the network and empowers individuals to control their own finances.' # HTML Text inside <p> ... </p>
-   COIN_COLOR='\\033[1;31m'
-   COIN_COMPILE="./autogen.sh \&\& ./configure --disable-dependency-tracking --enable-tests=no --without-gui --disable-hardening \&\& make"
+   COIN_COLOR='\\033[1;31m'# escaping symbol '\\'
+   COIN_COMPILE="./autogen.sh \&\& ./configure --disable-dependency-tracking --enable-tests=no --without-gui --disable-hardening \&\& make" # escping symbol '/&'
 fi
 
 # Reference project variables
@@ -280,6 +284,7 @@ REF_COIN_2="j_o_l_i"
 REF_GIT="dalijolijo"
 REF_COIN_SOURCE="J_O_L_I_SOURCE"
 REF_COIN_SRC_DIR="J_O_L_I_SRC_DIR"
+REF_COIN_SOURCE_BRANCH="J_O_L_I_SRC_BRANCH"
 REF_POSTFIX="-joli"
 REF_REP_1="node-joli"
 REF_REP_2="api-joli"
@@ -316,7 +321,7 @@ REF_TEST_DNSSEED="J_O_L_I_TEST_DNSSEED"
 REF_TEST_DEFAULT_PORT="J_O_L_I_TEST_DEFAULTPORT"
 REF_TEST_RPC_PORT="J_O_L_I_TEST_RPCPORT"
 REF_TEST_TOR_PORT="J_O_L_I_TEST_TORPORT"
-REF_WEB="jolicoin.cc" # without https:// or http://
+REF_WEB="https://jolicoin.cc"
 REF_TICKER="https://api.coinmarketcap.com/v1/ticker/jolicoin/"
 REF_LOGO_NAME="joli-logo.png"
 REF_COIN_TEXT="J_O_L_I_TEXT"
@@ -435,14 +440,12 @@ function replacement () {
       
       # Replace compilation process
       COIN_SRC_DIR=$(echo ${COIN_SOURCE} | grep -oE "[^/]+$" | cut -d. -f1)
+      REF_COIN_SOURCE_BRANCH
+      grep -rl "${REF_COIN_SOURCE_BRANCH}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_SOURCE_BRANCH}/${COIN_SOURCE_BRANCH}/g"
       grep -rl "${REF_COIN_SRC_DIR}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_SRC_DIR}/${COIN_SRC_DIR}/g"
       grep -rl "${REF_COIN_SOURCE}" ./ | grep -v '.git' | xargs sed -i "s|${REF_COIN_SOURCE}|${COIN_SOURCE}|g"
       grep -rl "${REF_COIN_COMPILE}" ./ | grep -v '.git' | xargs sed -i "s|${REF_COIN_COMPILE}|${COIN_COMPILE}|g"
       grep -rl "${REF_DAEMON_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_1}/${DAEMON_1}/g"
-      #sed -i "s/${REF_COIN_SRC_DIR}/${COIN_SRC_DIR}/g" "${DOCKER_DIR}/Dockerfile"
-      #sed -i "s|${REF_COIN_SOURCE}|${COIN_SOURCE}|g" "${DOCKER_DIR}/Dockerfile"
-      #sed -i "s|${REF_COIN_COMPILE}|${COIN_COMPILE}|g" "${DOCKER_DIR}/Dockerfile"
-      #sed -i "s/${REF_DAEMON_1}|${DAEMON_1}/g" "${DOCKER_DIR}/Dockerfile"
       
       # Replace Port settings
       grep -rl "${REF_MAIN_DEFAULT_PORT}" ./ | grep -v '.git' | xargs sed -i "s/${REF_MAIN_DEFAULT_PORT}/${MAIN_DEFAULT_PORT}/g"
