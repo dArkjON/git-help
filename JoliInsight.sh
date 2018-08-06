@@ -2,19 +2,19 @@
 #
 # LIMXTEC - dalijolijo (2018)
 #
-set -x
+#set -x
 
 ###############
 # Set targets #
 ###############
-NODE="0"
+NODE="1"
 API="0"
 UI="0"
 LIB="0"
 BUILD="0"
 MESSAGE="0"
 WALLET_SERVICE="0"
-DOCKER_BUILD="1"
+DOCKER_BUILD="0"
 
 
 ########################
@@ -27,7 +27,8 @@ DOCKER_BUILD="1"
 #                      #
 ########################
 SELECT_COIN="mec"
-SELECT_GIT="dalijolijo"
+SELECT_GIT="LIMXTEC"
+DEPLOY_GIT="LIMXTEC"
 
 #########################
 # Team / Author Details # 
@@ -276,7 +277,7 @@ if [[ $SELECT_COIN == "mec" ]] ; then
    LOGO_LINK="https://chainz.cryptoid.info/logo/mec.png"
    LOGO_NAME="mec-logo.png"
    COIN_TEXT='MegaCoin is a peer-to-peer Internet currency that enables instant, near-zero cost payments to anyone in the world. MegaCoin is an <a href="https://github.com/LIMXTEC/Megacoin.git" target="_blank">open-source</a>, global payment network that is fully decentralized. Mathematics secures the network and empowers individuals to control their own finances.' # HTML Text inside <p> ... </p>
-   COIN_COLOR='\\033[1;31m'# escaping symbol '\\'
+   COIN_COLOR='\\033[1;31m' # escaping symbol '\\'
    COIN_COMPILE="./autogen.sh \&\& ./configure --disable-dependency-tracking --enable-tests=no --without-gui --disable-hardening \&\& make" # escping symbol '/&'
 fi
 
@@ -492,18 +493,18 @@ if [[ $NODE -eq 1 ]] ; then
    replacement "NODE"
 
    # Create remote GitHub Repository
-   printf "Do you want to create a new remote GitHub repository bitcore-node${POSTFIX}?\n"
+   printf "Do you want to create a new remote GitHub repository bitcore-node${POSTFIX} on ${DEPLOY_GIT}?\n"
    printf "Enter [Y]es or [N]o and Hit [ENTER]: "
    read NODE_NEW_GIT
    if [[ $NODE_NEW_GIT =~ "Y" ]] || [[ $NODE_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-node${POSTFIX}\" }"
+      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-node${POSTFIX}\" }"
       cd ${NODE_DIR}
       rm -rf .git
       git init
       git add .
       git commit -m "inital commit"
-      git remote add origin https://github.com/${REF_GIT}/bitcore-node${POSTFIX}.git
+      git remote add origin https://github.com/${DEPLOY_GIT}/bitcore-node${POSTFIX}.git
       git push -u origin master
    fi
 fi
@@ -523,18 +524,18 @@ if [[ $API -eq 1 ]] ; then
    replacement "API"
 
    # Create remote GitHub Repository
-   printf "Do you want to create a new remote GitHub repository insight-api${POSTFIX}?\n"
+   printf "Do you want to create a new remote GitHub repository insight-api${POSTFIX} on ${DEPLOY_GIT}?\n"
    printf "Enter [Y]es or [N]o and Hit [ENTER]: "
    read API_NEW_GIT
    if [[ $API_NEW_GIT =~ "Y" ]] || [[ $API_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"insight-api${POSTFIX}\" }"
+      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"insight-api${POSTFIX}\" }"
       cd ${API_DIR}
       rm -rf .git
       git init
       git add .
       git commit -m "inital commit"
-      git remote add origin https://github.com/${REF_GIT}/insight-api${POSTFIX}.git
+      git remote add origin https://github.com/${DEPLOY_GIT}/insight-api${POSTFIX}.git
       git push -u origin master
    fi
 fi
@@ -554,18 +555,18 @@ if [[ $UI -eq 1 ]] ; then
    replacement "UI"
 
    # Create remote GitHub Repository
-   printf "Do you want to create a new remote GitHub repository insight-ui${POSTFIX}?\n"
+   printf "Do you want to create a new remote GitHub repository insight-ui${POSTFIX} on ${DEPLOY_GIT}?\n"
    printf "Enter [Y]es or [N]o and Hit [ENTER]: "
    read UI_NEW_GIT
    if [[ $UI_NEW_GIT =~ "Y" ]] || [[ $UI_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"insight-ui${POSTFIX}\" }"
+      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"insight-ui${POSTFIX}\" }"
       cd ${UI_DIR}
       rm -rf .git
       git init
       git add .
       git commit -m "inital commit"
-      git remote add origin https://github.com/${REF_GIT}/insight-ui${POSTFIX}.git
+      git remote add origin https://github.com/${DEPLOY_GIT}/insight-ui${POSTFIX}.git
       git push -u origin master
    fi
 fi
@@ -585,18 +586,18 @@ if [[ $LIB -eq 1 ]] ; then
    replacement "LIB"
 
    # Create remote GitHub Repository
-   printf "Do you want to create a new remote GitHub repository bitcore-lib${POSTFIX}?\n"
+   printf "Do you want to create a new remote GitHub repository bitcore-lib${POSTFIX} on ${DEPLOY_GIT}?\n"
    printf "Enter [Y]es or [N]o and Hit [ENTER]: "
    read LIB_NEW_GIT
    if [[ $LIB_NEW_GIT =~ "Y" ]] || [[ $LIB_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-lib${POSTFIX}\" }"
+      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-lib${POSTFIX}\" }"
       cd ${LIB_DIR}
       rm -rf .git
       git init
       git add .
       git commit -m "inital commit"
-      git remote add origin https://github.com/${REF_GIT}/bitcore-lib${POSTFIX}.git
+      git remote add origin https://github.com/${DEPLOY_GIT}/bitcore-lib${POSTFIX}.git
       git push -u origin master
    fi
 fi
@@ -615,18 +616,18 @@ if [[ $BUILD -eq 1 ]] ; then
    # Use function replace
    replacement "BUILD"
    # Create remote GitHub Repository
-   printf "Do you want to create a new remote GitHub repository bitcore-build${POSTFIX}?\n"
+   printf "Do you want to create a new remote GitHub repository bitcore-build${POSTFIX} on ${DEPLOY_GIT}?\n"
    printf "Enter [Y]es or [N]o and Hit [ENTER]: "
    read BUILD_NEW_GIT
    if [[ $BUILD_NEW_GIT =~ "Y" ]] || [[ $BUILD_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-build${POSTFIX}\" }"
+      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-build${POSTFIX}\" }"
       cd ${BUILD_DIR}
       rm -rf .git
       git init
       git add .
       git commit -m "inital commit"
-      git remote add origin https://github.com/${REF_GIT}/bitcore-build${POSTFIX}.git
+      git remote add origin https://github.com/${DEPLOY_GIT}/bitcore-build${POSTFIX}.git
       git push -u origin master
    fi
 fi
@@ -646,18 +647,18 @@ if [[ $MESSAGE -eq 1 ]] ; then
    replacement "MESSAGE"
 
    # Create remote GitHub Repository
-   printf "Do you want to create a new remote GitHub repository bitcore-message${POSTFIX}?\n"
+   printf "Do you want to create a new remote GitHub repository bitcore-message${POSTFIX} on ${DEPLOY_GIT}?\n"
    printf "Enter [Y]es or [N]o and Hit [ENTER]: "
    read MESSAGE_NEW_GIT
    if [[ $MESSAGE_NEW_GIT =~ "Y" ]] || [[ $MESSAGE_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-message${POSTFIX}\" }"
+      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-message${POSTFIX}\" }"
       cd ${MESSAGE_DIR}
       rm -rf .git
       git init
       git add .
       git commit -m "inital commit"
-      git remote add origin https://github.com/${REF_GIT}/bitcore-message${POSTFIX}.git
+      git remote add origin https://github.com/${DEPLOY_GIT}/bitcore-message${POSTFIX}.git
       git push -u origin master
    fi
 fi
@@ -677,18 +678,18 @@ if [[ $WALLET_SERVICE -eq 1 ]] ; then
    replacement "WALLET_SERVICE"
 
    # Create remote GitHub Repository
-   printf "Do you want to create a new remote GitHub repository bitcore-wallet-service${POSTFIX}?\n"
+   printf "Do you want to create a new remote GitHub repository bitcore-wallet-service${POSTFIX} on ${DEPLOY_GIT}?\n"
    printf "Enter [Y]es or [N]o and Hit [ENTER]: "
    read WALLET_SERVICE_NEW_GIT
    if [[ $WALLET_SERVICE_NEW_GIT =~ "Y" ]] || [[ $WALLET_SERVICE_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-wallet-service${POSTFIX}\" }"
+      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-wallet-service${POSTFIX}\" }"
       cd ${WALLET_SERVICE_DIR}
       rm -rf .git
       git init
       git add .
       git commit -m "inital commit"
-      git remote add origin https://github.com/${REF_GIT}/bitcore-wallet-service${POSTFIX}.git
+      git remote add origin https://github.com/${DEPLOY_GIT}/bitcore-wallet-service${POSTFIX}.git
       git push -u origin master
    fi
 fi
@@ -708,18 +709,18 @@ if [[ $DOCKER_BUILD -eq 1 ]] ; then
    replacement "DOCKER"
 
    # Create remote GitHub Repository
-   printf "Do you want to create a new remote GitHub repository ${COIN_1}insight-docker?\n"
+   printf "Do you want to create a new remote GitHub repository ${COIN_1}insight-docker on ${DEPLOY_GIT}?\n"
    printf "Enter [Y]es or [N]o and Hit [ENTER]: "
    read DOCKER_NEW_GIT
    if [[ $DOCKER_NEW_GIT =~ "Y" ]] || [[ $DOCKER_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"${COIN_1}insight-docker\" }"
+      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"${COIN_1}insight-docker\" }"
       cd ${DOCKER_DIR}
       rm -rf .git
       git init
       git add .
       git commit -m "inital commit"
-      git remote add origin https://github.com/${REF_GIT}/${COIN_1}insight-docker.git
+      git remote add origin https://github.com/${DEPLOY_GIT}/${COIN_1}insight-docker.git
       git push -u origin master
    fi
 fi
