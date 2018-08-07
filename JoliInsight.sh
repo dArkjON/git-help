@@ -7,12 +7,12 @@
 ###############
 # Set targets #
 ###############
-NODE="1"
-API="0"
-UI="0"
-LIB="0"
-BUILD="0"
-MESSAGE="0"
+NODE="0"
+API="1"
+UI="1"
+LIB="1"
+BUILD="1"
+MESSAGE="1"
 WALLET_SERVICE="0"
 DOCKER_BUILD="0"
 
@@ -498,7 +498,18 @@ if [[ $NODE -eq 1 ]] ; then
    read NODE_NEW_GIT
    if [[ $NODE_NEW_GIT =~ "Y" ]] || [[ $NODE_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-node${POSTFIX}\" }"
+      if [[ $DEPLOY_GIT == "LIMXTEC" ]]; then
+          curl -u ${REF_GIT} https://api.github.com/orgs/${DEPLOY_GIT}/repos -d "{ \"name\": \"bitcore-node${POSTFIX}\" }"
+      else
+          curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-node${POSTFIX}\" }"
+      fi
+   fi
+
+   # Push to remote GitHub Repository
+   printf "Do you want to push to remote GitHub repository bitcore-node${POSTFIX} on ${DEPLOY_GIT}?\n"
+   printf "Enter [Y]es or [N]o and Hit [ENTER]: "
+   read NODE_PUSH_GIT
+   if [[ $NODE_PUSH_GIT =~ "Y" ]] || [[ $NODE_PUSH_GIT =~ "y" ]]; then
       cd ${NODE_DIR}
       rm -rf .git
       git init
@@ -529,7 +540,18 @@ if [[ $API -eq 1 ]] ; then
    read API_NEW_GIT
    if [[ $API_NEW_GIT =~ "Y" ]] || [[ $API_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"insight-api${POSTFIX}\" }"
+      if [[ $DEPLOY_GIT == "LIMXTEC" ]]; then
+          curl -u ${REF_GIT} https://api.github.com/orgs/${DEPLOY_GIT}/repos -d "{ \"name\": \"insight-api${POSTFIX}\" }"
+      else
+          curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"insight-api${POSTFIX}\" }"
+      fi
+   fi
+
+   # Push to remote GitHub Repository
+   printf "Do you want to push to remote GitHub repository insight-api${POSTFIX} on ${DEPLOY_GIT}?\n"
+   printf "Enter [Y]es or [N]o and Hit [ENTER]: "
+   read API_PUSH_GIT
+   if [[ $API_PUSH_GIT =~ "Y" ]] || [[ $API_PUSH_GIT =~ "y" ]]; then
       cd ${API_DIR}
       rm -rf .git
       git init
@@ -560,7 +582,18 @@ if [[ $UI -eq 1 ]] ; then
    read UI_NEW_GIT
    if [[ $UI_NEW_GIT =~ "Y" ]] || [[ $UI_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"insight-ui${POSTFIX}\" }"
+      if [[ $DEPLOY_GIT == "LIMXTEC" ]]; then
+          curl -u ${REF_GIT} https://api.github.com/orgs/${DEPLOY_GIT}/repos -d "{ \"name\": \"insight-ui${POSTFIX}\" }"
+      else
+          curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"insight-ui${POSTFIX}\" }"
+      fi
+   fi
+
+   # Push to remote GitHub Repository
+   printf "Do you want to push to remote GitHub repository insight-ui${POSTFIX} on ${DEPLOY_GIT}?\n"
+   printf "Enter [Y]es or [N]o and Hit [ENTER]: "
+   read UI_PUSH_GIT
+   if [[ $UI_PUSH_GIT =~ "Y" ]] || [[ $UI_PUSH_GIT =~ "y" ]]; then
       cd ${UI_DIR}
       rm -rf .git
       git init
@@ -591,7 +624,18 @@ if [[ $LIB -eq 1 ]] ; then
    read LIB_NEW_GIT
    if [[ $LIB_NEW_GIT =~ "Y" ]] || [[ $LIB_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-lib${POSTFIX}\" }"
+      if [[ $DEPLOY_GIT == "LIMXTEC" ]]; then
+          curl -u ${REF_GIT} https://api.github.com/orgs/${DEPLOY_GIT}/repos -d "{ \"name\": \"bitcore-lib${POSTFIX}\" }"
+      else
+          curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-lib${POSTFIX}\" }"
+      fi
+   fi
+
+   # Push to remote GitHub Repository
+   printf "Do you want to push to remote GitHub repository bitcore-lib${POSTFIX} on ${DEPLOY_GIT}?\n"
+   printf "Enter [Y]es or [N]o and Hit [ENTER]: "
+   read LIB_PUSH_GIT
+   if [[ $LIB_PUSH_GIT =~ "Y" ]] || [[ $LIB_PUSH_GIT =~ "y" ]]; then
       cd ${LIB_DIR}
       rm -rf .git
       git init
@@ -621,7 +665,18 @@ if [[ $BUILD -eq 1 ]] ; then
    read BUILD_NEW_GIT
    if [[ $BUILD_NEW_GIT =~ "Y" ]] || [[ $BUILD_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-build${POSTFIX}\" }"
+      if [[ $DEPLOY_GIT == "LIMXTEC" ]]; then
+          curl -u ${REF_GIT} https://api.github.com/orgs/${DEPLOY_GIT}/repos -d "{ \"name\": \"bitcore-build${POSTFIX}\" }"
+      else
+         curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-build${POSTFIX}\" }"
+      fi
+   fi
+
+   # Push to remote GitHub Repository
+   printf "Do you want to push to remote GitHub repository bitcore-build${POSTFIX} on ${DEPLOY_GIT}?\n"
+   printf "Enter [Y]es or [N]o and Hit [ENTER]: "
+   read BUILD_PUSH_GIT
+   if [[ $BUILD_PUSH_GIT =~ "Y" ]] || [[ $BUILD_PUSH_GIT =~ "y" ]]; then
       cd ${BUILD_DIR}
       rm -rf .git
       git init
@@ -652,7 +707,18 @@ if [[ $MESSAGE -eq 1 ]] ; then
    read MESSAGE_NEW_GIT
    if [[ $MESSAGE_NEW_GIT =~ "Y" ]] || [[ $MESSAGE_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-message${POSTFIX}\" }"
+      if [[ $DEPLOY_GIT == "LIMXTEC" ]]; then
+          curl -u ${REF_GIT} https://api.github.com/orgs/${DEPLOY_GIT}/repos -d "{ \"name\": \"bitcore-message${POSTFIX}\" }"
+      else
+          curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-message${POSTFIX}\" }"
+      fi
+   fi
+
+   # Push to remote GitHub Repository
+   printf "Do you want to push to remote GitHub repository bitcore-message${POSTFIX} on ${DEPLOY_GIT}?\n"
+   printf "Enter [Y]es or [N]o and Hit [ENTER]: "
+   read MESSAGE_PUSH_GIT
+   if [[ $MESSAGE_PUSH_GIT =~ "Y" ]] || [[ $MESSAGE_PUSH_GIT =~ "y" ]]; then
       cd ${MESSAGE_DIR}
       rm -rf .git
       git init
@@ -683,7 +749,18 @@ if [[ $WALLET_SERVICE -eq 1 ]] ; then
    read WALLET_SERVICE_NEW_GIT
    if [[ $WALLET_SERVICE_NEW_GIT =~ "Y" ]] || [[ $WALLET_SERVICE_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-wallet-service${POSTFIX}\" }"
+      if [[ $DEPLOY_GIT == "LIMXTEC" ]]; then
+          curl -u ${REF_GIT} https://api.github.com/orgs/${DEPLOY_GIT}/repos -d "{ \"name\": \"bitcore-wallet-service${POSTFIX}\" }"
+      else
+          curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"bitcore-wallet-service${POSTFIX}\" }"
+      fi
+   fi
+
+   # Push to remote GitHub Repository
+   printf "Do you want to push to remote GitHub repository bitcore-wallet-service${POSTFIX} on ${DEPLOY_GIT}?\n"
+   printf "Enter [Y]es or [N]o and Hit [ENTER]: "
+   read WALLET_SERVICE_PUSH_GIT
+   if [[ $WALLET_SERVICE_PUSH_GIT =~ "Y" ]] || [[ $WALLET_SERVICE_PUSH_GIT =~ "y" ]]; then
       cd ${WALLET_SERVICE_DIR}
       rm -rf .git
       git init
@@ -714,7 +791,18 @@ if [[ $DOCKER_BUILD -eq 1 ]] ; then
    read DOCKER_NEW_GIT
    if [[ $DOCKER_NEW_GIT =~ "Y" ]] || [[ $DOCKER_NEW_GIT =~ "y" ]]; then
       # Create new remote Git repository and push code
-      curl -u ${DEPLOY_GIT} https://api.github.com/user/repos -d "{ \"name\": \"${COIN_1}insight-docker\" }"
+      if [[ $DEPLOY_GIT == "LIMXTEC" ]]; then
+          curl -u ${REF_GIT} https://api.github.com/orgs/${DEPLOY_GIT}/repos -d "{ \"name\": \"${COIN_1}insight-docker\" }"
+      else
+          curl -u ${REF_GIT} https://api.github.com/user/repos -d "{ \"name\": \"${COIN_1}insight-docker\" }"
+      fi
+   fi
+
+   # Push to remote GitHub Repository
+   printf "Do you want to push to remote GitHub repository ${COIN_1}insight-docker on ${DEPLOY_GIT}?\n"
+   printf "Enter [Y]es or [N]o and Hit [ENTER]: "
+   read DOCKER_PUSH_GIT
+   if [[ $DOCKER_PUSH_GIT =~ "Y" ]] || [[ $DOCKER_PUSH_GIT =~ "y" ]]; then
       cd ${DOCKER_DIR}
       rm -rf .git
       git init
