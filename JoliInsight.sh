@@ -8,13 +8,13 @@
 # Set targets #
 ###############
 NODE="0"
-API="1"
-UI="1"
-LIB="1"
-BUILD="1"
-MESSAGE="1"
+API="0"
+UI="0"
+LIB="0"
+BUILD="0"
+MESSAGE="0"
 WALLET_SERVICE="0"
-DOCKER_BUILD="0"
+DOCKER_BUILD="1"
 
 
 ########################
@@ -27,8 +27,10 @@ DOCKER_BUILD="0"
 #                      #
 ########################
 SELECT_COIN="mec"
+
 SELECT_GIT="LIMXTEC"
 DEPLOY_GIT="LIMXTEC"
+DEPLOY_DOCKER="limxtec" #lower case
 
 #########################
 # Team / Author Details # 
@@ -289,6 +291,7 @@ REF_COIN_NAME_4="J_O_L_I_COIN"
 REF_COIN_1="JOLI"
 REF_COIN_2="j_o_l_i"
 REF_GIT="dalijolijo"
+REF_DEPLOY_DOCKER="J_O_L_I_DOCKER"
 REF_COIN_SOURCE="J_O_L_I_SOURCE"
 REF_COIN_SRC_DIR="J_O_L_I_SRC_DIR"
 REF_COIN_SOURCE_BRANCH="J_O_L_I_SRC_BRANCH"
@@ -449,7 +452,6 @@ function replacement () {
       
       # Replace compilation process
       COIN_SRC_DIR=$(echo ${COIN_SOURCE} | grep -oE "[^/]+$" | cut -d. -f1)
-      REF_COIN_SOURCE_BRANCH
       grep -rl "${REF_COIN_SOURCE_BRANCH}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_SOURCE_BRANCH}/${COIN_SOURCE_BRANCH}/g"
       grep -rl "${REF_COIN_SRC_DIR}" ./ | grep -v '.git' | xargs sed -i "s/${REF_COIN_SRC_DIR}/${COIN_SRC_DIR}/g"
       grep -rl "${REF_COIN_SOURCE}" ./ | grep -v '.git' | xargs sed -i "s|${REF_COIN_SOURCE}|${COIN_SOURCE}|g"
@@ -466,6 +468,7 @@ function replacement () {
    fi
 
    # Add Team/Author Details
+   grep -rl "${REF_DEPLOY_DOCKER}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DEPLOY_DOCKER}/${DEPLOY_DOCKER}/g"
    grep -rl "${REF_TEAM_NAME}" ./ | grep -v '.git' | xargs sed -i "s/${REF_TEAM_NAME}/${TEAM_NAME}/g"
    grep -rl "${REF_AUTHOR_NAME}" ./ | grep -v '.git' | xargs sed -i "s/${REF_AUTHOR_NAME}/${AUTHOR_NAME}/g"
    grep -rl "${REF_AUTHOR_EMAIL}" ./ | grep -v '.git' | xargs sed -i "s/${REF_AUTHOR_EMAIL}/${AUTHOR_EMAIL}/g"
