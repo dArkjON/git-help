@@ -35,6 +35,11 @@ git clone https://github.com/dalijolijo/bisq-assets.git
 cd bisq-assets
 ```
 
+## Show remote repository name
+```sh
+git remote -v
+```
+
 ## Create new branch (local => remote)
 ```sh
 git branch testnet
