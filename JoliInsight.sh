@@ -459,6 +459,7 @@ function replacement () {
    if [[ $1 == "DOCKER" ]] ; then
       # Rename docker script
       mv ${DOCKER_DIR}/${REF_COIN_2}-insight-docker.sh ${DOCKER_DIR}/${COIN_2}-insight-docker.sh
+      mv ${DOCKER_DIR}/${REF_CONFIG} ${DOCKER_DIR}/${CONFIG}
       
       # Replace compilation process
       COIN_SRC_DIR=$(echo ${COIN_SOURCE} | grep -oE "[^/]+$" | cut -d. -f1)
