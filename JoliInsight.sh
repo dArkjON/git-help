@@ -106,6 +106,8 @@ if [[ $SELECT_COIN == "btx" ]] ; then
    TEST_TOR_PORT="9051"
    TEST_INSIGHT=""
    WEB="https://bitcore.cc"
+   BOOTSTRAP_WEB="bitcore.cc" # without "https://" and without the last "/" (only HTTPS accepted)
+   BOOTSTRAP_FILE="bootstrap.tar.gz"
    TICKER="https://api.coinmarketcap.com/v1/ticker/bitcore/"
    LOGO_LINK="https://insight.bitcore.cc/img/Bitcore-logo-135x135.png"
    LOGO_NAME="btx-logo.png"
@@ -161,6 +163,8 @@ if [[ $SELECT_COIN == "btdx" ]] ; then
    TEST_RPC_PORT="8329"
    TEST_TOR_PORT="9050"
    WEB="https://bit-cloud.info"
+   BOOTSTRAP_WEB="bit-cloud.info/files" # without "https://" and without the last "/" (only HTTPS accepted)
+   BOOTSTRAP_FILE="bootstrap.tar.gz"
    TICKER="https://api.coinmarketcap.com/v1/ticker/bitcloud/"
    LOGO_LINK="https://chainz.cryptoid.info/logo/btdx.png"
    LOGO_NAME="btdx-logo.png"
@@ -218,6 +222,8 @@ if [[ $SELECT_COIN == "bsd" ]] ; then
    TEST_TOR_PORT="9051"
    TEST_INSIGHT=""
    WEB="https://bitsend.info"
+   BOOTSTRAP_WEB="www.mybitsend.com" # without "https://" and without the last "/" (only HTTPS accepted)
+   BOOTSTRAP_FILE="bootstrap.tar.gz"
    TICKER="https://api.coinmarketcap.com/v1/ticker/bitsend/"
    LOGO_LINK="https://chainz.cryptoid.info/logo/bsd.png"
    LOGO_NAME="bsd-logo.png"
@@ -275,6 +281,8 @@ if [[ $SELECT_COIN == "mec" ]] ; then
    TEST_TOR_PORT="9051"
    TEST_INSIGHT=""
    WEB="https://www.megacoin.eu" 
+   BOOTSTRAP_WEB="megacoin.eu/downloads" # without "https://" and without the last "/" (only HTTPS accepted)
+   BOOTSTRAP_FILE="bootstrap.tar.gz"
    TICKER="https://api.coinmarketcap.com/v1/ticker/megacoin/"
    LOGO_LINK="https://chainz.cryptoid.info/logo/mec.png"
    LOGO_NAME="mec-logo.png"
@@ -334,6 +342,8 @@ REF_TEST_RPC_PORT="J_O_L_I_TEST_RPCPORT"
 REF_TEST_TOR_PORT="J_O_L_I_TEST_TORPORT"
 REF_TEST_INSIGHT="J_O_L_I_TEST_INSIGHT"
 REF_WEB="https://jolicoin.cc"
+REF_BOOTSTRAP_WEB="J_O_L_I_BOOTSTRAP_WEB"
+REF_BOOTSTRAP_FILE="J_O_L_I_BOOTSTRAP_FILE"
 REF_TICKER="https://api.coinmarketcap.com/v1/ticker/jolicoin/"
 REF_LOGO_NAME="joli-logo.png"
 REF_COIN_TEXT="J_O_L_I_TEXT"
@@ -457,6 +467,8 @@ function replacement () {
       grep -rl "${REF_COIN_SOURCE}" ./ | grep -v '.git' | xargs sed -i "s|${REF_COIN_SOURCE}|${COIN_SOURCE}|g"
       grep -rl "${REF_COIN_COMPILE}" ./ | grep -v '.git' | xargs sed -i "s|${REF_COIN_COMPILE}|${COIN_COMPILE}|g"
       grep -rl "${REF_DAEMON_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_1}/${DAEMON_1}/g"
+      grep -rl "${REF_BOOTSTRAP_WEB}" ./ | grep -v '.git' | xargs sed -i "s/${REF_BOOTSTRAP_WEB}/${BOOTSTRAP_WEB}/g"
+      grep -rl "${REF_BOOTSTRAP_FILE}" ./ | grep -v '.git' | xargs sed -i "s/${REF_BOOTSTRAP_FILE}/${BOOTSTRAP_FILE}/g"
       
       # Replace Port settings
       grep -rl "${REF_MAIN_DEFAULT_PORT}" ./ | grep -v '.git' | xargs sed -i "s/${REF_MAIN_DEFAULT_PORT}/${MAIN_DEFAULT_PORT}/g"
