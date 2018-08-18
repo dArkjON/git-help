@@ -1,23 +1,33 @@
-Python Packaging
-----------------
-Use of python2.7
+# python-help
 
-1) Installation needed packages (for Ubuntu 16.04)
+## For Python 2.7
+
+### Installation needed packages (for Ubuntu 16.04)
+```sh
 apt-get install python-pip
 pip2 install --upgrade pip
 python -m pip list
 python -m pip install setuptools wheel twine
+```
 
-2) Generate python package
+### Generate python package
+```sh
 python setup.py sdist bdist_wheel
+```
 
-3) Uploading the distribution archives
+### Uploading the distribution archives
 Go to directory where setup.py is located
+```sh
 twine upload dist/*
+```
 
-4) Installing your newly uploaded package
+### Installing your newly uploaded package
+```sh
 pip install NEW_PKG
+```
 
-6) Deinstallation
+### Deinstallation
+```sh
 pip uninstall NEW_PKG
 rm -rf NEW_PKG.egg-info build dist
+```
