@@ -315,13 +315,15 @@ REF_DAEMON_2="Jolicoind"
 REF_CONFIG="jolicoin.conf"
 REF_CONFIG_ENTRY="jolicoin" 
 REF_DIR_PART="\.jolicoin" # escaping dot
+REF_ZADDR="J_O_L_I_ZADDR"
+REF_ZKEY="J_O_L_I_ZKEY"
 REF_MAIN_PUBKEYHASH="J_O_L_I_PUBKEYHASH"
 REF_MAIN_PRIVKEY="J_O_L_I_PRIVKEY"
 REF_MAIN_SCRIPTHASH="J_O_L_I_SCRIPTHASH"
 REF_MAIN_XPUBKEY="J_O_L_I_XPUBKEY"
 REF_MAIN_XPRIVKEY="J_O_L_I_XPRIVKEY"
-REF_MAIN_ZADDR="J_O_L_I_ZADDR"
-REF_MAIN_ZKEY="J_O_L_I_ZKEY"
+REF_MAIN_ZADDR="J_O_L_I_MAIN_ZADDR"
+REF_MAIN_ZKEY="J_O_L_I_MAIN_ZKEY"
 REF_MAIN_NETMAGIC="J_O_L_I_NETMAGIC"
 REF_MAIN_DNSSEED="J_O_L_I_DNSSEED"
 REF_MAIN_DEFAULT_PORT="J_O_L_I_DEFAULTPORT"
@@ -444,11 +446,15 @@ function replacement () {
 
 
       if [[ $MAIN_ZADDR == "no" ]] ; then
+         sed -i "s|zaddr: ${REF_ZADDR},|//zaddr: not needed|g" "${LIB_DIR}/lib/networks.js"
+         sed -i "s|zkey: ${REF_ZKEY},|//zkey: not needed|g" "${LIB_DIR}/lib/networks.js"
          sed -i "s|zaddr: ${REF_MAIN_ZADDR},|//zaddr: not needed|g" "${LIB_DIR}/lib/networks.js"
          sed -i "s|zkey: ${REF_MAIN_ZKEY},|//zkey: not needed|g" "${LIB_DIR}/lib/networks.js"
          sed -i "s|zaddr: ${REF_TEST_ZADDR},|//zaddr: not needed|g" "${LIB_DIR}/lib/networks.js"
          sed -i "s|zkey: ${REF_TEST_ZKEY},|//zkey: not needed|g" "${LIB_DIR}/lib/networks.js"
       else
+         sed -i "s/zaddr: ${REF_ZADDR}/zaddr: data.zaddr/g" "${LIB_DIR}/lib/networks.js"
+         sed -i "s/zkey: ${REF_ZKEY}/zkey: data.zkey/g" "${LIB_DIR}/lib/networks.js"
          sed -i "s/${REF_MAIN_ZADDR}/${MAIN_ZADDR}/g" "${LIB_DIR}/lib/networks.js"
          sed -i "s/${REF_MAIN_ZKEY}/${MAIN_ZKEY}/g" "${LIB_DIR}/lib/networks.js"
          sed -i "s/${REF_TEST_ZADDR}/${TEST_ZADDR}/g" "${LIB_DIR}/lib/networks.js"
