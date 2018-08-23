@@ -29,7 +29,7 @@ See https://docs.travis-ci.com/user/deployment/releases/
 before_deploy:
       # Set up git user name and tag this commit
       - git config --local user.name "dalijolijo"
-      - git config --local user.email "david.bergen@gmx.net"
+      - git config --local user.email "<e-mail>"
       - git tag "$(date +'%Y%m%d%H%M%S')-$(git log --format=%h -1)"
 deploy:
       provider: releases
