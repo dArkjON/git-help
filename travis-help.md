@@ -5,13 +5,16 @@
 ### Install Travis Client
 ```sh
 sudo apt-get install ruby-dev
+gem install travis
 ```
+
+### Create a GitHub API Token
+Go to settings->applications in the GitHub UI. Create a new token, removing every permission except repo.
 
 ### Generate secure API key
 See https://docs.travis-ci.com/user/encryption-keys/
 
 ```sh
-gem install travis
 /usr/local/bin/travis encrypt SOMEVAR="<My GitHub API Key>"
 Shell completion not installed. Would you like to install it now? |y| y
 Detected repository as dalijolijo/BitCore, is this correct? |yes| yes
