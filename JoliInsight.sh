@@ -7,14 +7,14 @@
 ###############
 # Set targets #
 ###############
-NODE="0"
+NODE="1"
 API="0"
 UI="0"
 LIB="0"
 BUILD="0"
 MESSAGE="0"
 WALLET_SERVICE="0"
-DOCKER_BUILD="1"
+DOCKER_BUILD="0"
 
 
 ########################
@@ -28,7 +28,7 @@ DOCKER_BUILD="1"
 ########################
 SELECT_COIN="mec"
 
-SELECT_GIT="LIMXTEC"
+SELECT_GIT="dalijolijo"
 DEPLOY_GIT="LIMXTEC"
 DEPLOY_DOCKER="limxtec" #lower case
 
@@ -524,7 +524,7 @@ function replacement () {
       grep -rl "${REF_COIN_SOURCE}" ./ | grep -v '.git' | xargs sed -i "s|${REF_COIN_SOURCE}|${COIN_SOURCE}|g"
       grep -rl "${REF_COIN_COMPILE}" ./ | grep -v '.git' | xargs sed -i "s|${REF_COIN_COMPILE}|${COIN_COMPILE}|g"
       grep -rl "${REF_DAEMON_1}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DAEMON_1}/${DAEMON_1}/g"
-      grep -rl "${REF_BOOTSTRAP_WEB}" ./ | grep -v '.git' | xargs sed -i "s/${REF_BOOTSTRAP_WEB}/${BOOTSTRAP_WEB}/g"
+      grep -rl "${REF_BOOTSTRAP_WEB}" ./ | grep -v '.git' | xargs sed -i "s|${REF_BOOTSTRAP_WEB}|${BOOTSTRAP_WEB}|g"
       grep -rl "${REF_BOOTSTRAP_FILE}" ./ | grep -v '.git' | xargs sed -i "s/${REF_BOOTSTRAP_FILE}/${BOOTSTRAP_FILE}/g"
       
       # Replace Port settings
