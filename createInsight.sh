@@ -7,13 +7,13 @@ set -x
 ###############
 # Set targets #
 ###############
-NODE="0"
+NODE="1"
 API="0"
 UI="0"
 LIB="0"
 BUILD="0"
 MESSAGE="0"
-WALLET_SERVICE="1"
+WALLET_SERVICE="0"
 
 ########################
 # Select Coin          #
@@ -25,7 +25,7 @@ WALLET_SERVICE="1"
 # TemplateCoin: joli   # 
 #                      #
 ########################
-SELECT_COIN="joli"
+SELECT_COIN="mec"
 SELECT_GIT="dalijolijo"
 
 ####################
