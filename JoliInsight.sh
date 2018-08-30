@@ -44,7 +44,7 @@ CREATE_YEAR="2018"
 # Coin Details     #
 ####################
 
-# Netzwork Parameter
+# Network Parameters
 # ------------------
 # pubkeyhash - The publickey hash prefix
 # privatekey - The privatekey prefix
@@ -78,6 +78,7 @@ if [[ $SELECT_COIN == "btx" ]] ; then
    DAEMON_2="Bitcored"
    CONFIG="bitcore.conf"
    CONFIG_ENTRY="bitcore"
+   CONFIG_ADDNODES=""
    DIR_PART="\.bitcore" # escaping dot
    MAIN_PUBKEYHASH="0x03"
    MAIN_PRIVKEY="0x80"
@@ -137,6 +138,7 @@ if [[ $SELECT_COIN == "btdx" ]] ; then
    DAEMON_2="Bitcloudd"
    CONFIG="bitcloud.conf"
    CONFIG_ENTRY="bitcloud"
+   CONFIG_ADDNODES=""
    DIR_PART="\.bitcloud" # escaping dot
    MAIN_PUBKEYHASH="0x19"
    MAIN_PRIVKEY="0x99"
@@ -194,6 +196,7 @@ if [[ $SELECT_COIN == "bsd" ]] ; then
    DAEMON_2="Bitsendd"
    CONFIG="bitsend.conf"
    CONFIG_ENTRY="bitsend"
+   CONFIG_ADDNODES=""
    DIR_PART="\.bitsend" # escaping dot
    MAIN_PUBKEYHASH="0x66"
    MAIN_PRIVKEY="0xcc"
@@ -253,6 +256,51 @@ if [[ $SELECT_COIN == "mec" ]] ; then
    DAEMON_2="Megacoind"
    CONFIG="megacoin.conf"
    CONFIG_ENTRY="megacoin"
+   CONFIG_ADDNODES="addnode: 163.172.149.252, \
+addnode: 178.62.46.155, \
+addnode: 188.165.213.202, \
+addnode: 155.93.199.69, \
+addnode: 188.40.78.31, \
+addnode: 188.68.39.231, \
+addnode: 192.99.6.207, \
+addnode: 193.29.187.57, \
+addnode: 213.148.193.153, \
+addnode: 217.175.119.125, \
+addnode: 37.210.78.220, \
+addnode: 37.59.34.200, \
+addnode: 45.77.8.30, \
+addnode: 46.28.107.182, \
+addnode: 50.225.198.67, \
+addnode: 74.124.24.228, \
+addnode: 74.124.24.246, \
+addnode: 79.208.235.148, \
+addnode: 84.234.52.190, \
+addnode: 88.198.48.153, \
+addnode: 88.99.68.228, \
+addnode: 91.121.159.37, \
+addnode: 94.130.16.85, \
+addnode: 108.170.1.134, \
+addnode: 108.61.167.247, \
+addnode: 157.161.128.59, \
+addnode: 164.40.246.244, \
+addnode: 173.249.29.238, \
+addnode: 18.191.153.61, \
+addnode: 185.111.218.121, \
+addnode: 185.194.140.60, \
+addnode: 185.194.142.125, \
+addnode: 185.195.197.4, \
+addnode: 192.99.19.133, \
+addnode: 217.197.121.250, \
+addnode: 217.197.121.252, \
+addnode: 37.187.24.211, \
+addnode: 45.77.63.111, \
+addnode: 46.23.35.70, \
+addnode: 47.153.171.16, \
+addnode: 68.55.199.104, \
+addnode: 80.148.37.101, \
+addnode: 88.99.92.72, \
+addnode: 94.130.64.167, \
+addnode: 95.216.36.90,"
    DIR_PART="\.megacoin" # escaping dot
    MAIN_PUBKEYHASH="0x32"
    MAIN_PRIVKEY="0xb2"
@@ -313,7 +361,8 @@ REF_REP_6="message-joli"
 REF_DAEMON_1="jolicoind"
 REF_DAEMON_2="Jolicoind"
 REF_CONFIG="jolicoin.conf"
-REF_CONFIG_ENTRY="jolicoin" 
+REF_CONFIG_ENTRY="jolicoin"
+REF_CONFIG_ADDNODES="J_O_L_I_ADDNODES"
 REF_DIR_PART="\.jolicoin" # escaping dot
 REF_ZADDR="J_O_L_I_ZADDR"
 REF_ZKEY="J_O_L_I_ZKEY"
@@ -397,6 +446,7 @@ function replacement () {
 
    # Replace Coin Config Entry
    grep -rl "${REF_CONFIG_ENTRY}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ENTRY}/${CONFIG_ENTRY}/g"
+   grep -rl "${REF_CONFIG_ADDNODES}" ./ | grep -v '.git' | xargs sed -i "s/${REF_CONFIG_ADDNODES}/${CONFIG_ADDNODES}/g"
 
    # Replace part of Coin Path
    grep -rl "${REF_DIR_PART}" ./ | grep -v '.git' | xargs sed -i "s/${REF_DIR_PART}/${DIR_PART}/g"
