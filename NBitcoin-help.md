@@ -4,13 +4,13 @@ https://github.com/MetacoSA/NBitcoin
 See reference implementation of BitCore here: https://github.com/dalijolijo/NBitcoin/commit/c9594de09641fbf242644d357e61c2952e6a5bba
 
 ## 1) Add changes to following files:
-NBitcoin.Altcoins/AltcoinNetworkSets.cs
-NBitcoin.Altcoins/README.md
-NBitcoin.TestFramework/WellknownNodeDownloadData.cs
-NBitcoin.Tests/NodeBuilderEx.cs
+- NBitcoin.Altcoins/AltcoinNetworkSets.cs
+- NBitcoin.Altcoins/README.md
+- NBitcoin.TestFramework/WellknownNodeDownloadData.cs
+- NBitcoin.Tests/NodeBuilderEx.cs
 
 ## 2) Copy to new ALTCOIN.cs
-NBitcoin.Altcoins/Bitcore.cs
+- NBitcoin.Altcoins/Bitcore.cs
 
 
 ## 3) Changes all parameters in NBitcoin.Altcoins/ALTCOIN.cs
@@ -29,11 +29,13 @@ Start Bitsend daemon in regtest:
 ```sh
 screen ./bitsendd --regtest
 ``
+
 Create config file /root/.bitsend/regtest/bitsend.conf
 ```sh
 rpcpassword=1
 rpcport=18332
 ```
+
 Execute CLI command to get the genesis raw tx block:
 ```sh
 ./bitsend-cli -rpcpassword=1 -rpcport=18332 getblock 0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a false
@@ -41,25 +43,24 @@ Execute CLI command to get the genesis raw tx block:
 
 ### IPv6 seeds
 #### Convert IPv4 Adresses to IPv6
-see here: https://www.ultratools.com/tools/ipv4toipv6Result?address=37.120.186.85
-and https://ipv6-literal.com/?ipv6=0%3A0%3A0%3A0%3A0%3Affff%3A330f%3Adee0
+see here: https://www.ultratools.com/tools/ipv4toipv6Result?address=37.120.186.85 and https://ipv6-literal.com/?ipv6=0%3A0%3A0%3A0%3A0%3Affff%3A330f%3Adee0
 
 #### Use the IPv4 Seed IPs to convert it:
 ```sh
 new DNSSeedData("37.120.186.85", "37.120.186.85"),
 ```
-37 => 0x25
-120 => 0x78
-186 => 0xBA
-85 => 0x55
+- 37 => 0x25
+- 120 => 0x78
+- 186 => 0xBA
+- 85 => 0x55
 RESULT: 0000:0000:0000:0000:0000:ffff:2578:BA55
 
 
 ### Get needed coin information
-Find all needed parameters in the following ALTCOIN source files
-src/chainparams.cpp
-src/chainparamsbase.cpp
-src/version.h
+Find all needed parameters in the following ALTCOIN source files:
+- src/chainparams.cpp
+- src/chainparamsbase.cpp
+- src/version.h
 
 
 ## 4) Test
