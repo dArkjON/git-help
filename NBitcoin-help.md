@@ -61,6 +61,7 @@ Find all needed parameters in the following ALTCOIN source files:
 - src/chainparams.cpp
 - src/chainparamsbase.cpp
 - src/version.h
+- src/consensus/consensus.h
 
 
 ## 4) Test
