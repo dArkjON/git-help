@@ -1,4 +1,5 @@
 # HowTo - NBitcoin Integration
+https://github.com/MetacoSA/NBitcoin
 
 See reference implementation of BitCore here: https://github.com/dalijolijo/NBitcoin/commit/c9594de09641fbf242644d357e61c2952e6a5bba
 
@@ -40,3 +41,6 @@ src/version.h
 
 ## 4) Test
 Activate new ALTCOIN in NBitcoin.Tests/NodeBuilderEx.cs
+```sh
+dotnet test NBitcoin.Tests.csproj --filter "Altcoins=Altcoins" -p:ParallelizeTestCollections=false --framework netcoreapp2.1
+```
