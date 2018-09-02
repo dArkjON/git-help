@@ -14,26 +14,49 @@ NBitcoin.Altcoins/Bitcore.cs
 
 
 ## 3) Changes all parameters in NBitcoin.Altcoins/ALTCOIN.cs
-- Get Genesis Block for main/test/regtest with:
-bitsend-cli getblock 0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a false
-bitsend-cli getblock 0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a false
-bitsend-cli getblock 0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a false
-Hint 1: Your wallet must activate txindex (txindex=1)
-Hint 2: If the wallet version is 15.x the cli getblock command is with 0 in the end (instead false)
 
-- static Tuple<byte[], int>[] pnSeed6_main = { Tuple.Create ...
-Convert IPv4 Adresses to IPv6
+### Get Genesis Block for main/test/regtest with:
+Execute the CLI with parameter getblock with genesis hash to get the genesis raw tx block. 
+If the wallet version is 15.x the CLI getblock command is with 0 in the end (instead false).
+```sh
+bitsend-cli getblock 0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a false
+bitsend-cli getblock 0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a false
+```
+Hint: Your wallet must activate txindex (txindex=1)
+
+#### For Regtest 
+Start Bitsend daemon in regtest:
+```sh
+screen ./bitsendd --regtest
+``
+Create config file /root/.bitsend/regtest/bitsend.conf
+```sh
+rpcpassword=1
+rpcport=18332
+```
+Execute CLI command to get the genesis raw tx block:
+```sh
+./bitsend-cli -rpcpassword=1 -rpcport=18332 getblock 0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a false
+```
+
+### IPv6 seeds
+#### Convert IPv4 Adresses to IPv6
 see here: https://www.ultratools.com/tools/ipv4toipv6Result?address=37.120.186.85
 and https://ipv6-literal.com/?ipv6=0%3A0%3A0%3A0%3A0%3Affff%3A330f%3Adee0
-Use the IPv4 Seed IPs to convert it:
-	new DNSSeedData("37.120.186.85", "37.120.186.85"),
+
+#### Use the IPv4 Seed IPs to convert it:
+```sh
+new DNSSeedData("37.120.186.85", "37.120.186.85"),
+```
 37 => 0x25
 120 => 0x78
 186 => 0xBA
 85 => 0x55
-0000:0000:0000:0000:0000:ffff:2578:BA55
+RESULT: 0000:0000:0000:0000:0000:ffff:2578:BA55
 
-- Find all needed parameters in the following ALTCOIN source files:
+
+### Get needed coin information
+Find all needed parameters in the following ALTCOIN source files
 src/chainparams.cpp
 src/chainparamsbase.cpp
 src/version.h
