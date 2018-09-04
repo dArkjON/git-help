@@ -25,15 +25,15 @@ bitsend-cli getblock 0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3
 Hint: Your wallet must activate txindex (txindex=1)
 
 #### For Regtest 
-Start Bitsend daemon in regtest:
-```sh
-screen ./bitsendd --regtest
-```
-
 Create config file /root/.bitsend/regtest/bitsend.conf
 ```sh
 rpcpassword=1
 rpcport=18332
+```
+
+Start Bitsend daemon in regtest:
+```sh
+screen ./bitsendd --regtest
 ```
 
 Execute CLI command to get the genesis raw tx block:
