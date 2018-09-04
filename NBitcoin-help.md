@@ -59,7 +59,7 @@ RESULT: 0000:0000:0000:0000:0000:ffff:2578:BA55
 ### Get needed coin information
 Find all needed parameters in the following ALTCOIN source files:
 - src/chainparams.cpp
-nToCheckBlockUpgradeMajority == MajorityWindow??
+  - nToCheckBlockUpgradeMajority == MajorityWindow??
 - src/chainparamsbase.cpp
 - src/version.h
 - src/consensus/consensus.h
