@@ -28,7 +28,7 @@ Hint: Your wallet must activate txindex (txindex=1)
 Start Bitsend daemon in regtest:
 ```sh
 screen ./bitsendd --regtest
-``
+```
 
 Create config file /root/.bitsend/regtest/bitsend.conf
 ```sh
