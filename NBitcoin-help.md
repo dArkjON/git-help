@@ -24,7 +24,7 @@ bitsend-cli getblock 0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3
 ```
 Hint: Your wallet must activate txindex (txindex=1)
 
-#### For Regtest 
+#### For Regtest (BitSend)
 Create config file /root/.bitsend/regtest/bitsend.conf
 ```sh
 rpcpassword=1
@@ -39,6 +39,25 @@ screen ./bitsendd --regtest
 Execute CLI command to get the genesis raw tx block:
 ```sh
 ./bitsend-cli -rpcpassword=1 -rpcport=18332 getblock 0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a false
+
+```
+
+#### For Regtest (Bitcloud)
+Create config file /root/.bitcloud/regtest/bitcloud.conf
+```sh
+rpcpassword=1
+rpcuser=a
+rpcport=8329
+```
+
+Start Bitsend daemon in regtest:
+```sh
+screen ./bitcloudd -conf=/root/.bitcloud/regtest/bitcloud.conf -listen=0
+```
+
+Execute CLI command to get the genesis raw tx block:
+```sh
+./bitcloud-cli -conf=/root/.bitcloud/regtest/bitcloud.conf getblock 000002d56463941c20eae5cb474cc805b646515d18bc7dc222a0885b206eadb0 false
 ```
 
 ### IPv6 seeds
