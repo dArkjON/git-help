@@ -20,7 +20,6 @@ Execute the CLI with parameter getblock with genesis hash to get the genesis raw
 If the wallet version is 15.x the CLI getblock command is with 0 in the end (instead false).
 ```sh
 bitsend-cli getblock 0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a false
-bitsend-cli getblock 0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a false
 ```
 Hint: Your wallet must activate txindex (txindex=1)
 
@@ -38,7 +37,7 @@ screen ./bitsendd --regtest
 
 Execute CLI command to get the genesis raw tx block:
 ```sh
-./bitsend-cli -rpcpassword=1 -rpcport=18332 getblock 0000012e1b8843ac9ce8c18603658eaf8895f99d3f5e7e1b7b1686f35e3c087a false
+./bitsend-cli -rpcpassword=1 -rpcport=18332 getblock 8a94df62a4e9bb64fbb8d22e63d075f3a3ab26672e79fbf243ff6cb02c695c15 false
 
 ```
 
