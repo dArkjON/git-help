@@ -28,6 +28,7 @@ Create config file /root/.bitsend/regtest/bitsend.conf
 ```sh
 rpcpassword=1
 rpcport=18332
+txindex=1
 ```
 
 Start Bitsend daemon in regtest:
@@ -47,6 +48,7 @@ Create config file /root/.bitcloud/regtest/bitcloud.conf
 rpcpassword=1
 rpcuser=a
 rpcport=8329
+txindex=1
 ```
 
 Start Bitsend daemon in regtest:
