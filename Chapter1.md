@@ -11,7 +11,7 @@ months earlier than on the Bitcoin blockchain, making it fully compatible to the
 Most importantly, Bitcore implements true decentralization and user empowerment:
 * Bitcore‘s ASIC-resistant mining algorithm restores community participation and counters
 centralization effects in mining.
-* Bitcore’s application of Bloom filtersi
+* Bitcore’s application of Bloom filters (i)
 significantly reduces the required storage to run a full
 blockchain node, enabling more individual users to become fully empowered Bitcore
 participants via SPV/light wallets.
@@ -27,14 +27,13 @@ everyday use and render micropayments feasible.
 transparently, and developed to be a community good rather than the property or business of a
 single company or person (ii).
 
-```
-“Bitcore: The most clever Bitcoin fork”
--- Jimmy Songiii, Bitcoin Core Developer
-```
+> “Bitcore: The most clever Bitcoin fork”
+*-- Jimmy Song (iii), Bitcoin Core Developer*
+
 
 In a nutshell:
 Bitcore is the original community-driven, peer-to-peer digital payment solution, adapted to the needs
 of tomorrow. If Satoshi Nakamoto had known in 2008 what experience has taught the crypto
-community in the past 10 years, Bitcore is what Bitcoiniv had looked like from the very start. Today,
+community in the past 10 years, Bitcore is what Bitcoin (iv) had looked like from the very start. Today,
 Bitcore offers everyone the opportunity to be a part of Satoshi’s original vision, fresh and unstained by
 questionable economic developments of the past.
