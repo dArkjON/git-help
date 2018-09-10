@@ -175,3 +175,17 @@ If you've rebased your branch onto upstream/master you may need to force the pus
 ```sh
 git push -f origin master
 ```
+
+# Git with meld (Windows)
+See http://meldmerge.org/
+
+Install GitBash and set:
+```sh 
+git config --global merge.tool meld
+git config --global mergetool.meld.path "C:\Program Files (x86)\Meld\Meld.exe" <- path to meld here
+```
+
+Usage: 
+```sh
+git diff
+```
