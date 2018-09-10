@@ -177,7 +177,7 @@ git push -f origin master
 ```
 
 # Git with meld (Windows)
-See http://meldmerge.org/
+See http://meldmerge.org/ and https://gitforwindows.org
 
 Install GitBash and set:
 ```sh 
