@@ -18,6 +18,6 @@ There is no central authority or executive committee responsible for certain mil
 
 Instead, Bitcore’s development is led by the needs and visions of its community members. The history of Bitcore has shown that this mode of operation and strategy-finding is conducive to innovation and the speedy implementation of necessary improvements.
 
-Even though there is no centrally defined Roadmap for the coming years, the Bitcore development team is of course constantly working to implement new features, as required by the community. Currently planned and active projects can be viewed on Bitcore’s website, https://bitcore.cc.
+Even though there is no centrally defined Roadmap for the coming years, the Bitcore development team is of course constantly working to implement new features, as required by the community. Currently planned and active projects can be viewed on Bitcore’s website, https://bitcore.cc/roadmap/.
 
 ![Bitcore Roadmap 2018](https://bitcore.cc/wp-content/uploads/2018/06/timeline014.png)
