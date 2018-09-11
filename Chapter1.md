@@ -3,7 +3,7 @@
 ## Bitcore – A Genuinely Community-Driven Payment Solution
 Bitcore is a cryptocurrency designed to make the original Bitcoin vision future-proof.
 
-Bitcore maintains Bitcoin’s central advantages – but the Bitcore founding team is taking the original Bitcoin technology boldly into the future. Bitcore, originally a hybrid fork of Bitcoin, features a proof-ofwork consensus mechanism and implements all of the BIPs (Bitcoin Improvement Proposals) of the Bitcoin protocol.
+Bitcore maintains Bitcoin’s central advantages – but the Bitcore founding team is taking the original Bitcoin technology boldly into the future. Bitcore, originally a hybrid fork of Bitcoin, features a proof-of-work consensus mechanism and implements all of the BIPs (Bitcoin Improvement Proposals) of the Bitcoin protocol.
 
 Through its lean structure and active community, Bitcore is more agile than other coins in implementing necessary innovations. On the Bitcore blockchain, SegWit (Segregated Witness) was activated a full 4.5 months earlier than on the Bitcoin blockchain, making it fully compatible to the Lightning Network.
 
