@@ -21,7 +21,8 @@ For a quick overview, the key technical specifications of Bitcore are summarized
 * Fair distribution: BTC claiming and airdrops
 
 > “[Bitcore] innovates by cleaning things up”
-*-- Jimmy Song (vii), Bitcoin Core Developer*
+
+> *-- Jimmy Song (vii), Bitcoin Core Developer*
 
 ![Figure 1: Bitcoin, Bitcoin Cash, Bitcoin Gold and Bitcore - comparison chart.](https://bitcore.cc/wp-content/uploads/2018/06/timeline014.png)
 
