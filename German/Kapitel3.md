@@ -2,8 +2,8 @@
 
 ## Lösung und technische Spezifikation
 
-Bitcore verfügt über wichtige Innovationen, die es sowohl im persönlichen als auch im geschäftlichen Kontext zu einem besonders gut geeigneten täglichen Zahlungsmittel machen. 
-Jede dieser Innovationen, sowie ihre Rolle in der gesteigerten Effizienz und Benutzbarkeit von Bitcore, werden in diesem Abschnitt detailliert beschrieben.
+Da Bitcore wichtige Innovationen implementiert hat, ist Bitcore sowohl im persönlichen als auch im geschäftlichen Kontext besonders gut als täglichen Zahlungsmittel geeignetet. 
+Jede dieser Innovationen und ihre jeweilige Rolle in der gesteigerten Effizienz und Benutzbarkeit von Bitcore, werden in diesem Abschnitt detailliert beschrieben.
 
 Für einen schnellen Überblick sind die wichtigsten technischen Spezifikationen von Bitcore hier zusammengefasst:
 
@@ -12,14 +12,14 @@ Für einen schnellen Überblick sind die wichtigsten technischen Spezifikationen
 **Ticker BTX**
 
 * Gestartet am 24. April 2017
-* Maximale Coin Anzahl von 21 Millionen
+* Maximale Coinanzahl von 21 Millionen
 * Blockgröße 10MB (20MB SegWit)
-* 2,5 min durchschnittliche Blockzeit
+* Durchschnittliche Blockzeit von 2,5 Minuten
 * Aktuelle Blockchaingröße ca. 950 MB
 * Timetravel10 (GPU) Mining Algorithmus
 * SegWit und Bloom aktiviert
-* Algorithmus "Smooth diff64_15" zur Schwierigkeitsanpassung
-* Faire Verteilung: BTC Claiming und Airdrops
+* Reibungslosen Schwierigkeitsanpassung durch diff64_15 Algorithmus
+* Faire Verteilung durch BTC Claiming und Airdrops
 
 > "[Bitcore] ist innovativ, indem es die Dinge reinigt" -- Jimmy Song (VII), Bitcoin Hauptentwickler
 
@@ -29,7 +29,7 @@ Für einen schnellen Überblick sind die wichtigsten technischen Spezifikationen
 ## 3.2 Blockchain und Algorithmen
 
 
-### 3.2.1 Algorithmus Smooth diff64_15 zur Schwierigkeitsanpassung
+### 3.2.1 Reibungslosen Schwierigkeitsanpassung durch diff64_15 Algorithmus
 
 
 ### 3.2.2 Kürzere Blockzeiten
@@ -43,14 +43,15 @@ Der abgetrennte Zeuge (SegWit) wurde im April 2017 auf der Bitcore Blockchain mi
 
 SegWit bietet mehrere unmittelbare Vorteile:
 
-* Eliminierung unerwünschter Transaktions Formbarkeit
+* Eliminierung unerwünschter Transaktionsveränderungen
 * Kapazitätssteigerung
-* Gewichtung der Daten auf der Grundlage, wie Sie die Knoten Leistung beeinflusst
-* Unterschriften Abdeckung von Wert
-* Lineare Skalierung von sighash-Operationen
+* Gewichtung der Daten in Abhängigkeit der Bitcore-Node Performance
+* Signature Wertabdeckung
+* Lineare Skalierung von sighash Operationen
 * Erhöhte Sicherheit für Multisig
-* Effizientere almost-Full-Node Sicherheit
+* Effizientere Bitcore-Node Sicherheit
 * Script Versionierung
+
 
 ### 3.2.5 Lightning Network Kompatibilität
 
