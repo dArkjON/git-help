@@ -4,7 +4,7 @@
 > "Eine reine Peer-to-Peer Version von elektronischem Bargeld würde es ermöglichen, Online-Zahlungen direkt von einer Partei zur anderen zu schicken, ohne dass ein Finanzinstitut involviert sein muss. Digitale Signaturen eignen sich als Teil der Lösung. Sobald jedoch ein vertrauenswürdiger Dritter benötigt wird, um Doppelausgaben zu verhindern, gehen die Hauptvorteile von digitale Signaturen verloren. Wir schlagen als Lösung für das Problem der doppelten Ausgaben die Nutzung eines Peer-to-Peer-Netzwerkes vor."
 *-- Satoshi Nakamoto, 2008*
 
-Es war diese Aussage, die das moderne Konzept der kryptowährung und in der Tat der dezentralen Finanzierung hervorbrachte. Bis Satoshi Nakamoto das ursprüngliche Bitcoin Konzept entwarf, verließen sich praktisch alle Welt Finanzen auf die zentralen Behörden, genauer: zentrale Punkte des Scheiterns. Die Sicherheit des Geldes aller war abhängig von der Sicherheit und der wirtschaftlichen Gesundheit der Bank oder des Finanzinstituts, die im Besitz der Fonds sind.
+Es war diese Aussage, die das moderne Konzept der Kryptowährung und in der Tat der dezentralen Finanzierung hervorbrachte. Bis Satoshi Nakamoto das ursprüngliche Bitcoin Konzept entwarf, verließ sich praktisch die ganze Finanzwelt auf die zentralen Behörden - der zentrale Schwachpunkt. Die Sicherheit des Geldes aller war abhängig von der Sicherheit und der wirtschaftlichen Gesundheit der Bank oder des Finanzinstituts, die im Besitz der Fonds sind.
 
 Jeder Fall von Sicherheitsbruch, Fehlverhalten oder Bankrott in der Finanzwelt bedeutete, dass diejenigen, die sich auf diese Institutionen verließen, um Ihre Ersparnisse zu schützen, potenziell ohne die notwendigen Mittel bleiben würden.
 
@@ -14,12 +14,12 @@ Der incentivisierte Prozess, der "Mining" genannt wird, war und ist für das Fun
 
 In diesem Whitepaper werden wir uns die Eigenschaften des ursprünglichen Bitcoin Protokolls – und die Art und Weise, wie Bitcore die ursprünglichen Eigenschaften von Bitcoin erhalten und verbessert hat, genauer ansehen.
 
-Dies wird zeigen, warum und wie das Bitcore Protokoll eine leistungsfähige Alternative kryptowährung ist, die dazu beiträgt, einige der Anwendungsfälle für kryptowährungen zu erleichtern, die durch die derzeit existierende Krypto-Technologie noch nicht erreichbar sind.
+Dies wird zeigen, warum und wie das Bitcore Protokoll eine leistungsfähige Alternative kryptowährung ist, die dazu beiträgt, einige der Anwendungsfälle für kryptowährungen zu erleichtern, die durch die derzeit existierende Kryptotechnologie noch nicht erreichbar sind.
 
 ## 2.1 Bitcore als Open Source
 Sowohl Bitcoin als auch Bitcore sind wirklich Open-Source-Bemühungen. Die Bitcore Community spürt, dass dies im Einklang mit dem dezentralen, partizipativen und gemeinschaftsorientierten Geist von Bitcore steht.
 
-Insbesondere war die Entwicklung von Bitcore nur möglich, weil Bitcoin die folgenden Eigenschaften von Open Source einhält, wie es die Open Source initiativev vorschreibt-und im Gegenzug unterliegt die Bitcore Code Basis den gleichen Bedingungen und Freiheitsgrade:
+Insbesondere war die Entwicklung von Bitcore nur möglich, weil Bitcoin die folgenden Eigenschaften von Open Source einhält, wie es die Open Source initiativ vorschreibt und im Gegenzug unterliegt die Bitcore Codebasis den gleichen Bedingungen und Freiheitsgraden:
 
 1. Freie Umverteilung
 2. Aufnahme des Quellcodes
@@ -79,17 +79,17 @@ Alice hält 20 Bitcore (BTX) in Ihrem Wallet. Sie hat ihre Geldbörse für einen
 ```
 20 BTX * 5% = 1 BTX
 ```
-So erhält Alice einen weitere BTX Coin und trägt nach dem Januar-airdrop insgesamt 21 BTX in Ihrem Portemonnaie.
+So erhält Alice einen weitere BTX Coin und besitzt nach dem Airdrop im Januar insgesamt 21 BTX in ihrer Wallet.
 
 ### 2.2.5 Warum ein Hybrid Fork und der Airdrop?
 Der entscheidende Unterschied zwischen diesem Modell und dem typischen harten Fork in anderen Modellen ist folgendes: anstatt eine identische Anzahl aller ausstehenden Coins zu verteilen, die zum Zeitpunkt des Schnappschusses auf der Blockchain ausgegeben worden waren, wurden nur 50% von BTX Coins wurden auf diese Weise verteilt. Die daraus resultierenden 50% wurden nur an aktive BTX-Nutzer verteilt. Auf diese Weise stellte das Bitcore Team sicher, dass passive Inhaber massiver Mengen an Bitcoin, sogenannte Wale, nicht automatisch auch zu "Bitcore Walen" werden und damit die Machtverhältnisse innerhalb der Bitcore Community verzerren sowie die zirkulierenden Versorgung von Bitcore in einer Weise, die zukünftigen Operationen des Ökosystems Schaden würde. Stattdessen gelang es dem Bitcore Team, eine gleichberechtigtere Verteilung der Coins zu erreichen als bisherige Bitcoin Forks, entsprechend den dezentralen und partizipativen idealen der Bitcore Community.
 
 ## Kein ICO
-Als Hybrid Fork wurde Bitcore`s Launch nicht durch einem "Initial Coin Offering (ICO)" gestartet oder finanziert.
+Als Hybrid Fork wurde Bitcore's Launch nicht durch einem "Initial Coin Offering (ICO)" gestartet oder finanziert.
 
-Dies war eine bewusste Entscheidung der Bitcore Community, die die Chancengleichheit und die Teilhabe potenzieller BTX-Nutzer auf der ganzen Welt fördern sollte. Wie Trends und Entwicklungen in der Krypto-Sphäre in den letzten Jahren gezeigt haben, ziehen ICOs Spekulanten an, wodurch die Volatilität der zugrunde liegenden kryptowährung zunimmt und der alltägliche nutzen abnimmt. Darüber hinaus führen ICOs
-zu einem Zustrom von vermögenden Privatanlegern, die sich ihren Weg in unverhältnismäßige macht und Einfluss auf Krypto-Community "kaufen". Zu guter Letzt gelten für ICOs, deren Teams in verschiedenen Ländern ansässig sind, unterschiedliche regulatorische Rahmenbedingungen, von denen viele Bürger bestimmter Länder ausdrücklich von der Teilnahme an ICOs ausschließen.
+Dies war eine bewusste Entscheidung der Bitcore Community, die die Chancengleichheit und die Teilhabe potenzieller BTX-Nutzer auf der ganzen Welt fördern sollte. Wie Trends und Entwicklungen in der Krypto Sphäre in den letzten Jahren gezeigt haben, ziehen ICOs Spekulanten an, wodurch die Volatilität der zugrunde liegenden kryptowährung zunimmt und der alltägliche nutzen abnimmt. Darüber hinaus führen ICOs
+zu einem Zustrom von vermögenden Privatanlegern, die sich ihren Weg in unverhältnismäßige macht und Einfluss auf Krypto Community "kaufen". Zu guter Letzt gelten für ICOs, deren Teams in verschiedenen Ländern ansässig sind, unterschiedliche regulatorische Rahmenbedingungen, von denen viele Bürger bestimmter Länder ausdrücklich von der Teilnahme an ICOs ausschließen.
 
-Diese willkürlichen Einschränkungen sind für die Bitcore Community nicht akzeptabel. Wir bemühen uns, ein nützliches Krypto-Ökosystem zu schaffen, das für alle Interessierten gleichermaßen zugänglich is - unabhängig von Standort und Nationalität.
+Diese willkürlichen Einschränkungen sind für die Bitcore Community nicht akzeptabel. Wir bemühen uns, ein nützliches Krypto Ökosystem zu schaffen, das für alle Interessierten gleichermaßen zugänglich is - unabhängig von Standort und Nationalität.
 
 Um so unabhängig von den lokalen Vorschriften wie möglich zu sein, haben wir uns entschieden, als gemeinnütziges Konsortium interessierter Personen zu agieren. Die Mitgliedschaft im Gründungsteam und die Teilnahme an der Bitcore Community sind ausschließlich auf individuelle Fähigkeiten, Interesse und Engagement angewiesen, nicht auf willkürliche geografische Grenzen.
