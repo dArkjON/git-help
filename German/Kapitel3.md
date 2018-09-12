@@ -1,6 +1,6 @@
 # Kapitel 3
 
-## Lösung und technische Spezification
+## Lösung und technische Spezifikation
 
 Bitcore verfügt über wichtige Innovationen, die es sowohl im persönlichen als auch im geschäftlichen Kontext zu einem besonders gut geeigneten täglichen Zahlungsmittel machen. 
 Jede dieser Innovationen, sowie ihre Rolle in der gesteigerten Effizienz und Benutzbarkeit von Bitcore, werden in diesem Abschnitt detailliert beschrieben.
