@@ -9,6 +9,10 @@
 ## Installation on Ubuntu 16.04
 
 ```sh
+sudo add-apt-repository ppa:jonathonf/python-3.6
+sudo apt-get update
+apt-get install python3.5 python3.6 pypy
+
 make
 python setup.py --help-commands
 python setup.py build
