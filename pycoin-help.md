@@ -42,7 +42,7 @@ pip install tox
 ```
 
 ## Naming
-Compare naming on http://bip32.org/ with naming with Crypto coin utility ku ("key utility").
+Compare naming on http://bip32.org/ with naming of Crypto coin utility ku ("key utility").
 
 * BIP32 Extended Key = wallet_key
 * Depth = tree_depth
