@@ -40,3 +40,14 @@ Run test to check the code base:
 pip install tox
 ./test.sh
 ```
+
+## Naming
+Compare naming on http://bip32.org/ with naming with Crypto coin utility ku ("key utility").
+
+* BIP32 Extended Key = wallet_key
+* Depth = tree_depth
+* Key = Private Key (WIF) = wif
+* Derivation Path: Info m = ``-s 0H/0/0/0`` 
+* Derived Public Key = public_version
+* Public Key (Hex) = key_pair_as_sec
+* Address = address
