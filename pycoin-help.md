@@ -51,3 +51,5 @@ Compare naming on http://bip32.org/ with naming of Crypto coin utility ku ("key 
 * Derived Public Key = public_version
 * Public Key (Hex) = key_pair_as_sec
 * Address = address
+
+Use wallet_key (= BIP32 Extended Key) as input check on http://bip32.org/
