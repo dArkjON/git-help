@@ -1,5 +1,4 @@
-[[alt_libraries]]
-=== Libraries and Toolkits
+= Libraries and Toolkits
 
 There are many alternative libraries and toolkits. These are implemented in a variety of programming languages, offering programmers native interfaces in their preferred language.
 
@@ -7,7 +6,7 @@ The following sections list some of the best libraries and toolkits, organized b
 Part of https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch03.asciidoc#alternative-clients-libraries-and-toolkits
 
 
-==== JavaScript
+== JavaScript
 http://bcoin.io/[bcoin]:: A modular and scalable full-node implementation with API
 * BTC: https://github.com/bcoin-org/bcoin
 * BCC: https://github.com/bcoin-org/bcash
@@ -18,7 +17,7 @@ https://github.com/bitcoinjs[Tools]:: Open Source Organisation for Bitcoin JavaS
 * BTC: https://github.com/bitcoinjs/bitcoinjs-lib
 * LTC: https://github.com/RossMathew/litecoinjs
 
-==== Java
+== Java
 https://bitcoinj.github.io[bitcoinj]:: A Java full-node client library
 * BTC: https://github.com/bitcoinj/bitcoinj
 * BTX: https://github.com/LIMXTEC/bitcorej
@@ -26,33 +25,33 @@ https://bitcoinj.github.io[bitcoinj]:: A Java full-node client library
 * LTC: https://github.com/czarcoin-evolve/litecoinj
 
 
-==== PHP
+== PHP
 https://github.com/bit-wasp/bitcoin-php[bitwasp/bitcoin]:: A PHP bitcoin library, and related projects
 https://github.com/cryptoapi/Payment-Gateway[PHP Payment Class]:: Bitcoin/Altcoins PHP Payment Class.
 
-==== Python
+== Python
 https://github.com/petertodd/python-bitcoinlib[python-bitcoinlib]::  A Python bitcoin library, consensus library, and node by Peter Todd
 https://github.com/richardkiss/pycoin[pycoin]:: A Python bitcoin library by Richard Kiss
 https://github.com/vbuterin/pybitcointools[pybitcointools]:: A Python bitcoin library by Vitalik Buterin
 
 
-==== Ruby
+== Ruby
 https://github.com/sinisterchipmunk/bitcoin-client[bitcoin-client]:: A Ruby library wrapper for the JSON-RPC API
 
 
-==== Go
+== Go
 https://github.com/btcsuite/btcd[btcd]:: A Go language full-node bitcoin client
 
 
-==== Rust
+== Rust
 https://github.com/apoelstra/rust-bitcoin[rust-bitcoin]:: Rust bitcoin library for serialization, parsing, and API calls
 
 
-==== C#
+== C#
 https://github.com/MetacoSA/NBitcoin[NBitcoin]:: Comprehensive bitcoin library for the .NET framework
 
 
-==== Objective-C
+== Objective-C
 https://github.com/oleganza/CoreBitcoin[CoreBitcoin]:: Bitcoin toolkit for ObjC and Swift
 
 Many more libraries exist in a variety of other programming languages and more are created all the time.
