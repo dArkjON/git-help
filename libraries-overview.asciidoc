@@ -28,6 +28,7 @@ https://bitcoinj.github.io[bitcoinj]:: A Java full-node client library
 == PHP
 https://github.com/bit-wasp/bitcoin-php[bitwasp/bitcoin]:: A PHP bitcoin library, and related projects
 https://github.com/cryptoapi/Payment-Gateway[PHP Payment Class]:: Bitcoin/Altcoins PHP Payment Class.
+* https://github.com/cryptoapi/
 
 == Python
 https://github.com/petertodd/python-bitcoinlib[python-bitcoinlib]::  A Python bitcoin library, consensus library, and node by Peter Todd
