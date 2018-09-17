@@ -24,6 +24,7 @@ https://bitcoinj.github.io[bitcoinj]:: A Java full-node client library
 * BCC: https://github.com/GENERALBYTESCOM/bitcoincashj
 * LTC: https://github.com/czarcoin-evolve/litecoinj
 * Speedcoin: https://github.com/spdcoin/Speedcoinj
+* PAY Coin: https://github.com/projectpai/bitcoinj/tree/paicoin
 
 
 == PHP
