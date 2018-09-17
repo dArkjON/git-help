@@ -1,32 +1,34 @@
 [[alt_libraries]]
-=== Alternative Clients, Libraries, and Toolkits
+=== Libraries and Toolkits
 
-((("Bitcoin Core", "alternatives to", id="BCalt03")))((("clients, libraries, and toolkits", id="clients03")))((("libraries, clients, and toolkits", id="librar03")))((("toolkits, libraries, and clients", id="toolkit03")))((("third-party API clients", id="thirdpart03")))There are many alternative clients, libraries, toolkits, and even full-node implementations in the bitcoin ecosystem. These are implemented in a variety of programming languages, offering programmers native interfaces in their preferred language.
+There are many alternative libraries and toolkits. These are implemented in a variety of programming languages, offering programmers native interfaces in their preferred language.
 
-The following sections list some of the best libraries, clients, and toolkits, organized by programming languages.
-
-
-==== C/C++
-https://github.com/bitcoin/bitcoin[Bitcoin Core] :: The reference implementation of bitcoin
-https://github.com/libbitcoin/libbitcoin[libbitcoin]:: Cross-platform C++ development toolkit, node, and consensus library
-https://github.com/libbitcoin/libbitcoin-explorer[bitcoin explorer]:: Libbitcoin's command-line tool
-https://github.com/jgarzik/picocoin[picocoin]:: A C language lightweight client library for bitcoin by Jeff Garzik
+The following sections list some of the best libraries and toolkits, organized by programming languages.
+Part of https://github.com/bitcoinbook/bitcoinbook/blob/develop/ch03.asciidoc#alternative-clients-libraries-and-toolkits
 
 
 ==== JavaScript
 http://bcoin.io/[bcoin]:: A modular and scalable full-node implementation with API
+* BTC: https://github.com/bcoin-org/bcoin
+* BCC: https://github.com/bcoin-org/bcash
 https://bitcore.io/[Bitcore] :: Full node, API, and library by Bitpay
-https://github.com/bitcoinjs/bitcoinjs-lib[BitcoinJS] :: A pure JavaScript Bitcoin library for node.js and browsers
-
+* BTC: https://github.com/bitpay
+* BTX: https://github.com/LIMXTEC
+https://github.com/bitcoinjs[Tools]:: Open Source Organisation for Bitcoin JavaScript libraries
+* BTC: https://github.com/bitcoinjs/bitcoinjs-lib
+* LTC: https://github.com/RossMathew/litecoinjs
 
 ==== Java
 https://bitcoinj.github.io[bitcoinj]:: A Java full-node client library
-https://bitsofproof.com[Bits of Proof (BOP)]:: A Java enterprise-class implementation of bitcoin
+* BTC: https://github.com/bitcoinj/bitcoinj
+* BTX: https://github.com/LIMXTEC/bitcorej
+* BCC: https://github.com/GENERALBYTESCOM/bitcoincashj
+* LTC: https://github.com/czarcoin-evolve/litecoinj
 
 
 ==== PHP
 https://github.com/bit-wasp/bitcoin-php[bitwasp/bitcoin]:: A PHP bitcoin library, and related projects
-
+https://github.com/cryptoapi/Payment-Gateway[PHP Payment Class]:: Bitcoin/Altcoins PHP Payment Class.
 
 ==== Python
 https://github.com/petertodd/python-bitcoinlib[python-bitcoinlib]::  A Python bitcoin library, consensus library, and node by Peter Todd
