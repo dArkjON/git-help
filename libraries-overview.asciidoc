@@ -23,12 +23,15 @@ https://bitcoinj.github.io[bitcoinj]:: A Java full-node client library
 * BTX: https://github.com/LIMXTEC/bitcorej
 * BCC: https://github.com/GENERALBYTESCOM/bitcoincashj
 * LTC: https://github.com/czarcoin-evolve/litecoinj
+* Speedcoin: https://github.com/spdcoin/Speedcoinj
 
 
 == PHP
 https://github.com/bit-wasp/bitcoin-php[bitwasp/bitcoin]:: A PHP bitcoin library, and related projects
 https://github.com/cryptoapi/Payment-Gateway[PHP Payment Class]:: Bitcoin/Altcoins PHP Payment Class.
 * https://github.com/cryptoapi/
+* https://gourl.io/coin-voting.html
+* https://gourl.io/development.html
 
 == Python
 https://github.com/petertodd/python-bitcoinlib[python-bitcoinlib]::  A Python bitcoin library, consensus library, and node by Peter Todd
