@@ -35,17 +35,7 @@ https://github.com/cryptoapi/Payment-Gateway[PHP Payment Class]:: Bitcoin/Altcoi
 * https://gourl.io/development.html
 
 == Python
-https://github.com/petertodd/python-bitcoinlib[python-bitcoinlib]::  A Python bitcoin library, consensus library, and node by Peter Todd
 https://github.com/richardkiss/pycoin[pycoin]:: A Python bitcoin library by Richard Kiss
-https://github.com/vbuterin/pybitcointools[pybitcointools]:: A Python bitcoin library by Vitalik Buterin
-
-
-== Ruby
-https://github.com/sinisterchipmunk/bitcoin-client[bitcoin-client]:: A Ruby library wrapper for the JSON-RPC API
-
-
-== Go
-https://github.com/btcsuite/btcd[btcd]:: A Go language full-node bitcoin client
 
 
 == Rust
@@ -55,8 +45,5 @@ https://github.com/apoelstra/rust-bitcoin[rust-bitcoin]:: Rust bitcoin library f
 == C#
 https://github.com/MetacoSA/NBitcoin[NBitcoin]:: Comprehensive bitcoin library for the .NET framework
 
-
-== Objective-C
-https://github.com/oleganza/CoreBitcoin[CoreBitcoin]:: Bitcoin toolkit for ObjC and Swift
 
 Many more libraries exist in a variety of other programming languages and more are created all the time.
