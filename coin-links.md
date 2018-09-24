@@ -7,6 +7,7 @@
 * A command-line tool that derives bip32 addresses and private keys. (https://github.com/dan-da/hd-wallet-derive)
 * Dead-simple BIP32 (HD) wallet creation for BTC, BTX... (https://github.com/dalijolijo/pywallet)
 * provides crypto currency specific information such as key prefixes, DNS seeds, bip32, bip44, etc, available in JSON format. (https://github.com/dan-da/coinparams)
+* Bitcoin Forks and Airdrops (https://forkdrop.io/bitcore)
 
 ## BSD
 * Mnemonic Code Converter (https://iancoleman.io/bip39)
