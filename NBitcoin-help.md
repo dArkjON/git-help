@@ -33,7 +33,7 @@ txindex=1
 
 Start Bitsend daemon in regtest:
 ```sh
-screen ./bitsendd --regtest
+screen ./bitsendd --regtest --datadir=/root/.bitsend/regtest/
 ```
 
 Execute CLI command to get the genesis raw tx block:
