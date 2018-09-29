@@ -24,8 +24,9 @@ If the wallet version is 15.x the CLI getblock command is with 0 in the end (ins
 #### For Testnet (BitSend)
 Create config file /root/.bitsend/testnet3/bitsend.conf
 ```sh
+rpcuser=a
 rpcpassword=1
-rpcport=18332
+rpcport=8329
 txindex=1
 ```
 
@@ -43,6 +44,7 @@ Execute CLI command to get the genesis raw tx block:
 #### For Regtest (BitSend)
 Create config file /root/.bitsend/regtest/bitsend.conf
 ```sh
+rpcuser=a
 rpcpassword=1
 rpcport=18332
 txindex=1
@@ -55,7 +57,7 @@ screen ./bitsendd -regtest -conf=/root/.bitsend/regtest/bitsend.conf
 
 Execute CLI command to get the genesis raw tx block:
 ```sh
-./bitsend-cli -regtest -rpcuser=a -rpcpassword=1 -rpcport=8329 getblock 00000d500e703fb0d5efc44e6987e2b479bef162c0934d95cdcb5a9808e8d2db false
+./bitsend-cli -regtest -rpcuser=a -rpcpassword=1 -rpcport=18332 getblock 00000d500e703fb0d5efc44e6987e2b479bef162c0934d95cdcb5a9808e8d2db false
 01000000000000000000000000000000000000000000000000000000000000000000000057df57a347a2e5cf9b6973bbdf7a8585a0b595a8a8d7c7b6318cb79489f6c4c03f4f9253f0ff0f1ecf6713d60101000000010000000000000000000000000000000000000000000000000000000000000000ffffffff4304ffff001d01043b6c696d65636f696e58206f667265636520616d706c69612067616d6120646520736572766963696f732079206d656a6f7261732070617261207469ffffffff0100e40b54020000004341040184710fa689ad5023690c80f3a49c8f13f8d45b8c857fbcbc8bc4a8e4d3eb4b10f4d4604fa08dce601aaf0f470216fe1b51850b4acf21b179c45070ac7b03a9ac00000000
 ```
 
