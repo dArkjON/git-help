@@ -107,3 +107,36 @@ Activate new ALTCOIN in NBitcoin.Tests/NodeBuilderEx.cs
 ```sh
 dotnet test NBitcoin.Tests.csproj --filter "Altcoins=Altcoins" -p:ParallelizeTestCollections=false --framework netcoreapp2.1
 ```
+
+### separate tests
+The highest debug level is ``-v diag`` 
+```sh
+#BTX
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.RepositoryCanTrackAddresses"  | tee log/RepositoryCanTrackAddresses 
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanSerializeKeyPathFast"  | tee log/CanSerializeKeyPathFast
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.ShouldBlockIfNoChange"  | tee log/ShouldBlockIfNoChange
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanEasilySpendUTXOs"  | tee log/CanEasilySpendUTXOs
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.ShowRBFedTransaction" | tee log/ShowRBFedTransaction
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanGetUnusedAddresses" | tee log/CanGetUnusedAddresses
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanSendAzureServiceBusNewBlockEventMessage" | tee log/CanSendAzureServiceBusNewBlockEventMessage
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanSendAzureServiceBusNewTransactionEventMessage" | tee log/CanSendAzureServiceBusNewTransactionEventMessage
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanUseWebSockets" | tee log/CanUseWebSockets
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanUseWebSockets2" | tee log/CanUseWebSockets2 
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanTrack4" | tee log/CanTrack4
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanTrack3" | tee log/CanTrack3
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanTrack2" | tee log/CanTrack2
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanTrackSeveralTransactions"| tee log/CanTrackSeveralTransactions
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanReserveAddress" -v diag | tee log/CanReserveAddress.diag
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanParseDerivationScheme" | tee log/CanParseDerivationScheme
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanGetStatus" -v diag | tee log/CanGetStatus.diag
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanGetTransactionsOfDerivation" | tee log/CanGetTransactionsOfDerivation
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanTrack5" | tee log/CanTrack5
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanRescan" | tee log/CanRescan
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanTrack" | tee log/CanTrack
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanTopologicalSort" | tee log/CanTopologicalSort
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanTopologicalSortTx" | tee log/CanTopologicalSortTx
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanBroadcast" | tee log/CanBroadcast
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanReserveDirectAddress" | tee log/CanReserveDirectAddress
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanGetKeyInformations" | tee log/CanGetKeyInformations
+dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanTrackDirect" | tee log/CanTrackDirect
+```
