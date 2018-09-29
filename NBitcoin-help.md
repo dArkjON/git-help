@@ -105,7 +105,9 @@ Find all needed parameters in the following ALTCOIN source files:
 ## 4) Test
 Activate new ALTCOIN in NBitcoin.Tests/NodeBuilderEx.cs
 ```sh
-dotnet test NBitcoin.Tests.csproj --filter "Altcoins=Altcoins" -p:ParallelizeTestCollections=false --framework netcoreapp2.1
+mkdir log
+dotnet test NBitcoin.Tests.csproj --filter "Altcoins=Altcoins" -p:ParallelizeTestCollections=false --framework netcoreapp2.1 | tee log/nbitcoin.tests.ALTCOIN.log
+grep -r "Failed  " log/nbitcoin.tests.ALTCOIN.log
 ```
 
 ### separate tests
