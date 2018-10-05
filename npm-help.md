@@ -21,6 +21,26 @@ npm install NEW_PKG@^6.0.0
 npm audit fix
 ```
 
+## package version
+Show installed version of package X
+```sh
+npm view lodash version
+4.17.11
+```
+Show available package versions
+```sh
+npm view lodash versions
+[ '0.1.0',
+  '0.2.0',
+  '0.2.1',
+  '0.2.2',
+  ...
+    '4.17.9',
+  '4.17.10',
+  '4.17.11' ]
+```
+
+
 ## Troubleshooting
 Error:
 ```sh
