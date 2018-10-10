@@ -25,21 +25,26 @@ def swap_palette(filename, n):
             # decode the chunk header
             length, chtype = struct.unpack('>L4s', chunkstr)
             # we only care about palette chunks
-            if chtype == 'PLTE':
-                curpos = f.tell()
-                paldata = f.read(length)
-		# replace palette entry n with white, the rest with black
-                paldata = ("\x00\x00\x00" * n) + "\xff\xff\xff" + ("\x00\x00\x00" * (256 - n - 1))
-		# replace palette entry 127 to 127 + n with white, the rest with black
-                #paldata = ("\x00\x00\x00" * 127) + ("\xff\xff\xff"*n) + ("\x00\x00\x00" * (256 - (127 + n)))
+#           if chtype == 'PLTE':
+            curpos = f.tell()
+            paldata = f.read(length)
+            
+            # replace palette entry n with white, the rest with black
+            #for i in {0..255}; do ./change_palette.py BTX.png "single-color-${i}.png" "${i}"; done
+            #paldata = ("\x00\x00\x00" * n) + "\xff\xff\xff" + ("\x00\x00\x00" * (256 - n - 1))
+            
+            # replace palette entry 127 to 127 + n with white, the rest with black
+            #for i in {0..128}; do ./change_palette.py BTX.png "range-color-127+${i}.png" "${i}"; done
+            paldata = ("\x00\x00\x00" * 127) + ("\xff\xff\xff"*n) + ("\x00\x00\x00" * (256 - (127 + n)))
 
                 # go back and write the modified palette in-place
-                f.seek(curpos)
-                f.write(paldata)
-                f.write(struct.pack('>L', crc32(chtype+paldata)&0xffffffff))
-            else:
+            f.seek(curpos)
+            f.write(paldata)
+            f.write(struct.pack('>L', crc32(chtype+paldata)&0xffffffff))
+ #          else:
                 # skip over non-palette chunks
-                f.seek(length+4, os.SEEK_CUR)
+  #              f.seek(length+4, os.SEEK_CUR)
+#		print 'else'
 
 if __name__ == '__main__':
     import shutil
