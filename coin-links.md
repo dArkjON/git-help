@@ -6,7 +6,11 @@
 * Dead-simple BIP32 (HD) wallet creation for BTC, BTX... (https://github.com/dalijolijo/pywallet)
 * provides crypto currency specific information such as key prefixes, DNS seeds, bip32, bip44, etc, available in JSON format. (https://github.com/dan-da/coinparams)
 * Bitcoin Forks and Airdrops (https://forkdrop.io/bitcore)
+BIP-0032 - SLIP132
 * Registered HD version bytes, e.g. xpub, ypub, zpub, Ypub, Zpub (https://github.com/satoshilabs/slips/blob/master/slip-0132.md#registered-hd-version-bytes)
+BIP-0173 - SLIP173
+* Registered human-readable parts for BIP-0173; for usage in Bech32 encoding of witness programs (https://github.com/satoshilabs/slips/blob/master/slip-0173.md#registered-human-readable-parts)
+
 
 ## BSD
 * A command-line tool that derives bip32 addresses and private keys. (https://github.com/dan-da/hd-wallet-derive)
