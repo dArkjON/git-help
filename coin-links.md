@@ -6,10 +6,12 @@
 * Dead-simple BIP32 (HD) wallet creation for BTC, BTX... (https://github.com/dalijolijo/pywallet)
 * provides crypto currency specific information such as key prefixes, DNS seeds, bip32, bip44, etc, available in JSON format. (https://github.com/dan-da/coinparams)
 * Bitcoin Forks and Airdrops (https://forkdrop.io/bitcore)
-BIP-0032 - SLIP132
+**BIP-0032 - SLIP132**
 * Registered HD version bytes, e.g. xpub, ypub, zpub, Ypub, Zpub (https://github.com/satoshilabs/slips/blob/master/slip-0132.md#registered-hd-version-bytes)
-BIP-0173 - SLIP173
+**BIP-0173 - SLIP173**
 * Registered human-readable parts for BIP-0173; for usage in Bech32 encoding of witness programs (https://github.com/satoshilabs/slips/blob/master/slip-0173.md#registered-human-readable-parts)
+**BIP-0044 - SLIP-0044**
+* BIP-0044 defines a logical hierarchy for deterministic wallets. Level 2 of the hierarchy describes a coin type in use. (https://github.com/satoshilabs/slips/blob/master/slip-0044.md)
 
 
 ## BSD
