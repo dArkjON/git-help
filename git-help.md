@@ -116,6 +116,17 @@ git checkout -b 3.1
 git push --set-upstream origin 3.1
 ```
 
+## Reset branch of forked project with remote branch
+example: master branch
+```sh
+git remote add upstream https://github.com/whoever/whatever.git
+git fetch upstream master
+git checkout master
+git reset --hard upstream/master
+git clean -f -d
+git push --force
+```
+
 ## Remove commits - Cherry pick (Be careful!)
 Example git log
 ```sh
@@ -158,7 +169,7 @@ git remote add upstream https://github.com/whoever/whatever.git
 
 Fetch all the branches of that remote into remote-tracking branches, such as upstream/master:
 ```sh
-git fetch upstream [branch]
+git fetch upstream master
 ```
 
 Make sure that you're on your master branch:
