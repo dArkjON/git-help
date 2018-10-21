@@ -1,4 +1,4 @@
-# HowTo - NBitcoin Integration
+# HowTo - NBitcoin / NBXplorer Integration
 https://github.com/MetacoSA/NBitcoin
 
 See reference implementation of BitCore here: https://github.com/dalijolijo/NBitcoin/commit/c9594de09641fbf242644d357e61c2952e6a5bba
@@ -104,7 +104,7 @@ Find all needed parameters in the following ALTCOIN source files:
 - src/consensus/consensus.h
 
 
-## 4) Test
+## 4) NBitcoin Test
 Activate new ALTCOIN in NBitcoin.Tests/NodeBuilderEx.cs
 ```sh
 mkdir log
@@ -112,7 +112,7 @@ dotnet test NBitcoin.Tests.csproj --filter "Altcoins=Altcoins" -p:ParallelizeTes
 grep -r "Failed  " log/nbitcoin.tests.ALTCOIN.log
 ```
 
-### separate tests
+### NBXplorer Tests
 The highest debug level is ``-v diag`` 
 ```sh
 #BTX
