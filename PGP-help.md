@@ -1,0 +1,71 @@
+# PGP-help
+
+* Link: https://steemit.com/security/@the-tech-guy/signing-git-commits-with-gpg-on-windows
+
+```sh
+git config --global gpg.program "C:/Program Files/GnuPG/bin/gpg.exe"
+git config --global user.email "37987466+dalijolijo@users.noreply.github.com"
+git config --global user.name "David"
+git config --global user.signingkey 4E1337DE6C2AC05F9CD3BBF2C692FAAFAD272693 
+```
+
+save passphrase:
+```sh
+git config --global commit.gpgsign true
+```
+
+My puplic PGP key:
+```sh
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+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
+=+5UU
+-----END PGP PUBLIC KEY BLOCK-----
+```
