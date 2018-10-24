@@ -1,6 +1,6 @@
 # PGP-help
 
-* Link: https://steemit.com/security/@the-tech-guy/signing-git-commits-with-gpg-on-windows
+good description: https://steemit.com/security/@the-tech-guy/signing-git-commits-with-gpg-on-windows
 
 ```sh
 git config --global gpg.program "C:/Program Files/GnuPG/bin/gpg.exe"
@@ -14,7 +14,7 @@ save passphrase:
 git config --global commit.gpgsign true
 ```
 
-My puplic PGP key:
+my puplic PGP key:
 ```sh
 -----BEGIN PGP PUBLIC KEY BLOCK-----
 
