@@ -113,9 +113,17 @@ grep -r "Failed  " log/nbitcoin.tests.ALTCOIN.log
 ```
 
 ### NBXplorer Tests
+For all test execute:
+```sh
+cd NBXplorer.Tests
+dotnet test
+```
+
 The highest debug level is ``-v diag`` 
 ```sh
 #BTX
+cd NBXplorer.Tests
+mkdir log
 dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.RepositoryCanTrackAddresses"  | tee log/RepositoryCanTrackAddresses 
 dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.CanSerializeKeyPathFast"  | tee log/CanSerializeKeyPathFast
 dotnet test --filter "FullyQualifiedName=NBXplorer.Tests.UnitTest1.ShouldBlockIfNoChange"  | tee log/ShouldBlockIfNoChange
