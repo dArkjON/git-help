@@ -30,9 +30,9 @@ rpcport=8329
 txindex=1
 ```
 
-Start Bitsend daemon in regtest:
+Start Bitsend daemon in testnet:
 ```sh
-screen ./bitsendd -regtest -conf=/root/.bitsend/testnet3/bitsend.conf
+screen ./bitsendd -testnet -conf=/root/.bitsend/testnet3/bitsend.conf
 ```
 
 Execute CLI command to get the genesis raw tx block:
@@ -72,12 +72,12 @@ txindex=1
 
 Start Bitsend daemon in regtest:
 ```sh
-screen ./bitcloudd -conf=/root/.bitcloud/regtest/bitcloud.conf -listen=0
+screen ./bitcloudd -regtest -conf=/root/.bitcloud/regtest/bitcloud.conf -listen=0
 ```
 
 Execute CLI command to get the genesis raw tx block:
 ```sh
-./bitcloud-cli -conf=/root/.bitcloud/regtest/bitcloud.conf getblock 000002d56463941c20eae5cb474cc805b646515d18bc7dc222a0885b206eadb0 false
+./bitcloud-cli -regtest -conf=/root/.bitcloud/regtest/bitcloud.conf getblock 000002d56463941c20eae5cb474cc805b646515d18bc7dc222a0885b206eadb0 false
 ```
 
 ### IPv6 seeds
