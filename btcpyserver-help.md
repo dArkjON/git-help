@@ -12,11 +12,12 @@ Repo: https://github.com/dalijolijo/btcpayserver-docker
 
 ```sh
 cd docker-compose-generator
-BTCPAYGEN_DOCKER_IMAGE="btcpayserver/docker-compose-generator:local"
+export BTCPAYGEN_DOCKER_IMAGE="btcpayserver/docker-compose-generator:local"
 cd ..
-BTCPAY_HOST=efd87f2d-fcb7-4ae3-b102-ad4586880eb6.pub.cloud.scaleway.com
-BTCPAYGEN_CRYPTO1="btc"
-BTCPAYGEN_CRYPTO2="btx"
+export BTCPAY_HOST=efd87f2d-fcb7-4ae3-b102-ad4586880eb6.pub.cloud.scaleway.com
+export BTCPAYGEN_CRYPTO1="btc"
+export BTCPAYGEN_CRYPTO2="btx"
+export BTCPAYGEN_ADDITIONAL_FRAGMENTS="opt-save-storage-xxs"
 ./build.sh
 . btcpay-setup.sh -i
 ```
