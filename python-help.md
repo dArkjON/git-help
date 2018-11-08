@@ -33,15 +33,15 @@ rm -rf NEW_PKG.egg-info build dist
 ```
 
 
-# VIM with python extension
+## VIM with python extension
 See https://realpython.com/vim-and-python-a-match-made-in-heaven/
 
-## Install Plugin-Installer Vundle
+### Install Plugin-Installer Vundle
 ```sh
 git clone https://github.com/gmarik/Vundle.vim.git ~/.vim/bundle/Vundle.vim
 ```
 
-## Edit ~/.vimrc
+### Edit ~/.vimrc
 ```sh
 set nocompatible              " required
 filetype off                  " required
@@ -93,7 +93,7 @@ syntax on
 set nu
 ```
 
-## Install plugins
+### Install plugins
 ```sh
 :PluginInstall
 ```
