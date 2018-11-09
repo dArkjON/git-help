@@ -1,8 +1,11 @@
 # btcpyserver-help
 
 ## links
+https://github.com/btcpayserver/btcpayserver-docker
 https://github.com/btcpayserver/btcpayserver-docker#how-can-i-add-an-altcoin-to-btcpayserver
+https://github.com/btcpayserver/btcpayserver-doc/blob/master/ChangeDomain.md
 https://medium.com/@BtcpayServer/hosting-btcpay-server-for-cheap-2b27761fdb9d
+https://hub.docker.com/u/nicolasdorier/
 
 ## BTX
 Dockerfile: https://github.com/dalijolijo/btcpayserver-docker-bitcore
