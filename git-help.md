@@ -200,3 +200,41 @@ Usage:
 ```sh
 git diff
 ```
+
+# Example: electrum
+```sh
+git clone https://github.com/dalijolijo/electrum-bitcore.git
+cd electrum-bitcore
+git remote add upstream https://github.com/dalijolijo/electrum.git
+git fetch upstream
+git checkout 3.2.3
+git rebase upstream/3.2.3
+```
+
+Fix conflict in electrum/version.py
+```sh
+git add .
+git rebase --continue
+```
+
+Fix all conflicts:
+* MANIFEST.in: needs merge
+* electrum: needs merge
+* electrum-bitcore: needs merge
+* electrum.desktop: needs merge
+* electrum/blockchain.py: needs merge
+* electrum/checkpoints.json: needs merge
+* electrum/constants.py: needs merge
+* electrum/gui/qt/amountedit.py: needs merge
+* electrum/gui/qt/exception_window.py: needs merge
+* electrum/gui/qt/main_window.py: needs merge
+* electrum/network.py: needs merge
+* electrum/servers.json: needs merge
+* electrum/util.py: needs merge
+* run_electrum: needs merge
+* setup.py: needs merge
+
+```sh
+git add .
+git rebase --continue
+```
