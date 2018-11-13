@@ -32,6 +32,43 @@ pip uninstall NEW_PKG
 rm -rf NEW_PKG.egg-info build dist
 ```
 
+## Setting up VIM as an IDE for Python
+See https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-download
+
+### Installation of neovim
+
+Hint: Only unstable was sucessful with Ubuntu 14.04.
+```sh
+sudo apt-get install software-properties-common
+sudo add-apt-repository ppa:neovim-ppa/unstable
+sudo apt-get update
+sudo apt-get install neovim
+sudo apt-get install python-dev python-pip python3-dev python3-pip
+sudo update-alternatives --install /usr/bin/vi vi /usr/bin/nvim 60
+sudo update-alternatives --config vi
+sudo update-alternatives --install /usr/bin/vim vim /usr/bin/nvim 60
+sudo update-alternatives --config vim
+```
+
+### Configure neo-vim for Python
+See https://github.com/ncm2/ncm2
+
+```sh
+pip install setuptools
+pip  install --upgrade neovim
+pip2 install --upgrade neovim
+pip3 install --upgrade neovim
+```
+
+### Check installed versions
+```sh
+:echo has("nvim-0.2.2")
+:echo has("python3")
+```
+
+### Install Plugin nvim-yarp
+See https://github.com/roxma/nvim-yarp
+
 
 ## VIM with python extension
 See https://realpython.com/vim-and-python-a-match-made-in-heaven/
