@@ -33,7 +33,7 @@ rm -rf NEW_PKG.egg-info build dist
 ```
 
 ## Setting up VIM as an IDE for Python
-See https://github.com/neovim/neovim/wiki/Installing-Neovim#install-from-download
+See https://medium.com/@hanspinckaers/setting-up-vim-as-an-ide-for-python-773722142d1d
 
 ### Installation of neovim
 
